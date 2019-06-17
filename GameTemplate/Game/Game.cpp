@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Game.h"
+#include"Status.h"
 #include "tkEngine/light/tkDirectionLight.h"
 
 CVector3 cameraPos = { 0.0f, 70.0f, 200.0f };
@@ -22,7 +23,6 @@ bool Game::Start()
 	MainCamera().Update();
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/unityChan.cmo");
-	MessageBox(NULL, "ÇÕÇÎÅ`", "ÇÕÇÎÅ`", MB_OK);
 	return true;
 }
 
@@ -37,6 +37,9 @@ void Game::Update()
 	}
 	if (Pad(0).IsPress(enButtonDown)) {
 		cameraPos.z += speed;
+	}
+	if (Pad(0).IsTrigger(enButtonA)) {
+		NewGO<Status>(0, "stastus");
 	}
 
 	MainCamera().SetPosition(cameraPos);

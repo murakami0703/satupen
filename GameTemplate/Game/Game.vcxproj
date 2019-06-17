@@ -1764,6 +1764,7 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Status.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Middle|Win32'">Create</PrecompiledHeader>
@@ -1788,6 +1789,7 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <CLInclude Include="resource.h" />
+    <ClInclude Include="Status.h" />
     <ClInclude Include="stdafx.h" />
     <ResourceCompile Include="Game.rc" />
   </ItemGroup>
@@ -1796,6 +1798,22 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\dummy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\wakuwaku.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\taim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\kao .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\midriwaku1.png" />
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\waku4.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
