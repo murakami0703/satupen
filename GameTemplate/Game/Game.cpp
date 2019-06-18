@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "Game.h"
-#include"Status.h"
+#include "GameCamera.h"
+#include "Player.h"
+#include "Status.h"
+#include "Background.h"
 #include "tkEngine/light/tkDirectionLight.h"
 
-CVector3 cameraPos = { 0.0f, 70.0f, 200.0f };
-CVector3 cameraTarget;
 Game::Game()
 {
 }
@@ -12,36 +13,21 @@ Game::Game()
 
 Game::~Game()
 {
+	DeleteGOs("gcamera");
+	DeleteGOs("player");
+	DeleteGOs("back");
+	DeleteGOs("player");
+	DeleteGOs("status");
 }
 bool Game::Start()
 {
-	//ÉJÉÅÉâÇê›íËÅB
-	MainCamera().SetTarget({ 0.0f, 70.0f, 0.0f });
-	MainCamera().SetNear(10.0f);
-	MainCamera().SetFar(10000.0f);
-	MainCamera().SetPosition({ 0.0f, 70.0f, 200.0f });
-	MainCamera().Update();
-	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/unityChan.cmo");
+	NewGO<GameCamera>(0, "gcamera");
+	NewGO<Background>(0, "back");
+	NewGO<Player>(0, "player");
+	NewGO<Status>(0, "status");
 	return true;
 }
 
 void Game::Update()
 {
-	float speed = 1.0f;
-	if (Pad(0).IsPress(enButtonB)) {
-		speed *= 10.0f;
-	}
-	if (Pad(0).IsPress(enButtonUp)) {
-		cameraPos.z -= speed;
-	}
-	if (Pad(0).IsPress(enButtonDown)) {
-		cameraPos.z += speed;
-	}
-	if (Pad(0).IsTrigger(enButtonA)) {
-		NewGO<Status>(0, "stastus");
-	}
-
-	MainCamera().SetPosition(cameraPos);
-	MainCamera().Update();
 }
