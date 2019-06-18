@@ -1827,6 +1827,32 @@
     <ImageContentTask Include="Assets\sprite\waku4.png" />
     <ImageContentTask Include="Assets\sprite\wakuwaku.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\HPbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao5.png" />
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen2.png" />
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen3.png" />
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen4.png" />
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen5.png" />
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\HPBbar.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />

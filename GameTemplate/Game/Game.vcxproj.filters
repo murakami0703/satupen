@@ -79,5 +79,41 @@
     <ImageContentTask Include="Assets\sprite\wakuwaku.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao2.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\HPbar.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao3.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao4.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao5.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\kao6.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen2.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen3.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen4.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen5.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\pen6.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\HPBbar.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
   </ItemGroup>
 </Project>
