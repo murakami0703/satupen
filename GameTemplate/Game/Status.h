@@ -26,8 +26,9 @@ private:
 	prefab::CSpriteRender* m_sprite15; //ƒyƒ“‚T
 	prefab::CSpriteRender* m_sprite16; //ƒyƒ“‚U
 	prefab::CSpriteRender* m_sprite4;  //HPBar˜g
-	prefab::CSpriteRender* m_sprite7;  //HPBar‰
+	prefab::CSpriteRender* m_sprite7;  //HPBar”’
 	prefab::CSpriteRender* m_sprite17; //HPbar•
+	prefab::CSpriteRender* m_sprite18; //HPbar‰
 	prefab::CSpriteRender* m_sprite5;  //Šç
 	prefab::CSpriteRender* m_sprite6;  //Šç‚Q
 	prefab::CSpriteRender* m_sprite8;  //Šç‚R

@@ -1853,6 +1853,9 @@
   <ItemGroup>
     <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\HPBbar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\HPWbar.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />

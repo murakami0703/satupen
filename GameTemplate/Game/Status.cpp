@@ -66,12 +66,15 @@ bool Status::Start()
 	//HPBarわく
 	m_sprite4 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite4->Init(L"sprite/waku4.dds", 1280.0f, 720.0f);
-	//HPBbar黒
+	//HpWbar白
 	m_sprite7 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite7->Init(L"sprite/HPBbar.dds", 1280.0f, 720.0f);
-	//HP翠のばー
-	/*m_sprite17 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite17->Init(L"sprite/HPbar.dds", 1280.0f, 720.0f);*/
+	m_sprite7->Init(L"sprite/HPWbar.dds", 1280.0f, 720.0f);
+	//HPBbar翠
+	m_sprite18 = NewGO<prefab::CSpriteRender>(0);
+	m_sprite18->Init(L"sprite/HPbar.dds", 1280.0f, 720.0f);
+	//HPbar黒
+	m_sprite17 = NewGO<prefab::CSpriteRender>(0);
+	m_sprite17->Init(L"sprite/HPBbar.dds", 1280.0f, 720.0f);
 	//顔のスプライト１
 	m_sprite5 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite5->Init(L"sprite/kao .dds", 1280.0f, 720.0f);
@@ -108,18 +111,19 @@ bool Status::Start()
 void Status::Update()
 {
     //HP
-	//CVector3 LifeScale = CVector3::Zero;
-	//Player * player = Player::();
-	//GameData * gamedata = GameData::tairyokuKeisan();
-	////寿命ゲージを動かす
-	//float DEF_Life = (float)gamedata->GetDEF_Life();
-	//float NOW_Life = (float)player->GetLife();
+	CVector3 LifeScale = CVector3::Zero;
+	Player* player = FindGO<Player>();
+	Player * player = Player::GetInstance();
+	GameData * gamedata = GameData::GetInstance();
+	//寿命ゲージを動かす
+	float DEF_Life = (float)gamedata->GetDEF_Life();
+	float NOW_Life = (float)player->Life();
 
-	////寿命のを計算
-	//float LifeY = NOW_Life / DEF_Life;
+	//寿命のを計算
+	float LifeY = NOW_Life / DEF_Life;
 
-	////寿命バーの色が変わる基準
-	//float RED_Life = DEF_Life / 2.0f;
-	////寿命バーの色変え
-	//if()
+	//寿命バーの色が変わる基準
+	float RED_Life = DEF_Life / 2.0f;
+	//寿命バーの色変え
+	if()
 }
