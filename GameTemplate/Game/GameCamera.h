@@ -7,6 +7,7 @@ public:
 	bool Start();
 	void Update();
 	CVector3 CameraPos = CVector3::Zero;
+
 	int timer = 0;
 };
 

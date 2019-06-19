@@ -32,8 +32,9 @@ public:
 	CVector3 Player::Getm_Position() {
 		return m_position;
 	}
-	CVector3 Player::Getm_stick() {
-		return stick;
+	//スティックの値を返す関数(カメラに使ってる）
+	CQuaternion Player::Getm_Rotation() {
+		return m_rotation;
 	}
 private:
 	void Move();	//十字キー移動
@@ -41,13 +42,11 @@ private:
 	void Animation();	//アニメーション
 	void Rotation();	//回転
 	void Dash();		//走るよぉおお
-	void Attack();		//攻撃ﾀﾞﾖ
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
-	CVector3 m_scale = CVector3::Zero; // 座標。
-	CQuaternion qrot = CQuaternion::Identity; //スティック用
+	CVector3 m_scale = CVector3::Zero; // スケール
 	CVector3 moveVec = CVector3::Zero; //移動速度
 	CVector3 stick = CVector3::Zero;//スティック
 	CCharacterController m_charaCon; //キャラコン

@@ -20,7 +20,7 @@ bool GameCamera::Start()
 	//カメラを設定。
 
 	//ベクトルの設定
-	CameraPos.Set(0.0f, 70.0f, -100.0f);
+	//CameraPos.Set(0.0f, 20.0f, -50.0f);
 	return true;
 }
 
@@ -30,19 +30,21 @@ void GameCamera::Update()
 	//プレイヤーの向きに合わせて動くぅ
 	Player* player = FindGO<Player>("player");
 	CVector3 target = player->Getm_Position();
+	CVector3 vBase = { 0.0f,0.0f,1.0f };
+	CVector3 vyoBase = { 0.0f,1.0f,0.0f };
+	CQuaternion p_qRot = player->Getm_Rotation();
+	p_qRot.Apply(vBase);
+	p_qRot.Apply(vyoBase);
+	CVector3 vpos = vBase * -50.0f;
 
-	CVector3 st = player->Getm_stick();
-	CVector3 CameraPosOld = CameraPos;
-	//Y軸周りの回転
-	CQuaternion qRot;
-	qRot.SetRotationDeg(CVector3::AxisY, 2.0f * st.z);
-	qRot.Multiply(CameraPos);
-
-	CVector3 pos = target + CameraPos;
+	CVector3 pos = vpos + target;
+	pos.y = pos.y + 20.0f;
+	target.y = 30.0f;
 	//メインカメラに注視点と視点を設定する。
 	MainCamera().SetTarget(target);
 	MainCamera().SetPosition(pos);
+	
 	//カメラの更新
 	MainCamera().Update();
-
+	CVector3 cameraposOld = CameraPos;
 }

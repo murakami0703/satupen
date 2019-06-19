@@ -26,6 +26,8 @@
     <ClCompile Include="Pen.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Scope.cpp" />
+    <ClCompile Include="PenGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -40,6 +42,8 @@
     <ClInclude Include="Pen.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="Scope.h" />
+    <ClInclude Include="PenGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc">
@@ -77,6 +81,9 @@
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
     <ImageContentTask Include="Assets\sprite\wakuwaku.png">
+      <Filter>Assets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\suko.png">
       <Filter>Assets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>

@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Player.h"
-#include "Pen.h"
 
 Player::Player()
 {
@@ -29,6 +28,7 @@ bool Player::Start()
 	m_skinModelRender->PlayAnimation(0);
 	m_scale = { 0.3f,0.3f,0.3f };
 	m_skinModelRender->SetScale(m_scale);
+	m_skinModelRender->SetPosition(m_position);
 	//キャラコン
 	m_charaCon.Init(
 		20.0f,  //半径。
@@ -71,18 +71,17 @@ void Player::Movestick()
 
 	//カメラの前方方向と右方向を取得。
 	CVector3 cameraForward = MainCamera().GetForward();
-	CVector3 cameraRight = MainCamera().GetRight();
+	//CVector3 cameraRight = MainCamera().GetRight();
 	//XZ平面での前方方向、右方向に変換する。
 	cameraForward.y = 0.0f;
 	cameraForward.Normalize();
-	cameraRight.y = 0.0f;
-	cameraRight.Normalize();
+	
 	//XZ成分の移動速度をクリア。
 	moveVec.x = 0.0f;
 	moveVec.z = 0.0f;
 	//moveVec.y -= 980.0f * GameTime().GetFrameDeltaTime();
 	moveVec += cameraForward * stick.x * 15.0f;	//奥方向への移動速度を加算。
-	moveVec += cameraRight * stick.z * 15.0f;		//右方向への移動速度を加算。
+	
 
 
 	m_position = m_charaCon.Execute(moveVec);
@@ -111,34 +110,9 @@ void Player::Animation()
 
 void Player::Rotation()
 {
-	//回転
-	//十字ボタン
-	//if (Pad(0).IsPress(enButtonRight)) {
-	//	m_rotation.SetRotationDeg(CVector3::AxisY, -90.0f);
-	//}
-	//else if (Pad(0).IsPress(enButtonLeft)) {
-	//	m_rotation.SetRotationDeg(CVector3::AxisY, 90.0f);
-	//}
-	//else if (Pad(0).IsPress(enButtonUp)) {
-	//	m_rotation.SetRotationDeg(CVector3::AxisY, 180.0f);
-	//}
-	//else if (Pad(0).IsPress(enButtonDown)) {
-	//	m_rotation.SetRotationDeg(CVector3::AxisY, 0.0f);
-	//}
-	//スティック
-	if (fabsf(moveVec.x) < 0.001f
-		&& fabsf(moveVec.z) < 0.001f) {
-		return;
-	}
-	if (stick.x >= 0.0f) {
-		float angle = atan2(moveVec.x, moveVec.z);
-		m_rotation.SetRotation(CVector3::AxisY, angle);
-	}
-	if (stick.z <= 0.5f && stick.z >= -0.5f) {
-		float angle = atan2(moveVec.x, moveVec.z);
-		m_rotation.SetRotation(CVector3::AxisY, angle);
-
-	}
+	CQuaternion qAddRot;
+	qAddRot.SetRotation(CVector3::AxisY, Pad(0).GetLStickXF() * 0.05f);
+	m_rotation.Multiply(qAddRot);
 
 }
 void Player::Dash() {
@@ -147,15 +121,8 @@ void Player::Dash() {
 		moveVec *= 2.0f;
 	}
 	m_position = m_charaCon.Execute(moveVec);
+}
 
-}
-void Player::Attack()
-{
-	//攻撃ﾀﾞﾖ
-	if (Pad(0).IsTrigger(enButtonB)) {
-		NewGO<Pen>(0, "pen");
-	}
-}
 void Player::Update()
 {
 	//Move();			//十字キー移動
@@ -163,7 +130,6 @@ void Player::Update()
 	Animation();	//アニメーション
 	Rotation();		//回転
 	Dash();		//走るよぉおお
-	Attack();	//ペン投げる
 
 	//移動と回転
 	m_skinModelRender->SetPosition(m_position);
