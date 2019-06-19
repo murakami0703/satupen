@@ -31,7 +31,7 @@ void GameCamera::Update()
 	Player* player = FindGO<Player>("player");
 	CVector3 target = player->Getm_Position();
 	CVector3 vBase = { 0.0f,0.0f,1.0f };
-	CVector3 vyoBase = { 0.0f,1.0f,0.0f };
+	CVector3 vyoBase = { -1.0f,0.0f,0.0f };
 	CQuaternion p_qRot = player->Getm_Rotation();
 	p_qRot.Apply(vBase);
 	p_qRot.Apply(vyoBase);

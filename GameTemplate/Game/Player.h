@@ -36,8 +36,12 @@ public:
 	CQuaternion Player::Getm_Rotation() {
 		return m_rotation;
 	}
+	//体力を返す関数
+	int Player::Get_Life() {
+		return m_Life;
+	}
+
 private:
-	void Move();	//十字キー移動
 	void Movestick();	//パッド移動
 	void Animation();	//アニメーション
 	void Rotation();	//回転
@@ -52,6 +56,8 @@ private:
 	CCharacterController m_charaCon; //キャラコン
 
 	CAnimationClip  m_animClips[enAnimationClip_Num];//アニメーション
+
+	int m_Life = 0; //自分の体力
 	//移動関連
 	const float movespeed = 30.0f;
 	//攻撃関連

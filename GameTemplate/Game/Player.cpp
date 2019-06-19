@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "GameData.h"
 
 Player::Player()
 {
@@ -29,6 +30,9 @@ bool Player::Start()
 	m_scale = { 0.3f,0.3f,0.3f };
 	m_skinModelRender->SetScale(m_scale);
 	m_skinModelRender->SetPosition(m_position);
+	//ゲームデーターから体力を引っ張ってくる
+	GameData* gamedata = GameData::GetInstance();
+	m_Life = gamedata->Get_Life();
 	//キャラコン
 	m_charaCon.Init(
 		20.0f,  //半径。
@@ -38,33 +42,9 @@ bool Player::Start()
 	return true;
 }
 
-void Player::Move()
-{
-	moveVec.x = 0.0f;
-	moveVec.z = 0.0f;
-	//十字ボタン移動
-	if (Pad(0).IsPress(enButtonUp)) {
-		moveVec.z -= movespeed;
-	}
-	if (Pad(0).IsPress(enButtonDown)) {
-		moveVec.z += movespeed;
-
-	}
-	if (Pad(0).IsPress(enButtonLeft)) {
-		moveVec.x += movespeed;
-
-	}
-	if (Pad(0).IsPress(enButtonRight)) {
-		moveVec.x -= movespeed;
-
-	}
-	m_position = m_charaCon.Execute(moveVec);
-
-}
-
 void Player::Movestick()
 {
-	//スティック移動ぉぉぉぉ
+	//移動
 	stick.x = Pad(0).GetLStickYF();
 	stick.y = 0.0f;
 	stick.z = Pad(0).GetLStickXF();
@@ -89,27 +69,12 @@ void Player::Movestick()
 
 void Player::Animation()
 {
-	//アニメーション
-		if (Pad(0).IsPress(enButtonRight)||Pad(0).IsPress(enButtonLeft)) {
-			m_skinModelRender->PlayAnimation(enAnimationClip_walk, 0.1f);
-		}
-		else if (Pad(0).IsPress(enButtonLeft)) {
-			m_skinModelRender->PlayAnimation(enAnimationClip_walk, 0.1f);
-		}
-		else if (Pad(0).IsPress(enButtonUp)) {
-			m_skinModelRender->PlayAnimation(enAnimationClip_walk, 0.1f);
-		}
-		else if (Pad(0).IsPress(enButtonDown)) {
-			m_skinModelRender->PlayAnimation(enAnimationClip_walk, 0.1f);
-		}
-		else {
-			m_skinModelRender->PlayAnimation(enAnimationClip_idle);
-		}
 		
 }
 
 void Player::Rotation()
 {
+	//回転
 	CQuaternion qAddRot;
 	qAddRot.SetRotation(CVector3::AxisY, Pad(0).GetLStickXF() * 0.05f);
 	m_rotation.Multiply(qAddRot);
@@ -125,7 +90,6 @@ void Player::Dash() {
 
 void Player::Update()
 {
-	//Move();			//十字キー移動
 	Movestick();	//パッド移動
 	Animation();	//アニメーション
 	Rotation();		//回転

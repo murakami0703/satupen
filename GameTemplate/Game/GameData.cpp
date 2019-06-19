@@ -3,11 +3,3 @@
 
 GameData* GameData::m_instance = nullptr;
 
-GameData::GameData()
-{
-}
-
-
-GameData::~GameData()
-{
-}
