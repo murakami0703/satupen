@@ -106,7 +106,7 @@ bool Status::Start()
 	//HPBbarêâ
 	m_sprite18 = NewGO<prefab::CSpriteRender>(2);
 	m_sprite18->Init(L"sprite/HPbar.dds", 540.0f, 150.0f);
-	m_sprite18->SetPosition({ 130.0f,225.0f,0.0f });
+	m_sprite18->SetPosition({ 130.0f,215.0f,0.0f });
 	//HPbarçï
 	m_sprite17 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite17->Init(L"sprite/HPBbar.dds", 540.0f, 150.0f);
