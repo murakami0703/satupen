@@ -1905,6 +1905,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Low|x64'">false</ExcludedFromBuild>
     </ImageContentTask>
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\pen7.png" />
+    <ImageContentTask Include="Assets\sprite\プラス.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />
