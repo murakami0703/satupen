@@ -15,6 +15,7 @@ private:
 	//フォントレンダラー
 	prefab::CFontRender* m_font;
 	const CVector2 LifePivot = { 0.05f,0.1f };//HPの基本
+	
     CVector4 LifeColor = { 1.0f,1.0f,1.0f,1.0f };//HPばーの色
 	prefab::CSpriteRender* m_sprite;
 	prefab::CSpriteRender* m_sprite1; //時計。

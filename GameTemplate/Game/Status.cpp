@@ -45,7 +45,9 @@ bool Status::Start()
 	
 	//Œv‚Ìj
 	m_sprite20 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite20->Init(L"sprite/hari.dds", 1280.0f, 720.0f);
+	m_sprite20->Init(L"sprite/hari.dds", 200.0f, 200.0f);
+	m_position = { -10.0f,240.0f,0.0f };
+	m_sprite20->SetPosition(m_position);//À•W‚ğ”½‰f
 	//Œvj¬
 	m_sprite21 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite21->Init(L"sprite/hariS.dds", 1280.0f, 720.0f);
@@ -106,7 +108,7 @@ bool Status::Start()
 	//HPBbar‰
 	m_sprite18 = NewGO<prefab::CSpriteRender>(2);
 	m_sprite18->Init(L"sprite/HPbar.dds", 540.0f, 150.0f);
-	m_sprite18->SetPosition({ 130.0f,215.0f,0.0f });
+	m_sprite18->SetPosition({ 130.0f,234.5f,0.0f });
 	//HPbar•
 	m_sprite17 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite17->Init(L"sprite/HPBbar.dds", 540.0f, 150.0f);
@@ -179,6 +181,9 @@ void Status::Update()
 	m_sprite17->SetPivot(LifePivot);
 	m_sprite18->SetScale(LifeScale);
 	m_sprite18->SetMulColor(LifeColor);
-
+	CQuaternion rot;
+	rot.SetRotation(CVector3::AxisZ, -0.005f);
+	m_rotation.Multiply(rot);
+	m_sprite20->SetRotation(m_rotation);
 	gamedata->tiryokugennsyou(-1);
 }
