@@ -1,30 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ImageContentTask Include="Assets\sprite\kao .png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\dummy.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\midriwaku1.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\taim.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\suko.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\waku4.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\wakuwaku.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
     <ImageContentTask Include="Assets\sprite\HPbar.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
@@ -34,37 +10,10 @@
     <ImageContentTask Include="Assets\sprite\HPWbar.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\kao2.png">
+    <ImageContentTask Include="Assets\sprite\taim.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\kao3.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\kao5.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\kao4.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\kao6.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen2.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen3.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen4.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen5.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen6.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\pen7.png">
+    <ImageContentTask Include="Assets\sprite\waku4.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>
@@ -84,12 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\testback.FBX">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\unityChan.fbx">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\ya.FBX">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>

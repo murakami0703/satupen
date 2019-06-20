@@ -14,10 +14,12 @@ private:
 
 	//フォントレンダラー
 	prefab::CFontRender* m_font;
-	const CVector2 Laifba = { 0.5f,0.1f };//HP基点
+	const CVector2 LifePivot = { 0.05f,0.1f };//HPの基本
     CVector4 LifeColor = { 1.0f,1.0f,1.0f,1.0f };//HPばーの色
 	prefab::CSpriteRender* m_sprite;
-	prefab::CSpriteRender* m_sprite1;
+	prefab::CSpriteRender* m_sprite1; //時計。
+	prefab::CSpriteRender* m_sprite20;//針
+	prefab::CSpriteRender* m_sprite21;//針小
 	prefab::CSpriteRender* m_sprite2;
 	prefab::CSpriteRender* m_sprite3;  //ペン
 	prefab::CSpriteRender* m_sprite12; //ペン２

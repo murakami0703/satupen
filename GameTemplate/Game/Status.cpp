@@ -20,6 +20,18 @@ Status::~Status()
 	DeleteGO(m_sprite5);
 	DeleteGO(m_sprite6);
 	DeleteGO(m_sprite7);
+	DeleteGO(m_sprite8);
+	DeleteGO(m_sprite9);
+	DeleteGO(m_sprite10);
+	DeleteGO(m_sprite11);
+	DeleteGO(m_sprite12);
+	DeleteGO(m_sprite13);
+	DeleteGO(m_sprite14);
+	DeleteGO(m_sprite15);
+	DeleteGO(m_sprite16);
+	DeleteGO(m_sprite17);
+	DeleteGO(m_sprite18);
+	DeleteGO(m_sprite19);
 }
 bool Status::Start()
 {
@@ -30,6 +42,14 @@ bool Status::Start()
 	//時計スプライト
 	m_sprite1 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite1->Init(L"sprite/taim.dds", 1280.0f, 720.0f);
+	
+	//時計の針
+	m_sprite20 = NewGO<prefab::CSpriteRender>(0);
+	m_sprite20->Init(L"sprite/hari.dds", 1280.0f, 720.0f);
+	//時計針小
+	m_sprite21 = NewGO<prefab::CSpriteRender>(0);
+	m_sprite21->Init(L"sprite/hariS.dds", 1280.0f, 720.0f);
+	m_sprite21->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB
 	//顔、ペンのBar
 	m_sprite2 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite2->Init(L"sprite/wakuwaku.dds", 1280.0f, 720.0f);
@@ -77,16 +97,20 @@ bool Status::Start()
 	m_sprite19->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB
 	//HPBarわく
 	m_sprite4 = NewGO<prefab::CSpriteRender>(3);
-	m_sprite4->Init(L"sprite/waku4.dds", 1280.0f, 720.0f);
+	m_sprite4->Init(L"sprite/waku4.dds", 540.0f, 150.0f);
+	m_sprite4->SetPosition({ 130.0f,225.0f,0.0f });
 	//HpWbar白
 	m_sprite7 = NewGO<prefab::CSpriteRender>(1);
-	m_sprite7->Init(L"sprite/HPWbar.dds", 1280.0f, 720.0f);
+	m_sprite7->Init(L"sprite/HPWbar.dds", 540.0f, 150.0f);
+	m_sprite7->SetPosition({ 130.0f,225.0f,0.0f });
 	//HPBbar翠
 	m_sprite18 = NewGO<prefab::CSpriteRender>(2);
-	m_sprite18->Init(L"sprite/HPbar.dds", 1280.0f, 720.0f);
+	m_sprite18->Init(L"sprite/HPbar.dds", 540.0f, 150.0f);
+	m_sprite18->SetPosition({ 130.0f,225.0f,0.0f });
 	//HPbar黒
 	m_sprite17 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite17->Init(L"sprite/HPBbar.dds", 1280.0f, 720.0f);
+	m_sprite17->Init(L"sprite/HPBbar.dds", 540.0f, 150.0f);
+	m_sprite17->SetPosition({ 130.0f,225.0f,0.0f });
 	//顔のスプライト１
 	m_sprite5 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite5->Init(L"sprite/kao .dds", 1280.0f, 720.0f);
@@ -134,13 +158,27 @@ void Status::Update()
 	GameData * gamedata = GameData::GetInstance();
 	//寿命ゲージを動かす
 	float DEF_Life = (float)gamedata->GetDEF_Life();
-	float NOW_Life = (float)player->Get_Life();
+	float NOW_Life = (float)gamedata->Get_Life();
 
 	//寿命のを計算
 	float LifeY = NOW_Life / DEF_Life;
-
+	//???
+	LifeScale = { LifeY,1.0f,1.0f };
 	//寿命バーの色が変わる基準
 	float RED_Life = DEF_Life / 2.0f;
 	//寿命バーの色変え
-	//if()
+	if (NOW_Life < RED_Life) {
+		LifeColor = { 1.0f,0.0f,0.0f,1.0f };
+	}
+	else {
+		LifeColor = { 0.0f,1.0f,0.0f,1.0f };
+	}
+	m_sprite4->SetPivot(LifePivot);
+	m_sprite7->SetPivot(LifePivot);
+	m_sprite18->SetPivot(LifePivot);//4,7,17
+	m_sprite17->SetPivot(LifePivot);
+	m_sprite18->SetScale(LifeScale);
+	m_sprite18->SetMulColor(LifeColor);
+
+	gamedata->tiryokugennsyou(-1);
 }

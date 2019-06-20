@@ -49,6 +49,12 @@ public:
 	//引数に設定した値を体力に加算する　負の数を設定したら減少する
 	void  GameData::tiryokugennsyou(int x) {
 		Life += x;
+		if (Life < 0) {
+			Life = 0;
+		}
+		if (DEF_Life < Life) {
+			DEF_Life = Life;
+		}
 	}
 	//初期残弾取得
 	int GameData::GetDEF_Zandan() {
@@ -62,5 +68,6 @@ private:
 	int DEF_Zandan = 50; //デフォルト残弾
 	int DEF_Life = 100; //デフォルト体力
 	int Life = 100; //体力取得
+
 };
 
