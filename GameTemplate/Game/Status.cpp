@@ -181,9 +181,14 @@ void Status::Update()
 	m_sprite17->SetPivot(LifePivot);
 	m_sprite18->SetScale(LifeScale);
 	m_sprite18->SetMulColor(LifeColor);
+
 	CQuaternion rot;
-	rot.SetRotation(CVector3::AxisZ, -0.005f);
+	rot.SetRotation(CVector3::AxisZ, -0.0005f);
 	m_rotation.Multiply(rot);
 	m_sprite20->SetRotation(m_rotation);
+
+	
+	float timer = gamedata->GetTimer();
+
 	gamedata->tiryokugennsyou(-1);
 }
