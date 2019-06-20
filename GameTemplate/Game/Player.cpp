@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Player.h"
-#include "GameData.h"
 
 Player* Player::m_instance = nullptr;
 
@@ -29,23 +28,20 @@ Player::~Player()
 bool Player::Start()
 {
 	//アニメーション
-	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka");
+	m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka");
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	m_animClips[enAnimationClip_run].Load(L"animData/plrun.tka");
-	m_animClips[enAnimationClip_run].SetLoopFlag(true);
+	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka");
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
 	m_animClips[enAnimationClip_attack].Load(L"animData/plkougeki.tka");
-	m_animClips[enAnimationClip_attack].SetLoopFlag(true);*/
+	m_animClips[enAnimationClip_attack].SetLoopFlag(true);
 	//スキンモデル
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo");
+	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo",m_animClips,enAnimationClip_Num);
 	//m_skinModelRender->PlayAnimation(0);
 	m_scale = { 1.0f,1.0f,1.0f };
 	m_skinModelRender->SetScale(m_scale);
 	m_skinModelRender->SetPosition(m_position);
 
-	//ゲームデーターから体力を引っ張ってくる
-	GameData* gamedata = GameData::GetInstance();
-	m_Life = gamedata->Get_Life();
 	//キャラコン
 	m_charaCon.Init(
 		20.0f,  //半径。
