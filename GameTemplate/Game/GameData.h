@@ -3,23 +3,9 @@ class GameData : public IGameObject
 {
 	static GameData* m_instance;
 public:
-	GameData::GameData()
-	{
-		if (m_instance != nullptr) {
-			std::abort(); //すでに出ているためクラッシュ
-		}
+	GameData();
+	~GameData();
 
-		//このインスタンスを唯一のインスタンスとして記録する
-		m_instance = this;
-
-	}
-
-	GameData::~GameData()
-	{
-		//インスタンスが破棄されたので、nullptrを代入
-		m_instance = nullptr;
-
-	}
 
 	//インスタンスの取得
 	static GameData* GameData::GetInstance() {

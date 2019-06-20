@@ -1,23 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ImageContentTask Include="Assets\sprite\HPbar.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\HPBbar.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\HPWbar.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\taim.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\waku4.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
@@ -30,11 +13,6 @@
     <ClCompile Include="Status.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Title.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <MeshContentTask Include="Assets\modelData\testback.FBX">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
@@ -63,5 +41,114 @@
     <Filter Include="Aseets\modelData">
       <UniqueIdentifier>{b663bc47-a331-4d4b-8bba-c0053924a209}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Aseets\modelData\Children">
+      <UniqueIdentifier>{4849e636-7126-48c2-a6b5-fb7d5ea436c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\Man">
+      <UniqueIdentifier>{f662bb5f-7029-4b7e-ae28-57aa07eb722c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\Woman">
+      <UniqueIdentifier>{97d6d425-49bf-4397-aa27-855c2be00656}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\dummy.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\hari.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\hariS.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\HPbar.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\HPBbar.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\HPWbar.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\kao .png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\kao2.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\kao3.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\kao4.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\kao5.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\kao6.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\midriwaku1.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen2.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen3.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen4.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen5.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen6.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\pen7.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\suko.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\taim.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\title.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\waku4.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\wakuwaku.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
+      <Filter>Aseets\modelData\Children</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Children\kodomo.fbx">
+      <Filter>Aseets\modelData\Children</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Man\otoko.fbx">
+      <Filter>Aseets\modelData\Man</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Woman\onna.FBX">
+      <Filter>Aseets\modelData\Woman</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\aaaaaaa.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\testback.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ya.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

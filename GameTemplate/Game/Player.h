@@ -3,6 +3,8 @@
 #include "tkEngine/character/tkCharacterController.h"
 class Player : public IGameObject
 {
+	static Player* m_instance;
+
 public:
 	Player();
 	~Player();
@@ -11,17 +13,11 @@ public:
 		Estate_move,
 		Estate_attack,
 	};
-	//攻撃
-	enum EnAttackItem {
-		Estate_Wait,	//何もしない
-		Estate_Pen,		//ペン
-
-	};
 	//アニメーション
 	enum EnAnimationClip {
 		enAnimationClip_idle, //待機
-		enAnimationClip_run,  //走り
-		enAnimationClip_walk, //歩き
+		enAnimationClip_walk,  //走り
+		enAnimationClip_attack, //攻撃
 		enAnimationClip_Num,  //アニメーションクリップ
 	};
 
@@ -32,7 +28,7 @@ public:
 	CVector3 Player::Getm_Position() {
 		return m_position;
 	}
-	//スティックの値を返す関数(カメラに使ってる）
+	//回転を返す関数
 	CQuaternion Player::Getm_Rotation() {
 		return m_rotation;
 	}
@@ -40,12 +36,17 @@ public:
 	int Player::Get_Life() {
 		return m_Life;
 	}
+	//インスタンスの取得
+	static Player* Player::GetInstance() {
+		return m_instance;
+	}
 
 private:
 	void Movestick();	//パッド移動
 	void Animation();	//アニメーション
 	void Rotation();	//回転
 	void Dash();		//走るよぉおお
+	void Turn();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -60,7 +61,11 @@ private:
 	int m_Life = 0; //自分の体力
 	//移動関連
 	const float movespeed = 30.0f;
-	//攻撃関連
-	EnAttackItem m_attackstate = Estate_Wait;	//攻撃状態
+	//回転
+	bool Turnflag = false;
+	int TurnTimer = 0;
+	const float keisann = 180.0f / TurnEnd;
+	const float  TurnEnd = 60.0f;
+
 };
 
