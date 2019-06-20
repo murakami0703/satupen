@@ -66,7 +66,7 @@ public:
 		}
 	}
 	//ˆø”‚Éİ’è‚µ‚½’l‚ğc’e‚É‰ÁZ‚·‚é@•‰‚Ì”‚ğİ’è‚µ‚½‚çŒ¸­‚·‚é
-	void GameData::ZandannKeika(int x) {
+	void GameData::Zandannkasan(int x) {
 		Zandan += x;
 		if (Zandan < 0) {
 			Zandan = 0;
@@ -78,7 +78,7 @@ public:
 
 	}
 	//ˆø”‚Éİ’è‚µ‚½’l‚ğEŠQ”‚É‰ÁZ‚·‚é@•‰‚Ì”‚ğİ’è‚µ‚½‚çŒ¸­‚·‚é
-	void GameData::ZandannKeika(int x) {
+	void GameData::DeadHkasan(int x) {
 		DeadH += x;
 		if (DeadH < 0) {
 			DeadH = 0;
