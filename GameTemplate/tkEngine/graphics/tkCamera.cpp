@@ -88,5 +88,20 @@ namespace tkEngine{
 		screenPos.x = (_screenPos.x / _screenPos.w)*half_w;
 		screenPos.y = (_screenPos.y / _screenPos.w)*half_h;
 	}
+	void CCamera::CalcWorldPositionFromScrenPosition(CVector3& worldPos, const CVector2& screenPos, float z) const
+	{
+		float half_w = (float)GraphicsEngine().Get2DSpaceScreenWidth() * 0.5f;
+		float half_h = (float)GraphicsEngine().Get2DSpaceScreenHeight() * 0.5f;
+		CVector4 _screenPos;
+		_screenPos.Set(screenPos.x, screenPos.y, z, 1.0f);
+		_screenPos.x /= half_w;
+		_screenPos.y /= half_h;
+		CMatrix mViewProjInv = m_viewProjectionMatrix;
+		mViewProjInv.Inverse();
+		mViewProjInv.Apply(_screenPos);
+		worldPos.x = _screenPos.x / _screenPos.w;
+		worldPos.y = _screenPos.y / _screenPos.w;
+		worldPos.z = _screenPos.z / _screenPos.w;
+	}
 }
 

@@ -78,15 +78,30 @@
     <ClCompile Include="Status.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="EnemyWoman.cpp" />
+    <ClCompile Include="EnemyMan.cpp" />
+    <ClCompile Include="EnemyChildren.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <MeshContentTask Include="Assets\modelData\testback.FBX">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\ya.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\aaaaaaa.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Woman\onna.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Man\otoko.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Children\kodomo.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>
@@ -103,6 +118,9 @@
     <ClInclude Include="Status.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="EnemyWoman.h" />
+    <ClInclude Include="EnemyMan.h" />
+    <ClInclude Include="EnemyChildren.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />

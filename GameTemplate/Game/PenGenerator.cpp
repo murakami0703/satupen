@@ -29,7 +29,7 @@ bool PenGenerator::Start()
 void PenGenerator::Update()
 {
 
-	if (Pad(0).IsTrigger(enButtonLB1) || Pad(0).IsTrigger(enButtonLB2)) {
+	if (Pad(0).IsTrigger(enButtonLB1) || Pad(0).IsTrigger(enButtonRB1)) {
 		NewGO<Pen>(0, "pen");
 	}
 }

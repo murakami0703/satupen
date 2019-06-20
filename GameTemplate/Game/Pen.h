@@ -6,6 +6,7 @@ public:
 	~Pen();
 	bool Start();
 	void Update();
+
 private:
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
@@ -13,10 +14,9 @@ private:
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
 	CVector3 m_scale = CVector3::Zero; // スケール
 
-
-
-	const float moveSpeed = 60.0f; //速度
-	CVector3 buvec = CVector3::Zero;
+	const float moveSpeed = 5.0f; //速度
+	CVector3 P_target = CVector3::Zero;
+	CVector3 diff = CVector3::Zero;
 
 	int m_timer = 0;
 	bool keisannflag = false;
