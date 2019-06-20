@@ -32,10 +32,6 @@ public:
 	CQuaternion Player::Getm_Rotation() {
 		return m_rotation;
 	}
-	//体力を返す関数
-	int Player::Get_Life() {
-		return m_Life;
-	}
 	//インスタンスの取得
 	static Player* Player::GetInstance() {
 		return m_instance;
@@ -58,7 +54,6 @@ private:
 
 	CAnimationClip  m_animClips[enAnimationClip_Num];//アニメーション
 
-	int m_Life = 0; //自分の体力
 	//移動関連
 	const float movespeed = 30.0f;
 	//回転
