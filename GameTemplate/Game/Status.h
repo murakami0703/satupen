@@ -14,6 +14,7 @@ private:
 
 	//ƒtƒHƒ“ƒgƒŒƒ“ƒ_ƒ‰[
 	prefab::CFontRender* m_font;
+	prefab::CFontRender* m_fontP;
 	const CVector2 LifePivot = { 0.05f,0.1f };//HP‚ÌŠî–{
 	
     CVector4 LifeColor = { 1.0f,1.0f,1.0f,1.0f };//HP‚Î[‚ÌF
@@ -28,7 +29,7 @@ private:
 	prefab::CSpriteRender* m_sprite14; //ƒyƒ“‚S
 	prefab::CSpriteRender* m_sprite15; //ƒyƒ“‚T
 	prefab::CSpriteRender* m_sprite16; //ƒyƒ“‚U
-	prefab::CSpriteRender* m_sprite19; //ƒyƒ“‚V
+	//prefab::CSpriteRender* m_sprite19; //ƒyƒ“‚V
 	prefab::CSpriteRender* m_sprite4;  //HPBar˜g
 	prefab::CSpriteRender* m_sprite7;  //HPBar”’
 	prefab::CSpriteRender* m_sprite17; //HPbar•
@@ -38,7 +39,7 @@ private:
 	prefab::CSpriteRender* m_sprite8;  //Šç‚R
 	prefab::CSpriteRender* m_sprite9;  //Šç‚S
 	prefab::CSpriteRender* m_sprite10; //Šç‚T
-	prefab::CSpriteRender* m_sprite11; //Šç‚U
+	//prefab::CSpriteRender* m_sprite11; //Šç‚U
 	CVector3   m_position;  //À•W
 	CQuaternion m_rotation; //‰ñ“]
 };

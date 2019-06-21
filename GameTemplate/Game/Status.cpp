@@ -23,7 +23,7 @@ Status::~Status()
 	DeleteGO(m_sprite8);
 	DeleteGO(m_sprite9);
 	DeleteGO(m_sprite10);
-	DeleteGO(m_sprite11);
+	//DeleteGO(m_sprite11);
 	DeleteGO(m_sprite12);
 	DeleteGO(m_sprite13);
 	DeleteGO(m_sprite14);
@@ -31,7 +31,7 @@ Status::~Status()
 	DeleteGO(m_sprite16);
 	DeleteGO(m_sprite17);
 	DeleteGO(m_sprite18);
-	DeleteGO(m_sprite19);
+	//DeleteGO(m_sprite19);
 }
 bool Status::Start()
 {
@@ -92,11 +92,11 @@ bool Status::Start()
 	m_sprite16->SetPosition(m_position);//座標を反映
 	m_sprite16->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB
 	//ペンのスプライト7
-	m_sprite19 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite19->Init(L"sprite/pen7.dds", 1280.0f, 720.0f);
-	m_position = {110.0f,49.0f,0.0f };//座標
-	m_sprite19->SetPosition(m_position);//座標を反映
-	m_sprite19->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB
+	//m_sprite19 = NewGO<prefab::CSpriteRender>(0);
+	//m_sprite19->Init(L"sprite/pen7.dds", 1280.0f, 720.0f);
+	//m_position = {110.0f,49.0f,0.0f };//座標
+	//m_sprite19->SetPosition(m_position);//座標を反映
+	//m_sprite19->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB
 	//HPBarわく
 	m_sprite4 = NewGO<prefab::CSpriteRender>(3);
 	m_sprite4->Init(L"sprite/waku4.dds", 540.0f, 150.0f);
@@ -144,11 +144,15 @@ bool Status::Start()
 	m_sprite10->SetPosition(m_position);
 	m_sprite10->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
 	//顔のスプライト6
-	m_sprite11 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite11->Init(L"sprite/kao6.dds", 1280.0f, 720.0f, 0.0f);
-	m_position = { 150.0f,151.5f,0.0f };//座標
-	m_sprite11->SetPosition(m_position);
-	m_sprite11->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
+	//m_sprite11 = NewGO<prefab::CSpriteRender>(0);
+	//m_sprite11->Init(L"sprite/kao6.dds", 1280.0f, 720.0f, 0.0f);
+	//m_position = { 150.0f,151.5f,0.0f };//座標
+	//m_sprite11->SetPosition(m_position);
+	//m_sprite11->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+
+	//フォント
+	m_font = NewGO<prefab::CFontRender>(0);
+	m_fontP = NewGO<prefab::CFontRender>(0);
 	return true;
 
 }
@@ -181,14 +185,103 @@ void Status::Update()
 	m_sprite17->SetPivot(LifePivot);
 	m_sprite18->SetScale(LifeScale);
 	m_sprite18->SetMulColor(LifeColor);
-
+	//時計針回すやつ　時間は鬼調整で
 	CQuaternion rot;
 	rot.SetRotation(CVector3::AxisZ, -0.0005f);
 	m_rotation.Multiply(rot);
 	m_sprite20->SetRotation(m_rotation);
-
-	
 	float timer = gamedata->GetTimer();
+	//何人殺したかのやつ
+	wchar_t text[256];
+	int x = +10;
+	swprintf(text, L"\n+%02d",x);
+	m_font->SetText(text);
+	m_font->SetPosition({ -230.0f, 340.0f });
+	m_font->SetPivot({ 0.0f, 0.0f });///右下
+	//ペンをだす
+	wchar_t text2[256];
+	int y = +10;
+	swprintf(text2, L"\n+%02d", y);
+	m_fontP->SetText(text2);
+	m_fontP->SetPosition({ -230.0f, 275.0f });
+	m_fontP->SetPivot({ 0.0f, 0.0f });///右下
+	/* DeadH =gamedata->DeadHkasan();
+	wchar_t text[256];
+	swprintf(text, L"あああ", gamedata->DeadHkasan());
+	m_font->SetText(text);*/
+	//殺す数＋＋｛｝で囲む
+	
+		//++{
+	//顔の出すやつ
+		if (gamedata->GetDeadH() >= 1) {
+			m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
+		}
+		if (gamedata->GetDeadH() >= 2) {
+			m_sprite6->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、翠、青
+		}
+		else {
+			m_sprite6->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、翠、青
+		}
+		if (gamedata->GetDeadH() >= 3) {
+			m_sprite8->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite8->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
+		}
+		if (gamedata->GetDeadH() >= 4) {
+			m_sprite9->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite9->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
+		}
+		if (gamedata->GetDeadH() >= 5) {
+			m_sprite10->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite10->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
+		}
+		
+	//}
 
+	//こっちペン3.12.13.14.15.16.19
+		if (gamedata->GetZandan() >= 1) {
+			m_sprite3->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite3->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
+		}
+		if (gamedata->GetZandan() >= 1) {
+			m_sprite12->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite12->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
+		}
+		if (gamedata->GetZandan() >= 1) {
+			m_sprite13->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite13->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
+		}
+		if (gamedata->GetZandan() >= 1) {
+			m_sprite14->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite14->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
+		}
+		if (gamedata->GetZandan() >= 1) {
+			m_sprite15->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite15->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
+		}
+		if (gamedata->GetZandan() >= 1) {
+			m_sprite16->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
+		}
+		else {
+			m_sprite16->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
+		}
 	gamedata->tiryokugennsyou(-1);
 }
