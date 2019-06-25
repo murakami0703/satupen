@@ -15,7 +15,6 @@
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameData.h" />
@@ -27,6 +26,7 @@
     <ClInclude Include="Status.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="Background.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -125,6 +125,27 @@
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
     <ImageContentTask Include="Assets\sprite\wakuwaku.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\hazimeru.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\zange.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturiku.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikupen.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikuBG.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\ti.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikunopen.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>
