@@ -1,0 +1,10 @@
+.vs/
+*.lib
+*.obj
+*.cso
+*.user
+*.log
+*.tlog
+*.pdb
+*.ini
+/GameTemplate/Game/Assets/modelData/ste/sute.fbx

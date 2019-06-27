@@ -11,5 +11,7 @@ public:
 	~Game();
 	bool Start();
 	void Update();
+private:
+
 };
 

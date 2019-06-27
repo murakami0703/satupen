@@ -28,24 +28,25 @@ Player::~Player()
 bool Player::Start()
 {
 	//アニメーション
-	m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka");
+	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka");
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka");
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
 	m_animClips[enAnimationClip_attack].Load(L"animData/plkougeki.tka");
-	m_animClips[enAnimationClip_attack].SetLoopFlag(true);
+	m_animClips[enAnimationClip_attack].SetLoopFlag(true);*/
 	//スキンモデル
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo",m_animClips,enAnimationClip_Num);
+	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo");
 	//m_skinModelRender->PlayAnimation(0);
 	m_scale = { 1.0f,1.0f,1.0f };
+	m_position = { 0.0f,0.0f,0.0f };
 	m_skinModelRender->SetScale(m_scale);
 	m_skinModelRender->SetPosition(m_position);
 
 	//キャラコン
 	m_charaCon.Init(
-		20.0f,  //半径。
-		68.0f,  //高さ。
+		10.0f,  //半径。
+		15.0f,  //高さ。
 		m_position //初期座標。
 	);
 	return true;
@@ -124,6 +125,7 @@ void Player::Update()
 	Rotation();		//回転
 	Dash();		//走るよぉおお
 	Turn();
+
 	//移動と回転
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);

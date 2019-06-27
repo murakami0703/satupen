@@ -43,6 +43,11 @@ public:
 	int GameData::GetDeadH() {
 		return DeadH;
 	}
+	//殺した数をを1増やす
+	//やったときに実行
+	void GameData::DeadHCounter() {
+		DeadH++;
+	}
 	//引数に設定した値を時間に加算する　負の数を設定したら減少する
 	void GameData::TimeKeika(float x) {
 		Timer += x;
@@ -93,7 +98,7 @@ public:
 	
 private:
 	int Zandan = 50; //残弾
-	int DeadH = 0;
+	int DeadH = 0;	//殺した数
 	int ATK = 100; //基本攻撃力
 	int DEF_Life = 100; //デフォルト体力
 	int Life = 100; //体力取得

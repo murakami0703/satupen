@@ -76,7 +76,7 @@ void Title::Update()
 	//‘I‘ğˆ—
 	switch (m_state)
 	{
-	case Estate_New:
+	case Title::Estate_New:
 		New();
 		break;
 	case Estate_Load:
