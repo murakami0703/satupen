@@ -29,19 +29,21 @@ bool Title::Start()
 	m_sprite1->Init(L"sprite/Titel/saturikupen.dds", 500.0f, 150.0f);
 	m_position = { 0.0f,-30.0f,0.0f };
 	m_sprite1->SetPosition(m_position);
+	m_sprite1->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	//スプライト　殺戮の剣
 	m_sprite2 = NewGO<prefab::CSpriteRender>(3);
 	m_sprite2->Init(L"sprite/Titel/saturiku.dds", 970.0f, 410.0f);
-	m_position = { 0.0f,120.0f,0.0f };
+	m_position = { 0.0f,300.0f,0.0f };
 	m_sprite2->SetPosition(m_position);
 	//スプライト　殺戮のぺん白
 	m_sprite3 = NewGO<prefab::CSpriteRender>(2);
 	m_sprite3->Init(L"sprite/Titel/saturikunopen.dds", 300.0f, 300.0f);
-	m_position = { 300.0f,150.0f,0.0f };
+	m_position = PenDef;
 	m_sprite3->SetPosition(m_position);
 	//スプライト　血
 	m_sprite4 = NewGO<prefab::CSpriteRender>(5);
 	m_sprite4->Init(L"sprite/Titel/ti.dds", 1280.0f, 720.0f);
+	m_sprite4->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	//スプライト　殺戮を始める
 	m_sprite5 = NewGO<prefab::CSpriteRender>(6);
 	m_sprite5->Init(L"sprite/Titel/hazimeru.dds", 350.0f, 100.0f);
@@ -55,40 +57,73 @@ bool Title::Start()
 
 	return true;
 }
-void Title::New()
-{
-	//新しくゲームを始める
-
-}
-void Title::Load()
-{
-	//続きから
-
-}
-void Title::Exit()
-{
-	//終了（消えるよ！）
-
-}
+	
 
 void Title::Update()
 {
-	//選択処理
 	switch (m_state)
 	{
-	case Estate_New:
-		New();
+	case Title::enState_new:
+	{
+		CVector3 satupos1 = m_sprite2->GetPosition();
+
+		if (satupos1.y >= movepos.y) {
+			satupos1.y -= 5.0f;
+		}
+		else {
+			satupos1 = movepos;
+			m_state = enState_2;
+		}
+		m_sprite2->SetPosition(satupos1);
+
 		break;
-	case Estate_Load:
-		Load();
+	}
+	case Title::enState_2:
+	{
+
+		//刺さる動作。
+		CVector3 penpos = m_sprite3->GetPosition();
+
+		if (Pentimer < DropLimit) {
+			//落ちてくる
+			CVector3 pos = PenDef - PenDropPos; //初期位置と目標位置の計算
+			pos /= DropLimit; //距離÷時間で1フレームでの移動距離が求まる
+			penpos -= pos;
+		}
+		else if (Pentimer < DropLimit+RemoveLimit) {
+			//戻り
+			CVector3 pos1 = PenDropPos - PenRemovePos;//初期位置と目標位置の計算
+			pos1 /= RemoveLimit; //距離÷時間で1フレームでの移動距離が求まる
+			pos1 *= -1.0f;
+			penpos += pos1;
+		}
+		else {
+			//ステート変更
+			m_state = enState_3;
+		}
+
+		Pentimer++;
+		m_sprite3->SetPosition(penpos);
+
 		break;
-	case Estate_Exit:
-		Exit();
-		break;
+	}
+	case Title::enState_3:
+	{
+		CVector3 tipos = m_sprite4->GetPosition();
+		m_sprite4->SetMulColor({ 1.0f,1.0,1.0f,1.0f });
+
+		m_state = enState_4;
+	}
+	case Title::enState_4:
+		CVector3 saturikuH = m_sprite1->GetPosition();
+			m_sprite1->SetMulColor({ 1.0,1.0f,1.0f,SP1 });
+			SP1 += 0.05f;
+			if (SP1 >= 1.0f) {
+				SP1 = 1.0f;
+			}
 	}
 	if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Game>(0, "game");
 		DeleteGO(this);
 	}
-
 }
