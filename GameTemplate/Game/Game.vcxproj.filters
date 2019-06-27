@@ -184,5 +184,8 @@
     <MeshContentTask Include="Assets\modelData\seteez\ste.FBX">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Item.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

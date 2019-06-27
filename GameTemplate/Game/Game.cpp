@@ -11,6 +11,7 @@
 
 #include "Background.h"
 #include "EnemyChildren.h"
+#include "Item.h"
 Game::Game()
 {
 }
@@ -37,7 +38,7 @@ bool Game::Start()
 	NewGO<PenGenerator>(0, "penG");
 	//NewGO<Level>(0, "level");
 	NewGO<Background>(0, "back");
-
+	NewGO<Item>(0, "item");
 	//NewGO<EnemyChildren>(0, "kodo");
 	//dbg::SetDrawPhysicsCollisionEnable();
 	//1–{–Ú
