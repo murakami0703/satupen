@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="main.cpp" />
@@ -13,6 +11,8 @@
     <ClCompile Include="Status.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Background.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -127,25 +127,28 @@
     <ImageContentTask Include="Assets\sprite\wakuwaku.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\hazimeru.png">
+    <ImageContentTask Include="Assets\sprite\Titel\yazirusi.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\zange.png">
+    <ImageContentTask Include="Assets\sprite\Titel\hazimeru1.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturiku.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturikunopen.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikupen.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturikupen.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikuBG.png">
+    <ImageContentTask Include="Assets\sprite\Titel\ti.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\ti.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturiku.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikunopen.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturikuBG.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Titel\zange.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>

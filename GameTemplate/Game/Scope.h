@@ -15,5 +15,6 @@ private:
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CVector3 R_stick = CVector3::Zero; // スティック
 
+	const float timer = 30.0f;
 };
 

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 class Title : public IGameObject
 {
 public:
@@ -7,43 +7,49 @@ public:
 
 	enum EnState {
 		enState_new,
-		enState_2,//‚È‚©‚Á‚½‚¯‚ñ‚Æ‚è‚ ‚¦‚¸‘‚¢‚½‚â‚Â
+		enState_2,//ãªã‹ã£ãŸã‘ã‚“ã¨ã‚Šã‚ãˆãšæ›¸ã„ãŸã‚„ã¤
 		enState_3,
 		enState_4,
+	};
+	enum EnSart{
+		enStart_new,
+		enStart_restart,
 	};
 
 	bool Start();
 	void Update();
 
 private:
-	//EC‚ÌŒ••¶š‘å‚«‚¢
-	CVector3 movepos = { 0.0f,120.0f,0.0f }; //À•W
-	//”’‚¢ƒyƒ“
+	//æ®ºæˆ®ã®å‰£æ–‡å­—å¤§ãã„
+	CVector3 movepos = { 0.0f,120.0f,0.0f }; //åº§æ¨™
+	//ç™½ã„ãƒšãƒ³
 	bool sasitaflag = false;
 
 	int Pentimer = 0;
 	float SP1 = 0.0f;
 
-	//ƒXƒvƒ‰ƒCƒgƒ^ƒCƒgƒ‹EC‚ÌŒ•
-	prefab::CSpriteRender* m_sprite;  //Ô‚¢BK
-	prefab::CSpriteRender* m_sprite1; //‚³‚Â‚è‚­‚Ìƒyƒ“
-	prefab::CSpriteRender* m_sprite2; //EC‚ÌŒ•
-	prefab::CSpriteRender* m_sprite3; //‚µ‚ë‚Ìƒyƒ“
-	prefab::CSpriteRender* m_sprite4; //‘I‘ğ
-	prefab::CSpriteRender* m_sprite5; //‚Í‚¶‚ß‚éB
-	prefab::CSpriteRender* m_sprite6; //‚¨‚í‚éB
+	//ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚¿ã‚¤ãƒˆãƒ«æ®ºæˆ®ã®å‰£
+	prefab::CSpriteRender* m_sprite;  //èµ¤ã„BK
+	prefab::CSpriteRender* m_sprite1; //ã•ã¤ã‚Šãã®ãƒšãƒ³
+	prefab::CSpriteRender* m_sprite2; //æ®ºæˆ®ã®å‰£
+	prefab::CSpriteRender* m_sprite3; //ã—ã‚ã®ãƒšãƒ³
+	prefab::CSpriteRender* m_sprite4; //é¸æŠ
+	prefab::CSpriteRender* m_sprite5; //ã¯ã˜ã‚ã‚‹ã€‚
+	prefab::CSpriteRender* m_sprite6; //ãŠã‚ã‚‹ã€‚
+	prefab::CSpriteRender* m_sprite7;//â¡
 	std::vector<prefab::CSpriteRender*> m_spriteRender;
 	prefab::CSpriteRender* sp;
 
-	EnState m_state = enState_new; //ó‘Ô
-	CVector3 m_position; //À•W
+	EnSart m_Sart = enStart_new;//çŠ¶æ…‹ çŸ¢å°ã®æŒ‡å®šã—ãŸã‚‰è‰²ä»˜ãã§æŒ‡å®šã—ã¦ãªã„ã‚„ã¤ã¯åŠé€æ˜ã€‚
+	EnState m_state = enState_new; //çŠ¶æ…‹
+	CVector3 m_position; //åº§æ¨™
 
-	//’è”
+	//å®šæ•°
 	const CVector3 PenDef = { 900.0f,800.0f,0.0f };
 	const CVector3 PenDropPos = { 200.0f,100.0f,0.0f };
 	const CVector3 PenRemovePos = { 250.0f,150.0f,0.0f };
-	const int DropLimit = 20; //—‚¿‚éŠÔi‚±‚±‚ğ‚¢‚¶‚é‚Æ—‚¿‚é‘¬‚³•Ï‚í‚éj
-	const int RemoveLimit = 10; //–ß‚éŠÔ
+	const int DropLimit = 20; //è½ã¡ã‚‹æ™‚é–“ï¼ˆã“ã“ã‚’ã„ã˜ã‚‹ã¨è½ã¡ã‚‹é€Ÿã•å¤‰ã‚ã‚‹ï¼‰
+	const int RemoveLimit = 10; //æˆ»ã‚‹æ™‚é–“
 
 };
 

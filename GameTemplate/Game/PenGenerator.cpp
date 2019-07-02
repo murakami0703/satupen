@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Pen.h"
 #include "PenGenerator.h"
+#include "GameData.h"
 
 PenGenerator* PenGenerator::m_instance = nullptr;
 
@@ -28,9 +29,15 @@ bool PenGenerator::Start()
 }
 void PenGenerator::Update()
 {
-
+	GameData* gamedata = GameData::GetInstance();
+	int Zandan = gamedata->GetZandan();
 	if (Pad(0).IsTrigger(enButtonLB1) || Pad(0).IsTrigger(enButtonRB1)) {
 		NewGO<Pen>(0, "pen");
+		gamedata->Zandannkasan(-1);
 	}
+	else if (Zandan <= 0) {
+		//撃てません！！！！！
+	}
+
 }
 

@@ -44,17 +44,21 @@ bool Title::Start()
 	m_sprite4 = NewGO<prefab::CSpriteRender>(5);
 	m_sprite4->Init(L"sprite/Titel/ti.dds", 1280.0f, 720.0f);
 	m_sprite4->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
-	//スプライト　殺戮を始める
+	//スプライト　罪を重ねる
 	m_sprite5 = NewGO<prefab::CSpriteRender>(6);
-	m_sprite5->Init(L"sprite/Titel/hazimeru.dds", 350.0f, 100.0f);
+	m_sprite5->Init(L"sprite/Titel/hazimeru1.dds", 350.0f, 100.0f);
 	m_position = { 300.0f,-200.0f,0.0f };
 	m_sprite5->SetPosition(m_position);
 	//スプライト　懺悔する
 	m_sprite6 = NewGO<prefab::CSpriteRender>(7);
 	m_sprite6->Init(L"sprite/Titel/zange.dds", 300.0f, 100.0f);
-	m_position = { 300.0f,-280.0f,0.0f };
+	m_position = { 280.0f,-280.0f,0.0f };
 	m_sprite6->SetPosition(m_position);
-
+	//スプライト　矢印
+	m_sprite7 = NewGO<prefab::CSpriteRender>(8);
+	m_sprite7->Init(L"sprite/Titel/yazirusi.dds", 100.0f, 100.0f);
+	m_position = { 100.0f,-200.0f,0.0f };
+	m_sprite7->SetPosition(m_position);
 	return true;
 }
 	
@@ -63,6 +67,7 @@ void Title::Update()
 {
 	switch (m_state)
 	{
+
 	case Title::enState_new:
 	{
 		CVector3 satupos1 = m_sprite2->GetPosition();
@@ -75,6 +80,7 @@ void Title::Update()
 			m_state = enState_2;
 		}
 		m_sprite2->SetPosition(satupos1);
+
 
 		break;
 	}
@@ -122,8 +128,34 @@ void Title::Update()
 				SP1 = 1.0f;
 			}
 	}
+	switch (m_Sart)
+	{
+	case Title::enStart_new:
+		//これが罪を重ねる。5
+		m_sprite7->SetPosition({ 100.0f,-200.0f,0.0f });
+		m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+		m_sprite6->SetMulColor({ 0.5f,0.5f,0.5f,0.5f });
+		break;
+
+	case Title::enStart_restart:
+		//これが懺悔する。6
+		m_sprite7->SetPosition({ 100.0f,-280.0f,0.0f });
+		m_sprite5->SetMulColor({ 0.5f,0.5f,0.5f,0.5f });
+		m_sprite6->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+		break;
+	}
+
+	if (Pad(0).IsTrigger(enButtonDown) || Pad(0).IsTrigger(enButtonUp)) {
+		if (m_Sart == enStart_new) {
+			m_Sart = enStart_restart;
+		}else if (m_Sart == enStart_restart) {
+			m_Sart = enStart_new;
+		}
+	}
+
 	if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Game>(0, "game");
 		DeleteGO(this);
+
 	}
 }

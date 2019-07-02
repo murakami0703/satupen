@@ -28,6 +28,11 @@ bool Pen::Start()
 	m_skinModelRender->SetRotation(m_rotation);
 	m_scale = { 1.0f,1.0f,1.0f };
 	m_skinModelRender->SetScale(m_scale);
+	m_charaCon.Init(
+		3.0f,  //半径。
+		0.5f,  //高さ。
+		m_position //初期座標。
+	);
 
 	return true;
 }
@@ -52,15 +57,24 @@ void Pen::Update()
 	}
 	CQuaternion qRot;
 	qRot.SetRotation({ 0.0, 0.0f, 1.0f }, diff);
-	//CVector3 vBase = { 0.0f,0.0f,1.0f };
-	//m_rotation.Apply(vBase);
-	m_position += diff * moveSpeed ;
+	move = diff * moveSpeed ;
 	m_skinModelRender->SetRotation(qRot);
 	//座標を伝える。
+	m_position = m_charaCon.Execute(move);
 	m_skinModelRender->SetPosition(m_position);
 	m_timer++;
+	//もし壁に当たってたら
+	/*Oldpos = m_position;
+	CVector3 diff = m_position - Oldpos;
+	if (diff.Length() < 0.5f) {
+		DeleteGO(this);
+
+	}*/
 	if (m_timer == pendelete) {
 		//時間がたったらインスタンスを削除する。
+		DeleteGO(this);
+	}
+	if (dathflag == true) {	//敵に当たると自分も消えるよ
 		DeleteGO(this);
 	}
 }
