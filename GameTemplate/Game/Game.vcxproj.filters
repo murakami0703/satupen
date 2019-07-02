@@ -18,6 +18,8 @@
     <ClCompile Include="EnemyChildren.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="StoreItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -37,6 +39,8 @@
     <ClInclude Include="EnemyChildren.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="StoreItem.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -59,6 +63,12 @@
     </Filter>
     <Filter Include="Aseets\modelData\Woman">
       <UniqueIdentifier>{97d6d425-49bf-4397-aa27-855c2be00656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\ste">
+      <UniqueIdentifier>{d7a54c5e-d7c5-4c0f-a0a3-d9ffff52decd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\ste\store_item">
+      <UniqueIdentifier>{b842e904-baf7-4dc4-9f9a-c772afc2c966}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -172,12 +182,6 @@
     <MeshContentTask Include="Assets\modelData\Woman\onna.FBX">
       <Filter>Aseets\modelData\Woman</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\aaaaaaa.FBX">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\testback.FBX">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\ya.FBX">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
@@ -185,6 +189,117 @@
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\Item.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Orangestripe.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Pinkgas.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Redstripe.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Skinring.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Strawberry_ole.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Ume_onigiri.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Yellowgas.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Yellowstripe.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Yellowteapot.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Apple.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Big_black.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Big_rad.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Blackstripe.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Blackteapot.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Bulegas.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Buleteapot.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Chocodonatu.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Currybread.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Donatu.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Dumpling.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Eggbread.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\GGrapes.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Goldring.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Grapes.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Greenteapot.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Konbu_onigiri.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Matcha_ole.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Mini_black.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Mini_red.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Muscat.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Orange.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\store_item\Orangegas.FBX">
+      <Filter>Aseets\modelData\ste\store_item</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
+      <Filter>Aseets\modelData\ste</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\S_mado.FBX">
+      <Filter>Aseets\modelData\ste</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\inu\inuu.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\karasu\karasuu.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>

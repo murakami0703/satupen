@@ -181,6 +181,7 @@ namespace tkEngine {
 
 				if (callback.isHit) {
 					//当たった。
+					m_isWall=true;
 					//壁。
 					CVector3 vT0, vT1;
 					//XZ平面上での移動後の座標をvT0に、交点の座標をvT1に設定する。
@@ -215,6 +216,7 @@ namespace tkEngine {
 				}
 				else {
 					//どことも当たらないので終わり。
+					m_isWall = false;
 					break;
 				}
 				loopCount++;
@@ -279,6 +281,7 @@ namespace tkEngine {
 				}
 			}
 		}
+		
 		//移動確定。
 		m_position = nextPosition;
 		btRigidBody* btBody = m_rigidBody.GetBody();

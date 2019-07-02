@@ -54,6 +54,7 @@ bool Player::Start()
 
 void Player::Movestick()
 {
+
 	//ˆÚ“®
 	stick.x = Pad(0).GetLStickYF();
 	stick.y = 0.0f;
@@ -71,9 +72,15 @@ void Player::Movestick()
 	moveVec.z = 0.0f;
 	//moveVec.y -= 980.0f * GameTime().GetFrameDeltaTime();
 	moveVec += cameraForward * stick.x * 100.0f;	//‰œ•ûŒü‚Ö‚ÌˆÚ“®‘¬“x‚ð‰ÁŽZB
-	
 
+	if (m_charaCon.IsOnGround() == true) {
+		if (Pad(0).IsTrigger(enButtonA) || Pad(0).IsTrigger(enButtonB) || Pad(0).IsTrigger(enButtonX) || Pad(0).IsTrigger(enButtonY)) {
+			moveVec.y = 30.0f;
+		}
+	}
 
+	//d—Í
+	moveVec.y -= 2.0f;
 	m_position = m_charaCon.Execute(moveVec);
 }
 
@@ -118,6 +125,11 @@ void Player::Turn() {
 		}
 	}
 }
+void Player::Jump()
+{
+	
+}
+
 void Player::Update()
 {
 	Movestick();	//ƒpƒbƒhˆÚ“®
@@ -125,6 +137,7 @@ void Player::Update()
 	Rotation();		//‰ñ“]
 	Dash();		//‘–‚é‚æ‚§‚¨‚¨
 	Turn();
+	Jump();
 
 	//ˆÚ“®‚Æ‰ñ“]
 	m_skinModelRender->SetPosition(m_position);

@@ -29,13 +29,12 @@ void GameCamera::Update()
 	Player* player = FindGO<Player>("player");
 	CVector3 target = player->Getm_Position();
 	CVector3 vBase = { 0.0f,0.0f,1.0f };
-	CVector3 vyoBase = { 1.0f,0.0f,0.0f };
 	CQuaternion p_qRot = player->Getm_Rotation();
 	p_qRot.Apply(vBase);
 	CVector3 vpos = vBase * -30.0f;
 	CVector3 pos = vpos + target ;
-	pos.y = pos.y + 30.0f;
-	target.y = 30.0f;
+	pos.y = pos.y + 60.0f;
+	target.y = target.y + 60.0f;
 	//メインカメラに注視点と視点を設定する。
 	MainCamera().SetTarget(target);
 	MainCamera().SetPosition(pos);

@@ -36,8 +36,8 @@ bool Game::Start()
 	NewGO<Status>(0, "status");
 	NewGO<GameData>(0, "gamedata");
 	NewGO<PenGenerator>(0, "penG");
-	//NewGO<Level>(0, "level");
-	NewGO<Background>(0, "back");
+	NewGO<Level>(0, "level");
+	//NewGO<Background>(0, "back");
 	NewGO<Item>(0, "item");
 	//NewGO<EnemyChildren>(0, "kodo");
 	//dbg::SetDrawPhysicsCollisionEnable();

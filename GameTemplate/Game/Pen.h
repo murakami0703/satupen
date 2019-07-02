@@ -22,11 +22,9 @@ private:
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
 	CVector3 m_scale = CVector3::Zero; // スケール
-	CVector3 Oldpos = CVector3::Zero; // 座標。
 
-	CVector3 move = CVector3::Zero; // 座標。
 
-	const float moveSpeed = 100.0f; //速度
+	const float moveSpeed = 200.0f; //速度
 	CVector3 P_target = CVector3::Zero;
 	CVector3 diff = CVector3::Zero;
 	bool dathflag = false;		//当たったら消えるフラグ

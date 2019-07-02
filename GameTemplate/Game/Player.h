@@ -43,6 +43,7 @@ private:
 	void Rotation();	//回転
 	void Dash();		//走るよぉおお
 	void Turn();
+	void Jump();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
