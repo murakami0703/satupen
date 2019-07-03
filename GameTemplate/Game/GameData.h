@@ -5,7 +5,19 @@ class GameData : public IGameObject
 public:
 	GameData();
 	~GameData();
-
+	enum ResultDead {
+		DeadMan,
+		DeadWoman,
+		DeadChildren,
+		DeadDog,
+		DeadCat,
+		DeadBird,
+		DeadAnimals,
+		DesItem,
+		DesBigItem,
+	};
+	int GameData::GetResultDead(ResultDead dead);	//Result用	カウントを返す。
+	void GameData::ResultDeadkasan(ResultDead dead);	//Result用 引数に設定した値に加算する。
 
 	//インスタンスの取得
 	static GameData* GameData::GetInstance() {
@@ -42,11 +54,6 @@ public:
 	//敵を殺した数を取得
 	int GameData::GetDeadH() {
 		return DeadH;
-	}
-	//殺した数をを1増やす
-	//やったときに実行
-	void GameData::DeadHCounter() {
-		DeadH++;
 	}
 	//引数に設定した値を時間に加算する　負の数を設定したら減少する
 	void GameData::TimeKeika(float x) {
@@ -94,7 +101,6 @@ public:
 		}
 
 	}
-
 	
 private:
 	int Zandan = 50; //残弾
@@ -104,8 +110,24 @@ private:
 	int Life = 100; //体力取得
 	float Timer = 0.0f;//タイマー
 	float MAX_Timer = 180.0f;//最大タイム
-	const int MAX_Zandann = 99;
-	const int MAX_DeadH = 99;
+	const int MAX_Zandann = 99;//最大残弾
+	const int MAX_DeadH = 99;//最大残虐数
+
+	///////////////////////
+	//リザルト用種類別殺害数など
+	int Man = 0;//男性殺害数
+	int Woman = 0;//女性殺害数
+	int Children = 0;//子供殺害数
+	int Dog = 0;//イヌ殺害数
+	int Cat = 0;//ネコ殺害数
+	int Bird = 0;//トリ殺害数
+	int Animals = 0;//動物殺害数
+	int Item = 0;//アイテム壊した数
+	int BigItem = 0;//大きいアイテム壊した数
+
+	const int MAX_Dead = 999;//最大残虐＆破壊数
+	
+	///////////////////////
 
 };
 

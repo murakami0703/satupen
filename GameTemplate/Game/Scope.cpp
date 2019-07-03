@@ -22,8 +22,8 @@ void Scope::Update()
 	R_stick.x = Pad(0).GetRStickXF();
 	R_stick.y = Pad(0).GetRStickYF();
 	R_stick.z = 0.0f;
-	m_position.x = m_position.x + R_stick.x * 20.0f;
-	m_position.y = m_position.y + R_stick.y * 20.0f;
+	m_position.x = m_position.x + R_stick.x * 30.0f;
+	m_position.y = m_position.y + R_stick.y * 30.0f;
 	//RB3ÇâüÇ∑Ç∆ê^ÇÒíÜÇ…ñﬂÇ¡ÇƒÇ≠ÇÈÇÊÅB
 	if (Pad(0).IsTrigger(enButtonRB3)) {		
 			m_position.x = 0.0f;

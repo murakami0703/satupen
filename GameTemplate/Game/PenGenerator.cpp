@@ -31,12 +31,16 @@ void PenGenerator::Update()
 {
 	GameData* gamedata = GameData::GetInstance();
 	int Zandan = gamedata->GetZandan();
-	if (Pad(0).IsTrigger(enButtonLB1) || Pad(0).IsTrigger(enButtonRB1)) {
-		NewGO<Pen>(0, "pen");
-		gamedata->Zandannkasan(-1);
+
+	if (Zandan > 0) {
+		//残弾あるので打てまーーす。
+		if (Pad(0).IsTrigger(enButtonLB1) || Pad(0).IsTrigger(enButtonRB1)) {
+			NewGO<Pen>(0, "pen");
+			gamedata->Zandannkasan(-1);
+		}
 	}
 	else if (Zandan <= 0) {
-		//撃てません！！！！！
+		//撃てません！！！！！集めて！！！！テキスト表示
 	}
 
 }

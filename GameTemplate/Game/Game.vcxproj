@@ -1763,6 +1763,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="EffectManager.cpp" />
+    <ClCompile Include="EffectPlay.cpp" />
     <ClCompile Include="EnemyChildren.cpp" />
     <ClCompile Include="EnemyMan.cpp" />
     <ClCompile Include="EnemyWoman.cpp" />
@@ -1803,6 +1805,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
+    <ClInclude Include="EffectManager.h" />
+    <ClInclude Include="EffectPlay.h" />
     <ClInclude Include="EnemyChildren.h" />
     <ClInclude Include="EnemyMan.h" />
     <ClInclude Include="EnemyWoman.h" />

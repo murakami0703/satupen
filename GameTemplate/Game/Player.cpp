@@ -70,14 +70,8 @@ void Player::Movestick()
 	//XZ成分の移動速度をクリア。
 	moveVec.x = 0.0f;
 	moveVec.z = 0.0f;
-	//moveVec.y -= 980.0f * GameTime().GetFrameDeltaTime();
 	moveVec += cameraForward * stick.x * 100.0f;	//奥方向への移動速度を加算。
 
-	if (m_charaCon.IsOnGround() == true) {
-		if (Pad(0).IsTrigger(enButtonA) || Pad(0).IsTrigger(enButtonB) || Pad(0).IsTrigger(enButtonX) || Pad(0).IsTrigger(enButtonY)) {
-			moveVec.y = 30.0f;
-		}
-	}
 
 	//重力
 	moveVec.y -= 2.0f;
@@ -86,13 +80,11 @@ void Player::Movestick()
 
 void Player::Animation()
 {
-		
+		//stateで管理
 }
 
 void Player::Rotation()
 {
-
-
 	//回転
 	CQuaternion qAddRot;
 	qAddRot.SetRotation(CVector3::AxisY, Pad(0).GetLStickXF() * 0.05f);
@@ -101,13 +93,16 @@ void Player::Rotation()
 }
 void Player::Dash() {
 	//走るよぉおお
-	if (Pad(0).IsTrigger(enButtonA)) {
+	if (Pad(0).IsPress(enButtonA)) {
+		m_isDash = true;
 		moveVec *= 2.0f;
 	}
 	m_position = m_charaCon.Execute(moveVec);
 }
 void Player::Turn() {
-	if (Turnflag == false) {
+	//180°回転
+	if (Turnflag == false) {	
+		//ターン中じゃないときに回転可
 		if (Pad(0).IsTrigger(enButtonLB3)) {
 			TurnTimer = 0;
 			Turnflag = true;
@@ -116,6 +111,7 @@ void Player::Turn() {
 	else {
 		TurnTimer++;
 		if (TurnTimer < TurnEnd) {
+			//グルグルします。。
 			CQuaternion Rot;
 			Rot.SetRotation(CVector3::AxisY, 0.055f);
 			m_rotation.Multiply(Rot);
@@ -127,7 +123,13 @@ void Player::Turn() {
 }
 void Player::Jump()
 {
-	
+	//ジャンプします。
+	if (m_charaCon.IsOnGround() == true) {
+		if (Pad(0).IsTrigger(enButtonB) || Pad(0).IsTrigger(enButtonX) || Pad(0).IsTrigger(enButtonY)) {
+			moveVec.y = 50.0f;
+		}
+	}
+	m_position = m_charaCon.Execute(moveVec);
 }
 
 void Player::Update()
@@ -135,9 +137,9 @@ void Player::Update()
 	Movestick();	//パッド移動
 	Animation();	//アニメーション
 	Rotation();		//回転
-	Dash();		//走るよぉおお
-	Turn();
-	Jump();
+	Dash();			//走るよぉおお
+	Turn();			//180°回転
+	Jump();			//ジャンプします。
 
 	//移動と回転
 	m_skinModelRender->SetPosition(m_position);

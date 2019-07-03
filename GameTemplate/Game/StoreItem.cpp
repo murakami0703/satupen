@@ -129,7 +129,7 @@ void StoreItem::Update()
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();
 		CVector3 diff = pen_position - m_position;
-		if (diff.Length() < 100.0f) {
+		if (diff.Length() < 20.0f) {
 			//Œ‚‚½‚ê‚½....
 			//ƒyƒ“‚àÁ‚¦‚ë
 			pen->SetDeath();

@@ -5,6 +5,7 @@
 #include "EnemyWoman.h"
 #include "EnemyMan.h"
 #include "Window.h"
+#include "Item.h"
 #include "StoreItem.h"
 
 Level* Level::m_instance = nullptr;
@@ -52,6 +53,15 @@ bool Level::Start() {
 				//フックしたのでtrueを返す。
 				return true;
 			}
+			if (objData.EqualObjectName(L"Item")) {
+				//弾
+				Item* item = NewGO<Item>(0, "it");
+				item->SetPosition(objData.position);
+				item->SetRotation(objData.rotation);
+				//フックしたのでtrueを返す。
+				return true;
+			}
+
 			///////////////////////////////////////
 			//ここからコンビニのアイテム
 			if (objData.EqualObjectName(L"Apple")) {

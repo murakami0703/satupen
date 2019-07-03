@@ -24,14 +24,14 @@ bool Pen::Start()
 	m_position = pos;
 	m_position.y = pos.y + 30.0f;
 	m_rotation = qRot;
+	m_scale = { 1.0f,1.0f,1.0f };
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);
-	m_scale = { 1.0f,1.0f,1.0f };
 	m_skinModelRender->SetScale(m_scale);
 
 	m_charaCon.Init(
-		3.0f,  //半径。
-		0.5f,  //高さ。
+		0.0f,  //半径。
+		0.0f,  //高さ。
 		m_position //初期座標。
 	);
 
@@ -40,9 +40,11 @@ bool Pen::Start()
 
 void Pen::Update()
 {
+	Timer++;
+	Player* pl = FindGO<Player>("player");
 	//飛ばすよお
 	if (keisannflag == false) {
-
+		//一回だけ計算します。
 		Scope* scope = FindGO<Scope>("scope");
 		CVector3 s_pos = scope->Getm_Position();
 		//カーソルの座標をスクリーン座標系から正規化座標系に変換する。
@@ -56,14 +58,31 @@ void Pen::Update()
 		diff.Normalize();
 		keisannflag = true;
 	}
+	//進行方向に回転してますぅ。
 	CQuaternion qRot;
 	qRot.SetRotation({ 0.0, 0.0f, 1.0f }, diff);
-	m_position = m_charaCon.Execute(diff * moveSpeed, (1.0 / 60.0f));
+
+	if (Timer == characontime) {
+		m_charaCon.SetRadius(3.0f);
+		m_charaCon.SetRadius(0.5f);
+	}
+	//移動してるよ
+	if (pl->IsDash() == true) {
+		//プレイヤーが走っているときは弾も早く
+		m_position = m_charaCon.Execute(diff * (moveSpeed * 3), (1.0 / 60.0f));
+	}
+	else {
+		m_position = m_charaCon.Execute(diff * moveSpeed, (1.0 / 60.0f));
+	}
+	//座標と回転を伝える。
 	m_skinModelRender->SetRotation(qRot);
-	//座標を伝える。
 	m_skinModelRender->SetPosition(m_position);
 	m_timer++;
 	
+
+
+	//消去関連
+
 	//もし壁に当たってたら消える
 	if (m_charaCon.IsOnWall() == true) {
 		DeleteGO(this);

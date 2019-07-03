@@ -37,13 +37,18 @@ public:
 		return m_instance;
 	}
 
+	bool IsDash() const		//	ダッシュ判定
+	{
+		return m_isDash;
+	}
+
 private:
 	void Movestick();	//パッド移動
 	void Animation();	//アニメーション
 	void Rotation();	//回転
 	void Dash();		//走るよぉおお
-	void Turn();
-	void Jump();
+	void Turn();		//180°回転
+	void Jump();		//ジャンプします
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -63,5 +68,6 @@ private:
 	const float keisann = 180.0f / TurnEnd;
 	const float  TurnEnd = 60.0f;
 
+	bool m_isDash = false;//ダッシュ判定
 };
 

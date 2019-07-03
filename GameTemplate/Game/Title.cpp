@@ -16,6 +16,7 @@ Title::~Title()
 	DeleteGO(m_sprite4);
 	DeleteGO(m_sprite5);
 	DeleteGO(m_sprite6);
+	DeleteGO(m_sprite7);
 }
 
 bool Title::Start()

@@ -10,14 +10,15 @@ Item::Item()
 }
 Item::~Item()
 {
-
+	DeleteGO(m_skinModelRender);
 }
 bool Item::Start()
 {
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Item.cmo");
-	m_position = { 300.0f,0.0f,200.0f };
 	m_skinModelRender->SetPosition(m_position);
+	m_skinModelRender->SetRotation(m_rotation);
+
 	return true;
 }
 void Item::Update()
@@ -30,18 +31,18 @@ void Item::Update()
 	{
 		//置かれてるよぉぉ
 		if (diff.Length() < 100.0f) {
-			//プレイヤーがアイテムに近いですねぇ
+			//プレイヤーがアイテム（弾）に近いですねぇ
 			m_state = Follow;
 		}
 		break;
 	}
 	case Item::Follow:
 	{
-		//超至近距離に向かうよ！
+		//プレイヤーの超至近距離に移動するよ！！
 		CVector3 move = diff;
 		move.Normalize();
 		m_position += move * 6.0f;
-
+		//自動回収
 		if (diff.Length() < 3.0f) {
 			GameData* gamedata = GameData::GetInstance();
 			gamedata->Zandannkasan(+3);

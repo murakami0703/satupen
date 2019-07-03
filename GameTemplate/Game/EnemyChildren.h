@@ -18,6 +18,7 @@ public:
 	{
 		m_position = pos;
 	}
+	//‰ñ“]‚ğİ’èB
 	void SetRotation(CQuaternion rot)
 	{
 		m_rotation = rot;

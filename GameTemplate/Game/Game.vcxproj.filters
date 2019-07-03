@@ -20,6 +20,8 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="StoreItem.cpp" />
+    <ClCompile Include="EffectManager.cpp" />
+    <ClCompile Include="EffectPlay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -41,6 +43,8 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="StoreItem.h" />
+    <ClInclude Include="EffectManager.h" />
+    <ClInclude Include="EffectPlay.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />

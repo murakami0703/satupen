@@ -19,20 +19,21 @@ public:
 private:
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
-	CVector3 m_position = CVector3::Zero; // 座標。
-	CQuaternion m_rotation = CQuaternion::Identity; //回転。
-	CVector3 m_scale = CVector3::Zero; // スケール
+	CVector3 m_position = CVector3::Zero;					// 座標。
+	CQuaternion m_rotation = CQuaternion::Identity;			//回転。
+	CVector3 m_scale = CVector3::Zero;						// スケール
 
 
-	const float moveSpeed = 200.0f; //速度
-	CVector3 P_target = CVector3::Zero;
-	CVector3 diff = CVector3::Zero;
-	bool dathflag = false;		//当たったら消えるフラグ
-	int m_timer = 0;
-	bool keisannflag = false;
-	const float pendelete = 150.0f; //玉を消すまでのタイマー
-	CCharacterController m_charaCon; //キャラコン
+	const float moveSpeed = 600.0f;		//移動速度
+	CVector3 P_target = CVector3::Zero;	//worldPosを入れます
+	CVector3 diff = CVector3::Zero;		//ベクトル計算用
+	bool dathflag = false;				//当たったら消えるフラグ
+	bool keisannflag = false;			//一度きりの方向計算フラグ
+	int m_timer = 0;					//弾消し用タイマー
+	const float pendelete = 150.0f;		//弾を消すまでの時間
+	CCharacterController m_charaCon;	 //キャラコン
 
-
+	int Timer = 0;
+	const int characontime = 30;
 };
 

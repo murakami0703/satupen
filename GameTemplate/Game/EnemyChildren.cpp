@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "Pen.h"
 #include "GameData.h"
-
+#include "EffectManager.h"
 
 EnemyChildren::EnemyChildren()
 {
@@ -21,11 +21,11 @@ bool EnemyChildren::Start()
 	m_skinModelRender->SetPosition(m_position);
 
 	//キャラコン
-	/*m_charaCon.Init(
+	m_charaCon.Init(
 		15.0f,  //半径。
 		25.0f,  //高さ。
 		m_position //初期座標。
-	);*/
+	);
 
 	return true;
 }
@@ -70,9 +70,8 @@ void EnemyChildren::ChildrenWalk()
 		//距離が近いので逃げます！
 		m_state = EnState_runaway;
 	}
-	m_position += walkmove * randomSpeed;
-	//moveVec = walkmove * randomSpeed;
-	//m_position = m_charaCon.Execute(moveVec);
+	moveVec = walkmove * randomSpeed;
+	m_position = m_charaCon.Execute(moveVec);
 }
 void EnemyChildren::ChildrenRunaway()
 {
@@ -85,7 +84,7 @@ void EnemyChildren::ChildrenRunaway()
 		//離れまーーーーース
 		diff.y = 0.0f;
 		diff.Normalize();
-		//moveVec = diff * followSpeed * -1.0f;
+		moveVec = diff * followSpeed * -1.0f;
 	}
 	else {
 		//その場で移動
@@ -110,11 +109,13 @@ void EnemyChildren::ChildrenRunaway()
 	CQuaternion qRot;
 	qRot.SetRotation(enemyForward, targetVector);
 	m_rotation = qRot;
-	//m_position = m_charaCon.Execute(moveVec);
+	m_position = m_charaCon.Execute(moveVec);
 
 }
 void EnemyChildren::ChildrenDeath()
 {
+	EffectManager* effect = EffectManager::GetInstance();
+	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, { 5.0f,5.0f,5.0f });
 	DeleteGO(this);
 }
 
@@ -123,33 +124,36 @@ void EnemyChildren::Update()
 {
 	switch (m_state)
 	{
-	case EnemyChildren::EnState_idle:
+	case EnemyChildren::EnState_idle:	//待機状態
 		ChildrenIdle();
 		break;
-	case EnemyChildren::EnState_walk:
+	case EnemyChildren::EnState_walk:	//歩き状態
 		ChildrenWalk();
 		break;
-	case EnemyChildren::EnState_runaway:
+	case EnemyChildren::EnState_runaway:	//逃げてる状態
 		ChildrenRunaway();
 		break;
-	case EnemyChildren::EnState_death:
+	case EnemyChildren::EnState_death:		//殺されました。
 		ChildrenDeath();
 		break;
 
 	}
+	//ペンとの衝突判定
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();
 		CVector3 diff = pen_position - m_position;
 		if (diff.Length() < 30.0f) {
 			//撃たれた....
-			//ペンも消えろ
 			GameData* gamedata = GameData::GetInstance();
-			gamedata->DeadHCounter();
+			gamedata->DeadHkasan(1);
+			//ペンも消滅
 			pen->SetDeath();
-			m_state = EnState_death;
+			m_state = EnState_death;//死にます。
 		}
 		return true;
-		});
+	});
+
+	//移動と回転
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);
 

@@ -31,6 +31,7 @@ void GameCamera::Update()
 	CVector3 vBase = { 0.0f,0.0f,1.0f };
 	CQuaternion p_qRot = player->Getm_Rotation();
 	p_qRot.Apply(vBase);
+	//プレイヤーの真後ろについていくよ
 	CVector3 vpos = vBase * -30.0f;
 	CVector3 pos = vpos + target ;
 	pos.y = pos.y + 60.0f;

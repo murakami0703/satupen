@@ -7,11 +7,9 @@
 #include "PenGenerator.h"
 #include "Scope.h"
 #include "Level.h"
+#include "EffectManager.h"
 #include "tkEngine/light/tkDirectionLight.h"
 
-#include "Background.h"
-#include "EnemyChildren.h"
-#include "Item.h"
 Game::Game()
 {
 }
@@ -26,7 +24,7 @@ Game::~Game()
 	DeleteGOs("status");
 	DeleteGOs("penG");
 	DeleteGOs("level");
-
+	DeleteGOs("EffectManager");
 }
 bool Game::Start()
 {
@@ -37,10 +35,7 @@ bool Game::Start()
 	NewGO<GameData>(0, "gamedata");
 	NewGO<PenGenerator>(0, "penG");
 	NewGO<Level>(0, "level");
-	//NewGO<Background>(0, "back");
-	NewGO<Item>(0, "item");
-	//NewGO<EnemyChildren>(0, "kodo");
-	//dbg::SetDrawPhysicsCollisionEnable();
+	NewGO<EffectManager>(0, "EffectManager");
 	//1–{–Ú
 	auto dirLig = NewGO<prefab::CDirectionLight>(0, "light");
 	dirLig->SetColor({5.0f, 5.0f, 5.0f, 1.0f});

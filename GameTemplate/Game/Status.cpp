@@ -187,31 +187,35 @@ void Status::Update()
 	m_sprite18->SetMulColor(LifeColor);
 	//時計針回すやつ　時間は鬼調整で
 	CQuaternion rot;
-	rot.SetRotation(CVector3::AxisZ, -0.3f * GameTime().GetFrameDeltaTime());
+	rot.SetRotation(CVector3::AxisZ, -0.05f * GameTime().GetFrameDeltaTime());
 	m_rotation.Multiply(rot);
 	m_sprite20->SetRotation(m_rotation);
 	float timer = gamedata->GetTimer();
 	//何人殺したかのやつ
 	wchar_t text[256];
-	int x = +10;
-	swprintf(text, L"\n+%02d", x);
-	m_font->SetText(text);
-	m_font->SetPosition({ -230.0f, 340.0f });
-	m_font->SetPivot({ 0.0f, 0.0f });///右下
+	int GetDH = gamedata->GetDeadH();
+	if (GetDH > 5) {
+		int TDH = GetDH - 5;
+		swprintf(text, L"\n+%02d", TDH);
+		m_font->SetText(text);
+		m_font->SetPosition({ -230.0f, 340.0f });
+		m_font->SetPivot({ 0.0f, 0.0f });///右下
+	}
 	//ペンをだす
 	wchar_t text2[256];
-	int y = +10;
-	swprintf(text2, L"\n+%02d", y);
-	m_fontP->SetText(text2);
-	m_fontP->SetPosition({ -230.0f, 275.0f });
-	m_fontP->SetPivot({ 0.0f, 0.0f });///右下
-	/* DeadH =gamedata->DeadHkasan();
-	wchar_t text[256];
-	swprintf(text, L"あああ", gamedata->DeadHkasan());
-	m_font->SetText(text);*/
-	//殺す数＋＋｛｝で囲む
+	int GetZan = gamedata->GetZandan();
+	if (GetZan > 5) {
+		swprintf(text2, L"\n+%02d", GetZan);
+		m_fontP->SetText(text2);
+		m_fontP->SetPosition({ -230.0f, 275.0f });
+		m_fontP->SetPivot({ 0.0f, 0.0f });///右下
 
-		//++{
+	}
+	else {
+		swprintf(text2, L"");
+		m_fontP->SetText(text2);
+
+	}
 	//顔の出すやつ
 	if (gamedata->GetDeadH() >= 1) {
 		m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
@@ -253,35 +257,34 @@ void Status::Update()
 	else {
 		m_sprite3->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	}
-	if (gamedata->GetZandan() >= 1) {
+	if (gamedata->GetZandan() >= 2) {
 		m_sprite12->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}
 	else {
 		m_sprite12->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	}
-	if (gamedata->GetZandan() >= 1) {
+	if (gamedata->GetZandan() >= 3) {
 		m_sprite13->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}
 	else {
 		m_sprite13->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	}
-	if (gamedata->GetZandan() >= 1) {
+	if (gamedata->GetZandan() >= 4) {
 		m_sprite14->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}
 	else {
 		m_sprite14->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	}
-	if (gamedata->GetZandan() >= 1) {
+	if (gamedata->GetZandan() >= 5) {
 		m_sprite15->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}
 	else {
 		m_sprite15->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	}
-	if (gamedata->GetZandan() >= 1) {
+	if (gamedata->GetZandan() >= 6) {
 		m_sprite16->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}
 	else {
 		m_sprite16->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 	}
-	gamedata->tiryokugennsyou(-1);
 }
