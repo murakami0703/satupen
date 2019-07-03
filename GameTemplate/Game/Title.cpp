@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Title.h"
 #include "Game.h"
+#include "Result.h"
 
 Title::Title()
 {
@@ -16,6 +17,7 @@ Title::~Title()
 	DeleteGO(m_sprite4);
 	DeleteGO(m_sprite5);
 	DeleteGO(m_sprite6);
+	DeleteGO(m_sprite7);
 }
 
 bool Title::Start()
@@ -80,8 +82,6 @@ void Title::Update()
 			m_state = enState_2;
 		}
 		m_sprite2->SetPosition(satupos1);
-
-
 		break;
 	}
 	case Title::enState_2:
@@ -154,8 +154,13 @@ void Title::Update()
 	}
 
 	if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<Game>(0, "game");
+		NewGO<Result>(0, "result");
 		DeleteGO(this);
 
 	}
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
+		NewGO<Game>(0, "game");
+		DeleteGO(this);
+
+	}*/
 }
