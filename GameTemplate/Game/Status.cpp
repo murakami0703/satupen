@@ -103,16 +103,16 @@ bool Status::Start()
 	m_sprite4->SetPosition({ 130.0f,225.0f,0.0f });
 	//HpWbar白
 	m_sprite7 = NewGO<prefab::CSpriteRender>(1);
-	m_sprite7->Init(L"sprite/HPWbar.dds", 540.0f, 150.0f);
+	m_sprite7->Init(L"sprite/HPWbar.dds", 540.0f, 165.0f);
 	m_sprite7->SetPosition({ 130.0f,225.0f,0.0f });
 	//HPBbar翠
 	m_sprite18 = NewGO<prefab::CSpriteRender>(2);
-	m_sprite18->Init(L"sprite/HPbar.dds", 540.0f, 150.0f);
-	m_sprite18->SetPosition({ 130.0f,234.5f,0.0f });
+	m_sprite18->Init(L"sprite/HPbar.dds", 540.0f, 165.0f);
+	m_sprite18->SetPosition({ 123.0f,225.0f,0.0f });
 	//HPbar黒
 	m_sprite17 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite17->Init(L"sprite/HPBbar.dds", 540.0f, 150.0f);
-	m_sprite17->SetPosition({ 130.0f,225.0f,0.0f });
+	m_sprite17->Init(L"sprite/HPBbar.dds", 540.0f, 165.0f);
+	m_sprite17->SetPosition({ 123.0f,225.0f,0.0f });
 	//顔のスプライト１
 	m_sprite5 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite5->Init(L"sprite/kao .dds", 1280.0f, 720.0f);

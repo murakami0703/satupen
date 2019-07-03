@@ -22,6 +22,7 @@
     <ClCompile Include="StoreItem.cpp" />
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EffectPlay.cpp" />
+    <ClCompile Include="Result.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -45,6 +46,7 @@
     <ClInclude Include="StoreItem.h" />
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EffectPlay.h" />
+    <ClInclude Include="Result.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -151,25 +153,25 @@
     <ImageContentTask Include="Assets\sprite\wakuwaku.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturiku.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturiku.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikuBG.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturikuBG.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikunopen.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturikunopen.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\saturikupen.png">
+    <ImageContentTask Include="Assets\sprite\Titel\saturikupen.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\zange.png">
+    <ImageContentTask Include="Assets\sprite\Titel\ti.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\ti.png">
+    <ImageContentTask Include="Assets\sprite\Titel\yazirusi.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="..\..\..\..\Documents\殺戮の剣\hazimeru.png">
+    <ImageContentTask Include="Assets\sprite\Titel\zange.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>
@@ -306,5 +308,34 @@
     <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\Result\hikari.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\ti2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\Tti.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\tumido.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\zennindo.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\ZH.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\anata.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\sougou.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\RH.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
   </ItemGroup>
 </Project>
