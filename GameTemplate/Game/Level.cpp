@@ -1,12 +1,18 @@
 #include "stdafx.h"
 #include "Level.h"
 #include "Background.h"
-#include "EnemyChildren.h"
-#include "EnemyWoman.h"
-#include "EnemyMan.h"
 #include "Window.h"
 #include "Item.h"
 #include "StoreItem.h"
+
+//Enemy
+#include "EnemyChildren.h"
+#include "EnemyWoman.h"
+#include "EnemyMan.h"
+#include "EnemyDog.h"
+#include "EnemyCat.h"
+#include "EnemyBird.h"
+
 
 Level* Level::m_instance = nullptr;
 Level::Level()
@@ -36,6 +42,8 @@ bool Level::Start() {
 				back->SetScale(objData.scale);
 				return true;
 			}
+			/////////////////////////////////////////////////
+			//敵やでぇ
 			if (objData.EqualObjectName(L"kodomo120")) {
 				//子供
 				EnemyChildren* Children = NewGO<EnemyChildren>(0, "children");
@@ -44,6 +52,49 @@ bool Level::Start() {
 				//フックしたのでtrueを返す。
 				return true;
 			}
+			if (objData.EqualObjectName(L"otoko")) {
+				//男
+				EnemyMan* Man = NewGO<EnemyMan>(0, "man");
+				Man->SetPosition(objData.position);
+				Man->SetRotation(objData.rotation);
+				//フックしたのでtrueを返す。
+				return true;
+			}
+			if (objData.EqualObjectName(L"onna")) {
+				//女
+				EnemyWoman* Woman = NewGO<EnemyWoman>(0, "woman");
+				Woman->SetPosition(objData.position);
+				Woman->SetRotation(objData.rotation);
+				//フックしたのでtrueを返す。
+				return true;
+			}
+			if (objData.EqualObjectName(L"inuu")) {
+				//犬
+				EnemyDog* Dog = NewGO<EnemyDog>(0, "dog");
+				Dog->SetPosition(objData.position);
+				Dog->SetRotation(objData.rotation);
+				//フックしたのでtrueを返す。
+				return true;
+			}
+			if (objData.EqualObjectName(L"neko")) {
+				//猫
+				EnemyCat* Cat = NewGO<EnemyCat>(0, "cat");
+				Cat->SetPosition(objData.position);
+				Cat->SetRotation(objData.rotation);
+				//フックしたのでtrueを返す。
+				return true;
+			}
+			if (objData.EqualObjectName(L"karasuu")) {
+				//鳥
+				EnemyBird* Bird = NewGO<EnemyBird>(0, "bird");
+				Bird->SetPosition(objData.position);
+				Bird->SetRotation(objData.rotation);
+				//フックしたのでtrueを返す。
+				return true;
+			}
+			/////////////////////////////////////////////////
+
+
 			if (objData.EqualObjectName(L"S_mado")) {
 				//窓
 				Window* windo = NewGO<Window>(0, "window");
@@ -354,6 +405,7 @@ bool Level::Start() {
 			}
 			//ここまで
 			////////////////////////////////////////
+
 			return false;
 			});
 

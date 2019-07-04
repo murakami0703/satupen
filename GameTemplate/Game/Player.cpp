@@ -97,6 +97,10 @@ void Player::Dash() {
 		m_isDash = true;
 		moveVec *= 2.0f;
 	}
+	else {
+		m_isDash = false;
+
+	}
 	m_position = m_charaCon.Execute(moveVec);
 }
 void Player::Turn() {
