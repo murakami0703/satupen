@@ -3369,7 +3369,7 @@
     <Image Include="Assets\sprite\Result\anata.png" />
     <Image Include="Assets\sprite\Result\hikari.png" />
     <Image Include="Assets\sprite\Result\RH.png" />
-    <Image Include="Assets\sprite\Result\sougou.png" />
+    <ImageContentTask Include="Assets\sprite\Result\sougou.png" />
     <Image Include="Assets\sprite\Result\ti2.png" />
     <Image Include="Assets\sprite\Result\Tti.png" />
     <Image Include="Assets\sprite\Result\tumido.png" />
