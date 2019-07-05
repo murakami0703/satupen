@@ -22,8 +22,11 @@ public:
 private:
 	//殺戮の剣文字大きい
 	CVector3 movepos = { 0.0f,120.0f,0.0f }; //座標
-	//白いペン
-	bool sasitaflag = false;
+	//音を鳴らすフラグ白いペン
+	bool Sasuotoflag = false;
+	//音を鳴らす血のフラグ
+	bool Tiflag = false;
+
 
 	int Pentimer = 0;
 	float SP1 = 0.0f;
@@ -39,6 +42,11 @@ private:
 	prefab::CSpriteRender* m_sprite7;//➡
 	std::vector<prefab::CSpriteRender*> m_spriteRender;
 	prefab::CSpriteRender* sp;
+	//音楽
+	prefab::CSoundSource* m_sound;//バックグラウンド
+	prefab::CSoundSource* m_sound2;//刺すときの音
+	prefab::CSoundSource* m_sound3;//選択の時の音
+	prefab::CSoundSource* m_sound4;//血の音
 
 	EnSart m_Sart = enStart_new;//状態 矢印の指定したら色付きで指定してないやつは半透明。
 	EnState m_state = enState_new; //状態

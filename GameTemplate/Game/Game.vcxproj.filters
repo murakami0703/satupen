@@ -174,6 +174,7 @@
     <ImageContentTask Include="Assets\sprite\Titel\zange.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\sougou.png" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
@@ -329,9 +330,6 @@
       <Filter>Aseets\sprite</Filter>
     </Image>
     <Image Include="Assets\sprite\Result\anata.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\sougou.png">
       <Filter>Aseets\sprite</Filter>
     </Image>
     <Image Include="Assets\sprite\Result\RH.png">
