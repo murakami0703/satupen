@@ -10,8 +10,24 @@ public:
 		EnState_attack,	//攻撃
 		EnState_death,	//殺された
 	};
+
+	enum  EnAnimationClip {
+		enAnimationClip_idle, //待機
+		enAnimationClip_walk,  //歩き
+		enAnimationClip_attack, //攻撃
+		enAnimationClip_Num,  //アニメーションクリップ
+	};
 	bool Start();
 	void Update();
+
+	//Hpを返す関数
+	int EnemyMan::GetHp() {
+		return HP;
+	}
+	//MAX_Hpを返す関数
+	int EnemyMan::GetMAX_Hp() {
+		return MAX_HP;
+	}
 
 	//座標を設定。
 	void SetPosition(CVector3 pos)
@@ -35,9 +51,9 @@ private:
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
 	CVector3 m_scale = CVector3::One; // スケール
-	EnState m_state = EnState_walk;//状態
 	CVector3 moveVec = CVector3::Zero; // 座標。
-
+	EnState m_state = EnState_walk;//状態
+	EnAnimationClip m_animClips[enAnimationClip_Num]; //アニメ
 	CCharacterController m_charaCon; //キャラコン
 
 	//待機関連
@@ -50,7 +66,11 @@ private:
 	const int randomCount = 300; //ランダムで移動方向切り替えタイマー
 	const float randomSpeed = 8.0f; //移動速度
 	//攻撃関連
-	const float attackSpeed = 80.0f; //逃げる速度
+	const float attackSpeed = 40.0f; //逃げる速度
+
+	//HP関連
+	int HP = 100;//体力
+	const int MAX_HP = 100;//最大体力
 
 };
 

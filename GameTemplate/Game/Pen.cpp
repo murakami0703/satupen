@@ -2,7 +2,9 @@
 #include "Pen.h"
 #include "Scope.h"
 #include "Player.h"
+#include "Background.h"
 
+#include "EnemyWoman.h"
 Pen::Pen()
 {
 }
@@ -42,13 +44,9 @@ bool Pen::Start()
 
 void Pen::Update()
 {
-	PhysicsWorld().ContactTest(m_ghost.GetBody(), [&](const btCollisionObject& contactCollisionObject) {
+	/*PhysicsWorld().ContactTest(m_ghost.GetBody(), [&](const btCollisionObject& contactCollisionObject) {
 
-		if (m_ghost.IsSelf(contactCollisionObject) == true) {
-			//‚Ô‚Â‚©‚Á‚½‚æ
-			if()
-		}
-	});
+	});*/
 	Timer++;
 	Player* pl = FindGO<Player>("player");
 	//”ò‚Î‚·‚æ‚¨

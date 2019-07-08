@@ -16,6 +16,15 @@ public:
 	bool Start();
 	void Update();
 
+	//Hpを返す関数
+	int EnemyDog::GetHp() {
+		return HP;
+	}
+	//MAX_Hpを返す関数
+	int EnemyDog::GetMAX_Hp() {
+		return MAX_HP;
+	}
+
 	//座標を設定。
 	void SetPosition(CVector3 pos)
 	{
@@ -54,6 +63,9 @@ private:
 	//攻撃関連
 	const float attackRange = 300.0f;		//攻撃する距離（プレイヤーから離れる距離）
 	const float attackSpeed = 50.0f;		//攻撃速度
+
+	int HP = 100;
+	const int MAX_HP = 100;
 
 };
 

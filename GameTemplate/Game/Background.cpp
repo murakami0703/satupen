@@ -24,7 +24,6 @@ bool Background::Start()
 
 	// CPhysicsStaticObject‚Ì‰Šú‰»
 	m_physicsStaticObject.CreateMesh(m_position, CQuaternion::Identity, m_scale, skinModelRender);
-
 	return true;
 }
 void Background::Update()

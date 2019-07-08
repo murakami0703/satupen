@@ -28,11 +28,13 @@ Player::~Player()
 bool Player::Start()
 {
 	//アニメーション
-	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka");
+	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka"); //待機
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka");
+	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka"); //歩き
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	m_animClips[enAnimationClip_attack].Load(L"animData/plkougeki.tka");
+	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka"); //予備
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+	m_animClips[enAnimationClip_attack].Load(L"animData/plkougeki.tka"); //攻撃
 	m_animClips[enAnimationClip_attack].SetLoopFlag(true);*/
 	//スキンモデル
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
@@ -76,6 +78,7 @@ void Player::Movestick()
 	//重力
 	moveVec.y -= 2.0f;
 	m_position = m_charaCon.Execute(moveVec);
+	
 }
 
 void Player::Animation()
@@ -129,7 +132,7 @@ void Player::Jump()
 {
 	//ジャンプします。
 	if (m_charaCon.IsOnGround() == true) {
-		if (Pad(0).IsTrigger(enButtonB) || Pad(0).IsTrigger(enButtonX) || Pad(0).IsTrigger(enButtonY)) {
+		if (Pad(0).IsTrigger(enButtonB) ) {
 			moveVec.y = 50.0f;
 		}
 	}

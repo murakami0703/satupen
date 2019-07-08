@@ -13,6 +13,15 @@ public:
 	bool Start();
 	void Update();
 
+	//Hp‚ğ•Ô‚·ŠÖ”
+	int EnemyWoman::GetHp() {
+		return HP;
+	}
+	//MAX_Hp‚ğ•Ô‚·ŠÖ”
+	int EnemyWoman::GetMAX_Hp() {
+		return MAX_HP;
+	}
+
 	//À•W‚ğİ’èB
 	void SetPosition(CVector3 pos)
 	{
@@ -22,8 +31,8 @@ public:
 	void SetRotation(CQuaternion rot)
 	{
 		m_rotation = rot;
-	}
-	
+	}		
+
 private:
 
 	void WomanIdle();
@@ -54,6 +63,7 @@ private:
 	const float runaway = 1000.0f; //“¦‚°‚é‚Ì‚ğ‚â‚ß‚é‹——£
 	const float followSpeed = 50.0f; //“¦‚°‚é‘¬“x
 
-
+	int HP = 100;
+	const int MAX_HP = 100;
 };
 

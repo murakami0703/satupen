@@ -13,6 +13,17 @@ public:
 	};
 	bool Start();
 	void Update();
+
+	//Hp‚ğ•Ô‚·ŠÖ”
+	int EnemyChildren::GetHp() {
+		return HP;
+	}
+	//MAX_Hp‚ğ•Ô‚·ŠÖ”
+	int EnemyChildren::GetMAX_Hp() {
+		return MAX_HP;
+	}
+
+
 	//À•W‚ğİ’èB
 	void SetPosition(CVector3 pos)
 	{
@@ -53,5 +64,8 @@ private:
 	const float runaway = 1000.0f; //“¦‚°‚é‚Ì‚ğ‚â‚ß‚é‹——£
 	const float followSpeed = 50.0f; //“¦‚°‚é‘¬“x
 	
+	int HP = 100;
+	const int MAX_HP = 100;
+
 };
 

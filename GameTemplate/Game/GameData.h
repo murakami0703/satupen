@@ -101,7 +101,19 @@ public:
 		}
 
 	}
-	
+	//引数をエネミーカウンターに代入
+	void GameData::EnemyCounterSet(int x) {
+		EnemyCount = x;
+	}
+	//引数をアイテムカウンターに代入
+	void GameData::ItemCounterSet(int x) {
+		ItemCount = x;
+	}
+	//////////////////////////////////////
+	//リザルト用　総合計算
+
+
+
 private:
 	int Zandan = 50; //残弾
 	int DeadH = 0;	//殺した数
@@ -111,7 +123,10 @@ private:
 	float Timer = 0.0f;//タイマー
 	float MAX_Timer = 180.0f;//最大タイム
 	const int MAX_Zandann = 99;//最大残弾
-	const int MAX_DeadH = 99;//最大残虐数
+	const int MAX_DeadH = 999;//最大残虐数
+
+	int EnemyCount = 0; //敵の数
+	int ItemCount = 0; //アイテムの数
 
 	///////////////////////
 	//リザルト用種類別殺害数など
@@ -129,5 +144,6 @@ private:
 	
 	///////////////////////
 
+	//定数
 };
 

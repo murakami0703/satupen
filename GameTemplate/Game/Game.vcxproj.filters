@@ -216,7 +216,9 @@
     <ImageContentTask Include="Assets\sprite\Titel\zange.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\sougou.png" />
+    <ImageContentTask Include="Assets\sprite\Result\sougou.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">

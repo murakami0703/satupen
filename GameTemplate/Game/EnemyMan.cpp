@@ -16,6 +16,8 @@ EnemyMan::~EnemyMan()
 
 bool EnemyMan::Start()
 {
+	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka"); //待機
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);*/
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Man/otoko.cmo");
 	m_skinModelRender->SetPosition(m_position);
@@ -73,6 +75,7 @@ void EnemyMan::ManWalk()
 void EnemyMan::ManAttack()
 {
 	//攻撃状態
+	GameData* gamedata = GameData::GetInstance();
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
@@ -85,7 +88,9 @@ void EnemyMan::ManAttack()
 	}
 	else if (diff.Length() < 20.0f) {
 		//アニメーション流して攻撃しや
-
+		/*if () {
+			gamedata->tiryokugennsyou(-7);
+		}*/
 	}
 	else {
 		//離れたのでその場で移動しま

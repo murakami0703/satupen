@@ -16,7 +16,6 @@ public:
 	{
 		m_scale = sca;
 	}
-
 private:
 	prefab::CSkinModelRender* skinModelRender = nullptr; //スキンモデルレンダー
 	CVector3 m_position = CVector3::Zero; // 座標。

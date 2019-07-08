@@ -15,6 +15,15 @@ public:
 	bool Start();
 	void Update();
 
+	//Hpを返す関数
+	int EnemyBird::GetHp() {
+		return HP;
+	}
+	//MAX_Hpを返す関数
+	int EnemyBird::GetMAX_Hp() {
+		return MAX_HP;
+	}
+
 	//座標を設定。
 	void SetPosition(CVector3 pos)
 	{
@@ -53,6 +62,9 @@ private:
 	const float randomSpeed = 1.0f;			//移動速度
 	//飛び関連
 	const float flyRange = 300.0f;		//逃げる距離（プレイヤーから離れる距離）
+
+	int HP = 100;
+	const int MAX_HP = 100;
 
 };
 
