@@ -175,6 +175,33 @@
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
     <ImageContentTask Include="Assets\sprite\Result\sougou.png" />
+    <ImageContentTask Include="Assets\sprite\Titel\hazimeru1.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\anata.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\hikari.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\RH.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\ti2.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\Tti.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\tumido.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\zennindo.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\ZH.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
@@ -306,31 +333,5 @@
     <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\sprite\Result\hikari.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\ti2.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\Tti.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\tumido.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\zennindo.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\ZH.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\anata.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\RH.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
   </ItemGroup>
 </Project>

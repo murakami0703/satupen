@@ -43,10 +43,10 @@ private:
 	std::vector<prefab::CSpriteRender*> m_spriteRender;
 	prefab::CSpriteRender* sp;
 	//音楽
-	prefab::CSoundSource* m_sound;//バックグラウンド
-	prefab::CSoundSource* m_sound2;//刺すときの音
-	prefab::CSoundSource* m_sound3;//選択の時の音
-	prefab::CSoundSource* m_sound4;//血の音
+	prefab::CSoundSource* m_sound = nullptr;//バックグラウンド
+	prefab::CSoundSource* m_sound2 = nullptr;//刺すときの音
+	prefab::CSoundSource* m_sound3 = nullptr;//選択の時の音
+	prefab::CSoundSource* m_sound4 = nullptr;//血の音
 
 	EnSart m_Sart = enStart_new;//状態 矢印の指定したら色付きで指定してないやつは半透明。
 	EnState m_state = enState_new; //状態
