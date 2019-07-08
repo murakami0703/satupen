@@ -24,7 +24,7 @@ bool EnemyChildren::Start()
 	m_charaCon.Init(
 		15.0f,  //半径。
 		25.0f,  //高さ。
-		m_position //初期座標。
+		m_position//初期座標。
 	);
 
 	return true;
@@ -71,7 +71,7 @@ void EnemyChildren::ChildrenWalk()
 		m_state = EnState_runaway;
 	}
 	moveVec = walkmove * randomSpeed;
-	m_position = m_charaCon.Execute(moveVec);
+	m_position += moveVec;
 }
 void EnemyChildren::ChildrenRunaway()
 {
@@ -109,7 +109,7 @@ void EnemyChildren::ChildrenRunaway()
 	CQuaternion qRot;
 	qRot.SetRotation(enemyForward, targetVector);
 	m_rotation = qRot;
-	m_position = m_charaCon.Execute(moveVec);
+	m_position += moveVec;
 
 }
 void EnemyChildren::ChildrenDeath()
@@ -124,16 +124,16 @@ void EnemyChildren::Update()
 {
 	switch (m_state)
 	{
-	case EnemyChildren::EnState_idle:	//待機状態
+	case EnState_idle:	//待機状態
 		ChildrenIdle();
 		break;
-	case EnemyChildren::EnState_walk:	//歩き状態
+	case EnState_walk:	//歩き状態
 		ChildrenWalk();
 		break;
-	case EnemyChildren::EnState_runaway:	//逃げてる状態
+	case EnState_runaway:	//逃げてる状態
 		ChildrenRunaway();
 		break;
-	case EnemyChildren::EnState_death:		//殺されました。
+	case EnState_death:		//殺されました。
 		ChildrenDeath();
 		break;
 

@@ -127,16 +127,16 @@ void EnemyWoman::Update()
 {
 	switch (m_state)
 	{
-	case EnemyWoman::EnState_idle:	//待機状態
+	case EnState_idle:	//待機状態
 		WomanIdle();
 		break;
-	case EnemyWoman::EnState_walk:	//歩き状態
+	case EnState_walk:	//歩き状態
 		WomanWalk();
 		break;
-	case EnemyWoman::EnState_runaway:	//逃げてる状態
+	case EnState_runaway:	//逃げてる状態
 		WomanRunaway();
 		break;
-	case EnemyWoman::EnState_death:		//殺されました。
+	case EnState_death:		//殺されました。
 		WomanDeath();
 		break;
 

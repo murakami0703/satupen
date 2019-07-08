@@ -28,8 +28,8 @@ Game::~Game()
 }
 bool Game::Start()
 {
-	NewGO<GameCamera>(0, "gcamera");
 	NewGO<Player>(0, "player");
+	NewGO<GameCamera>(0, "gcamera");
 	NewGO<Scope>(0, "scope");
 	NewGO<Status>(0, "status");
 	NewGO<GameData>(0, "gamedata");

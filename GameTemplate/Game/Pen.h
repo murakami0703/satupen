@@ -1,4 +1,7 @@
 #pragma once
+
+#include "tkEngine/physics/tkPhysicsGhostObject.h"
+
 class Pen : public IGameObject
 {
 public:
@@ -21,6 +24,7 @@ private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero;					// 座標。
 	CQuaternion m_rotation = CQuaternion::Identity;			//回転。
+	CPhysicsGhostObject m_ghost;							//ゴースト
 	CVector3 m_scale = CVector3::Zero;						// スケール
 
 

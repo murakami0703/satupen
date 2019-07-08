@@ -16,6 +16,7 @@ Pen::~Pen()
 bool Pen::Start()
 
 {
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/ya.cmo");
 	//ƒvƒŒƒCƒ„[‚ÌêŠ‚É”­¶
@@ -41,6 +42,13 @@ bool Pen::Start()
 
 void Pen::Update()
 {
+	PhysicsWorld().ContactTest(m_ghost.GetBody(), [&](const btCollisionObject& contactCollisionObject) {
+
+		if (m_ghost.IsSelf(contactCollisionObject) == true) {
+			//‚Ô‚Â‚©‚Á‚½‚æ
+			if()
+		}
+	});
 	Timer++;
 	Player* pl = FindGO<Player>("player");
 	//”ò‚Î‚·‚æ‚¨

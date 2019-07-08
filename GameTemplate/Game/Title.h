@@ -45,9 +45,9 @@ private:
 	CVector3 m_position; //座標
 
 	//定数
-	const CVector3 PenDef = { 900.0f,800.0f,0.0f };
-	const CVector3 PenDropPos = { 200.0f,100.0f,0.0f };
-	const CVector3 PenRemovePos = { 250.0f,150.0f,0.0f };
+	const CVector3 PenDef = { 900.0f,800.0f,0.0f };//見えない
+	const CVector3 PenDropPos = { 200.0f,100.0f,0.0f };//動くまでの距離
+	const CVector3 PenRemovePos = { 250.0f,150.0f,0.0f };//最終地点
 	const int DropLimit = 20; //落ちる時間（ここをいじると落ちる速さ変わる）
 	const int RemoveLimit = 10; //戻る時間
 

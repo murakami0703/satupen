@@ -145,6 +145,14 @@ void Player::Update()
 	Turn();			//180‹‰ñ“]
 	Jump();			//ƒWƒƒƒ“ƒv‚µ‚Ü‚·B
 
+	if (Pad(0).IsPress(enButtonLB1)) {
+		//UŒ‚‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚£ƒAƒjƒ
+		//\‚¦‚Ä
+		m_isSet = true;
+	}
+	else {
+		m_isSet = false;
+	}
 	//ˆÚ“®‚Æ‰ñ“]
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);

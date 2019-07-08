@@ -32,15 +32,23 @@ void GameCamera::Update()
 	CQuaternion p_qRot = player->Getm_Rotation();
 	p_qRot.Apply(vBase);
 	//プレイヤーの真後ろについていくよ
-	CVector3 vpos = vBase * -30.0f;
+	CVector3 vpos = vBase * -40.0f;
 	CVector3 pos = vpos + target ;
-	pos.y = pos.y + 60.0f;
-	target.y = target.y + 60.0f;
+	pos.y = pos.y + 40.0f;
+	target.y = target.y + 40.0f;
 	//メインカメラに注視点と視点を設定する。
 	MainCamera().SetTarget(target);
 	MainCamera().SetPosition(pos);
 	
 	//カメラの更新
 	MainCamera().Update();
+
+	auto yoko = MainCamera().GetRight();
+	target += yoko * 30.0f;
+	pos += yoko * 30.0f;
+	MainCamera().SetTarget(target);
+	MainCamera().SetPosition(pos);
+	MainCamera().Update();
+
 	CVector3 cameraposOld = CameraPos;
 }

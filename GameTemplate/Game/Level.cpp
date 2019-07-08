@@ -68,7 +68,7 @@ bool Level::Start() {
 				//フックしたのでtrueを返す。
 				return true;
 			}
-			if (objData.EqualObjectName(L"inuu")) {
+			/*if (objData.EqualObjectName(L"inuu")) {
 				//犬
 				EnemyDog* Dog = NewGO<EnemyDog>(0, "dog");
 				Dog->SetPosition(objData.position);
@@ -91,7 +91,7 @@ bool Level::Start() {
 				Bird->SetRotation(objData.rotation);
 				//フックしたのでtrueを返す。
 				return true;
-			}
+			}*/
 			/////////////////////////////////////////////////
 
 
