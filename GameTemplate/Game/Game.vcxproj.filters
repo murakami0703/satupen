@@ -294,9 +294,6 @@
     <MeshContentTask Include="Assets\modelData\ste\store_item\Orangegas.FBX">
       <Filter>Aseets\modelData\ste\store_item</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
-      <Filter>Aseets\modelData\ste</Filter>
-    </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\ste\S_mado.FBX">
       <Filter>Aseets\modelData\ste</Filter>
     </MeshContentTask>
