@@ -189,19 +189,19 @@ void Title::Update()
 		//‘I‘ð‚·‚é‚½‚Ñ‚É‰¹‚ª–Â‚é‚æ‚¤‚É‚·‚é
 		m_sound3 = NewGO<prefab::CSoundSource>(0);
 		m_sound3->Init(L"sound/ketteion.wav");
-		m_sound3->Play(true);
+		m_sound3->Play(false);
 		m_sound3->SetVolume(0.5f);
 
 	}
 
-	if (Pad(0).IsTrigger(enButtonStart)) {
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Result>(0, "result");
 		DeleteGO(this);
 
-	}
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
+	}*/
+	if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Game>(0, "game");
 		DeleteGO(this);
 
-	}*/
+	}
 }
