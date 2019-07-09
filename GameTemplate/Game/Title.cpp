@@ -181,14 +181,15 @@ void Title::Update()
 	if (Pad(0).IsTrigger(enButtonDown) || Pad(0).IsTrigger(enButtonUp)) {
 		if (m_Sart == enStart_new) {
 			m_Sart = enStart_restart;
+
 		}else if (m_Sart == enStart_restart) {
 			m_Sart = enStart_new;
 		}
-		////‘I‘ð‚·‚é‚½‚Ñ‚É‰¹‚ª–Â‚é‚æ‚¤‚É‚·‚é
-		//m_sound3 = NewGO<prefab::CSoundSource>(0);
-		//m_sound3->Init(L"sound/ketteion.wav");
-		//m_sound3->Play(true);
-		//m_sound3->SetVolume(0.5f);
+		//‘I‘ð‚·‚é‚½‚Ñ‚É‰¹‚ª–Â‚é‚æ‚¤‚É‚·‚é
+		m_sound3 = NewGO<prefab::CSoundSource>(0);
+		m_sound3->Init(L"sound/ketteion.wav");
+		m_sound3->Play(false);
+		m_sound3->SetVolume(0.5f);
 
 	}
 
