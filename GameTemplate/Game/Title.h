@@ -27,7 +27,6 @@ private:
 	//音を鳴らす血のフラグ
 	bool Tiflag = false;
 
-
 	int Pentimer = 0;
 	float SP1 = 0.0f;
 
