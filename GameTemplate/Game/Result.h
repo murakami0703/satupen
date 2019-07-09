@@ -32,9 +32,12 @@ private:
 	int Tu = 50;//罪人の変数仮
 	bool Zenpaflag = false;//善人
 	bool Tumipaflag = false;//罪人
+
+	//文字をだす
 	prefab::CFontRender* m_font;        //フォント
 	prefab::CFontRender* m_font2; //フォンとおお
 
+	//絵を出す
 	prefab::CSpriteRender* m_sprite;//リザルト画面の森の背景。
 	prefab::CSpriteRender* m_sprite1;//総合
 	prefab::CSpriteRender* m_sprite2;//罪びと度
@@ -44,6 +47,11 @@ private:
 	prefab::CSpriteRender* m_sprite6;//ZH
 	prefab::CSpriteRender* m_sprite7;//光
 	prefab::CSpriteRender* m_sprite8;//あなたは
+
+	//音楽のやつ
+	prefab::CSoundSource* m_sound;//画面の音楽
+	prefab::CSoundSource* m_sound1;//足音
+
 
 	CVector3 m_postion;//座標
 

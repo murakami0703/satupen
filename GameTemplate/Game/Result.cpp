@@ -84,6 +84,12 @@ bool Result::Start()
 
 	m_font = NewGO<prefab::CFontRender>(2);
 	m_font2 = NewGO<prefab::CFontRender>(2);
+
+
+	//‰¹Šy‚ğo‚·
+	m_sound = NewGO<prefab::CSoundSource>(0);
+	m_sound->Init(L"Assete/sound/Rsound.wav");
+	
 	return true;
 }
 void Result::Update()

@@ -22,6 +22,7 @@ Title::~Title()
 	//音楽消去
 	DeleteGO(m_sound);//バックサウンド
 	//ループしない音声は、自分で死ぬので殺さなくていいです。from 清原
+	//おけです！！bye立花
 	//DeleteGO(m_sound2);//刺すとき
 	//DeleteGO(m_sound3);//選択
 	//DeleteGO(m_sound4);//血の音
@@ -194,14 +195,14 @@ void Title::Update()
 
 	}
 
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
+	if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Result>(0, "result");
 		DeleteGO(this);
 
-	}*/
-	if (Pad(0).IsTrigger(enButtonStart)) {
+	}
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Game>(0, "game");
 		DeleteGO(this);
 
-	}
+	}*/
 }
