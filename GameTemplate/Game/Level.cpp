@@ -29,7 +29,7 @@ bool Level::Start() {
 
 		m_level.Init(L"level/level_05.tkl", [&](LevelObjectData& objData) {
 
-			if (objData.EqualObjectName(L"sute")) {
+			if (objData.EqualObjectName(L"ste")) {
 				//îwåi
 				Background* back = NewGO<Background>(0, "background");
 				back->SetPosition(objData.position);

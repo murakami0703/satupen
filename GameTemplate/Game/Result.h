@@ -30,8 +30,14 @@ private:
 	int TT = 0;//ここに入れる罪人
 	int Ze = 50;//善人の変数仮
 	int Tu = 50;//罪人の変数仮
+    //フラグ
 	bool Zenpaflag = false;//善人
 	bool Tumipaflag = false;//罪人
+	bool Tiflag = false;//血
+	bool Ti2flag = false;//血２
+	bool Asiatoflag = false;//足跡
+	bool Hiflag = false;//光
+	bool Hi2flag = false;//光２
 
 	//文字をだす
 	prefab::CFontRender* m_font;        //フォント
@@ -49,8 +55,13 @@ private:
 	prefab::CSpriteRender* m_sprite8;//あなたは
 
 	//音楽のやつ
-	prefab::CSoundSource* m_sound;//画面の音楽
-	prefab::CSoundSource* m_sound1;//足音
+	prefab::CSoundSource* m_sound = nullptr;//画面の音楽
+	prefab::CSoundSource* m_sound1 = nullptr;//血
+	prefab::CSoundSource* m_sound2 = nullptr;//血２
+	prefab::CSoundSource* m_sound3 = nullptr;//足音
+	prefab::CSoundSource* m_sound4 = nullptr;//光
+	prefab::CSoundSource* m_sound5 = nullptr;//光２
+
 
 
 	CVector3 m_postion;//座標

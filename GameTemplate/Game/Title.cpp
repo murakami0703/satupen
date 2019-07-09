@@ -82,7 +82,7 @@ bool Title::Start()
 	m_sound = NewGO<prefab::CSoundSource>(0);
 	m_sound->Init(L"sound/aaa.wav");
 	m_sound->Play(true);
-	m_sound->SetVolume(0.5f);
+	m_sound->SetVolume(1.0f);
 	return true;
 }
 	
@@ -128,7 +128,7 @@ void Title::Update()
 				m_sound2 = NewGO<prefab::CSoundSource>(0);
 				m_sound2->Init(L"sound/sasu3.wav");
 				m_sound2->Play(false);
-				m_sound2->SetVolume(0.5f);
+				m_sound2->SetVolume(1.0f);
 				Sasuotoflag = true;
 			}
 		}
@@ -150,7 +150,7 @@ void Title::Update()
 		m_sound4 = NewGO<prefab::CSoundSource>(0);
 		m_sound4->Init(L"sound/blood_flow.wav");
 		m_sound4->Play(false);
-		m_sound4->SetVolume(0.5f);
+		m_sound4->SetVolume(1.0f);
 		Tiflag = true;
 
 		m_state = enState_4;
@@ -191,7 +191,7 @@ void Title::Update()
 		m_sound3 = NewGO<prefab::CSoundSource>(0);
 		m_sound3->Init(L"sound/ketteion.wav");
 		m_sound3->Play(false);
-		m_sound3->SetVolume(0.5f);
+		m_sound3->SetVolume(1.0f);
 
 	}
 

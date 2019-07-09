@@ -88,39 +88,50 @@ bool Result::Start()
 
 	//音楽を出す
 	m_sound = NewGO<prefab::CSoundSource>(0);
-	m_sound->Init(L"Assete/sound/Rsound.wav");
+	m_sound->Init(L"sound/Rsound.wav");
+	m_sound->Play(true);
+	m_sound->SetVolume(0.5f);
 	
 	return true;
 }
 void Result::Update()
 {
 	switch (m_start)
-    {
+	{
 	case Result::enStart_new:
 	{
-		//総合
-		CVector3 soupos = m_sprite1->GetPosition();//総合
-		if (Sugoutimer < DropLimitS) {
-			//落ちてくる
-			CVector3 pos = SDrop - movepos;//初期位置から目的の位置へ降りてくてくる
-			pos /= DropLimitS;//距離÷時間
-			soupos -= pos;
+		if (Asiatoflag == false) {
+			m_sound3 = NewGO<prefab::CSoundSource>(0);
+			m_sound3->Init(L"sound/walk-gravel1.wav");
+			m_sound3->Play(false);
+			m_sound3->SetVolume(1.0f);
+			Asiatoflag = true;
+		}
+			//総合
+			CVector3 soupos = m_sprite1->GetPosition();//総合
+			if (Sugoutimer < DropLimitS) {
+				//落ちてくる
+				CVector3 pos = SDrop - movepos;//初期位置から目的の位置へ降りてくてくる
+				pos /= DropLimitS;//距離÷時間
+				soupos -= pos;
 
-		}
-		else if (Sugoutimer < DropLimitS + RemoveLimitS) {
-			//落ちる時間と戻る時間を足す。
-			//戻り。
-			CVector3 pos1 = SDrop - SDroppos;//初期位置
-			pos1 /= RemoveLimitS;
-			soupos += pos1;
-		}
-		else {
-			m_start = enStart_1;
-		}
+			}
+			else if (Sugoutimer < DropLimitS + RemoveLimitS) {
+				//落ちる時間と戻る時間を足す。
+				//戻り。
+				CVector3 pos1 = SDrop - SDroppos;//初期位置
+				pos1 /= RemoveLimitS;
+				soupos += pos1;
+			}
+			else {
 
-		Sugoutimer++;
-		m_sprite1->SetPosition(soupos);
-		break;
+				m_start = enStart_1;
+
+			}
+
+			Sugoutimer++;
+			m_sprite1->SetPosition(soupos);
+			break;
 	}
 
 	case Result::enStart_1:
@@ -143,6 +154,11 @@ void Result::Update()
 		////血
 		CVector3 Ttipos = m_sprite3->GetPosition();//罪人の血
 		m_sprite3->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+		/*m_sound1 = NewGO<prefab::CSoundSource>(0);
+		m_sound1->Init(L"sound/blood_flow.wav");
+		m_sound1->Play(false);
+		m_sound1->SetVolume(0.5f);
+		Tiflag = true;*/
 		m_start = enStart_3;
 		break;
 	}
@@ -160,7 +176,7 @@ void Result::Update()
 		}
 		m_sprite5->SetPosition(zenpos);
 		break;
-		
+
 	}
 	case Result::enStart_4:
 	{
@@ -168,6 +184,11 @@ void Result::Update()
 		CVector3 ZH = m_sprite6->GetPosition();//善人の光
 		m_sprite6->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
 		m_start = enStart_5;
+		/*m_sound4 = NewGO<prefab::CSoundSource>(0);
+		m_sound4->Init(L"sound/shine3.wav");
+		m_sound4->Play(false);
+		m_sound4->SetVolume(0.5f);
+		Hiflag = true;*/
 		break;
 	}
 	case Result::enStart_5:
@@ -177,7 +198,7 @@ void Result::Update()
 			TT++;
 			if (TT <= Tu) {
 				wchar_t text[256];
-				swprintf(text, L"%02d%%",TT);
+				swprintf(text, L"%02d%%", TT);
 				m_font->SetText(text);
 				m_font->SetPosition({ 150.0f,100.0f });
 				m_font->SetPivot({ 0.0f,0.0f });
@@ -198,6 +219,11 @@ void Result::Update()
 		//血全体のやつ
 		CVector3 titi = m_sprite4->GetPosition();
 		m_sprite4->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+		m_sound2 = NewGO<prefab::CSoundSource>(0);
+		m_sound2->Init(L"sound/blood2.wav");
+		m_sound2->Play(false);
+		m_sound2->SetVolume(1.5f);
+		Ti2flag = true;
 		m_start = enStart_7;
 		break;
 	}
@@ -206,7 +232,7 @@ void Result::Update()
 		//善人度パーセント
 		if (Zenpaflag == false) {
 			ZZ++;
-			if(ZZ<=Ze){
+			if (ZZ <= Ze) {
 				wchar_t text[256];
 				swprintf(text, L"%02d%%", ZZ);
 				m_font2->SetText(text);
@@ -218,7 +244,7 @@ void Result::Update()
 				Zenpaflag = true;
 			}
 		}
-		else if(Zenpaflag == true){
+		else if (Zenpaflag == true) {
 			m_start = enStart_8;
 		}
 		break;
@@ -228,6 +254,12 @@ void Result::Update()
 		//光パーセントがでたときの　全体の光
 		CVector3 Hkari = m_sprite7->GetPosition();
 		m_sprite7->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+		m_sound5 = NewGO<prefab::CSoundSource>(0);
+		m_sound5->Init(L"sound/button81.wav");
+		m_sound5->Play(false);
+		m_sound5->SetVolume(0.8f);
+
+		Hi2flag = true;
 		m_start = enStart_9;
 		break;
 	}
@@ -243,6 +275,7 @@ void Result::Update()
 		break;
 	}
 
-    }
+
+	}
 	
 }
