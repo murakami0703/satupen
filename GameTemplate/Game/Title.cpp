@@ -77,10 +77,10 @@ bool Title::Start()
 	
 
 	//‰¹Šyİ’è
-	/*m_sound = NewGO<prefab::CSoundSource>(0);
+	m_sound = NewGO<prefab::CSoundSource>(0);
 	m_sound->Init(L"sound/aaa.wav");
-	//m_sound->SetVolume(0.5f);
-	m_sound->Play(true);*/
+	m_sound->SetVolume(0.5f);
+	m_sound->Play(true);
 	return true;
 }
 	
