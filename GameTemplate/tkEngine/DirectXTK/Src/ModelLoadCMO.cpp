@@ -796,7 +796,7 @@ std::unique_ptr<Model> DirectX::Model::CreateFromCMO(
     if ( FAILED(hr) )
     {
         DebugTrace( "CreateFromCMO failed (%08X) loading '%ls'\n", hr, szFileName );
-        throw std::exception(NOT_LOADED_CMO_EXCEPTION_ESSAGE);
+		throw std::exception(NOT_LOADED_CMO_EXCEPTION_ESSAGE);
     }
 
     auto model = CreateFromCMO( 
