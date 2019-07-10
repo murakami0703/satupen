@@ -41,6 +41,7 @@ private:
 	void BirdWalk();
 	void BirdFly();
 	void BirdDeath();
+	void BirdHorizon();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -63,8 +64,17 @@ private:
 	//飛び関連
 	const float flyRange = 300.0f;		//逃げる距離（プレイヤーから離れる距離）
 
-	int HP = 100;
-	const int MAX_HP = 100;
+	//視野角
+	const float horilong = 350.0f;	//視野角判定の距離
+	const float horiAngle = 45.0f;	//視野角判定の角度
 
+	//エフェクト関連
+	const CVector3 EfeSize = { 5.0f,5.0f,5.0f };	//エフェクトの大きさ
+
+	const float DeadLength = 30.0f;	//ペンとの当たり判定距離
+
+	//体力ぅぅぅ
+	int HP = 100;				//現在の体力
+	const int MAX_HP = 100;		//最大体力
 };
 

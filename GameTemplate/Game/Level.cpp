@@ -35,9 +35,9 @@ bool Level::Start() {
 
 		int EnemyCount = 0;
 		int ItemCount = 0;
-		m_level.Init(L"level/level_05.tkl", [&](LevelObjectData& objData) {
+		m_level.Init(L"level/level_06.tkl", [&](LevelObjectData& objData) {
 
-			if (objData.EqualObjectName(L"sute")) {
+			if (objData.EqualObjectName(L"stege1")) {
 				//îwåi
 				Background* back = NewGO<Background>(0, "background");
 				back->SetPosition(objData.position);

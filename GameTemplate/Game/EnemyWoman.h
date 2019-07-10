@@ -31,7 +31,7 @@ public:
 	void SetRotation(CQuaternion rot)
 	{
 		m_rotation = rot;
-	}		
+	}
 
 private:
 
@@ -39,6 +39,7 @@ private:
 	void WomanWalk();
 	void WomanRunaway();
 	void WomanDeath();
+	void WomanHorizon();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -63,7 +64,17 @@ private:
 	const float runaway = 1000.0f; //逃げるのをやめる距離
 	const float followSpeed = 50.0f; //逃げる速度
 
-	int HP = 100;
-	const int MAX_HP = 100;
-};
+	//視野角
+	const float horilong = 350.0f;	//視野角判定の距離
+	const float horiAngle = 45.0f;	//視野角判定の角度
 
+	//エフェクト関連
+	const CVector3 EfeSize = { 5.0f,5.0f,5.0f };	//エフェクトの大きさ
+
+	const float DeadLength = 30.0f;	//ペンとの当たり判定距離
+
+	//体力ぅぅぅ
+	int HP = 100;				//現在の体力
+	const int MAX_HP = 100;		//最大体力};
+
+};

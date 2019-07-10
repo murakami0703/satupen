@@ -15,13 +15,14 @@ Scope::~Scope()
 bool Scope::Start()
 {
 	m_sprite = NewGO<prefab::CSpriteRender>(0);
-	m_sprite->Init(L"sprite/suko.dds", 200, 200);
+	m_sprite->Init(L"sprite/suko.dds", 150.0f, 150.0f);
 	return true;
 }
 void Scope::Update()
 {
 	Player* player = Player::GetInstance();
 
+	//プレイヤーがLBを押したときだけ動かします
 	if (player->IsSetup() == true) {
 		R_stick.x = Pad(0).GetRStickXF();
 		R_stick.y = Pad(0).GetRStickYF();
@@ -30,13 +31,13 @@ void Scope::Update()
 		m_position.y = m_position.y + R_stick.y * 30.0f;
 		m_sprite->SetMulColor({ 1.0f,1.0f,1.0f,0.4f });
 	}
-	else {
+	else {		//離したら中央に戻ってくる。
 		m_position.x = 0.0f;
 		m_position.y = 0.0f;
 		m_sprite->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });
 
 	}
-
+	
 	if (m_position.y > 120.0f) {
 		m_position.y = 120.0f;
 	}

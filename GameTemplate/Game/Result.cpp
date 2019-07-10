@@ -19,6 +19,9 @@ Result::~Result()
 	DeleteGO(m_sprite7);//åıÅ@1280*720
 	DeleteGO(m_sprite8);//Ç†Ç»ÇΩÇÕÅ@400*150
 
+	DeleteGO(m_font);
+	DeleteGO(m_font2);
+
 }
 bool Result::Start()
 {

@@ -25,6 +25,7 @@ Game::~Game()
 	DeleteGOs("penG");
 	DeleteGOs("level");
 	DeleteGOs("EffectManager");
+	DeleteGOs("light");
 }
 bool Game::Start()
 {
@@ -36,6 +37,7 @@ bool Game::Start()
 	NewGO<PenGenerator>(0, "penG");
 	NewGO<Level>(0, "level");
 	NewGO<EffectManager>(0, "EffectManager");
+
 	//1–{–Ú
 	auto dirLig = NewGO<prefab::CDirectionLight>(0, "light");
 	dirLig->SetColor({5.0f, 5.0f, 5.0f, 1.0f});

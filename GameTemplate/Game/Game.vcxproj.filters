@@ -15,8 +15,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="StoreItem.cpp" />
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EffectPlay.cpp" />
     <ClCompile Include="Result.cpp" />
@@ -38,6 +36,12 @@
     <ClCompile Include="EnemyWoman.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="StoreItem.cpp">
+      <Filter>DestructionItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>DestructionItem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -54,8 +58,6 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="StoreItem.h" />
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EffectPlay.h" />
     <ClInclude Include="Result.h" />
@@ -76,6 +78,12 @@
     </ClInclude>
     <ClInclude Include="EnemyWoman.h">
       <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreItem.h">
+      <Filter>DestructionItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>DestructionItem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +125,9 @@
     </Filter>
     <Filter Include="Enemy">
       <UniqueIdentifier>{5693c66e-3c60-46e2-8ef3-12611c6caf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DestructionItem">
+      <UniqueIdentifier>{75d7179b-c35c-4871-9abc-b797afc21d9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +363,9 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
       <Filter>Aseets\modelData\neko</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\stege\stege1.FBX">
+      <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>
   <ItemGroup>

@@ -46,6 +46,7 @@ private:
 	void ManWalk();
 	void ManAttack();
 	void ManDeath();
+	void ManHorizon();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -68,9 +69,17 @@ private:
 	//攻撃関連
 	const float attackSpeed = 40.0f; //逃げる速度
 
-	//HP関連
-	int HP = 100;//体力
-	const int MAX_HP = 100;//最大体力
+	//視野角
+	const float horilong = 350.0f;	//視野角判定の距離
+	const float horiAngle = 45.0f;	//視野角判定の角度
 
+	//エフェクト関連
+	const CVector3 EfeSize = { 5.0f,5.0f,5.0f };	//エフェクトの大きさ
+
+	const float DeadLength = 30.0f;	//ペンとの当たり判定距離
+
+	//体力ぅぅぅ
+	int HP = 100;				//現在の体力
+	const int MAX_HP = 100;		//最大体力
 };
 

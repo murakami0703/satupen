@@ -40,6 +40,7 @@ private:
 	void ChildrenWalk();
 	void ChildrenRunaway();
 	void ChildrenDeath();
+	void ChildrenHorizon();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -53,19 +54,31 @@ private:
 	//停止状態関連
 	int stoptimer = 0;//停止用タイマー
 	const float stopendtimer = 60.0f; //停止を辞めますぅ
+
 	//歩き関連
 	CVector3 walkmove = CVector3::Zero; // 座標。
 	int count = 0; //移動用カウント
 	int wrandom = 0; //移動の方向乱数
 	const int randomCount = 300; //ランダムで移動方向切り替えタイマー
 	const float randomSpeed = 1.0f; //移動速度
+
 	//逃げ関連
 	const float followRange = 300.0f; //逃げる距離（プレイヤーから離れる距離）
 	const float runaway = 1000.0f; //逃げるのをやめる距離
-	const float followSpeed = 50.0f; //逃げる速度
+	const float followSpeed = 5.0f; //逃げる速度
 	
-	int HP = 100;
-	const int MAX_HP = 100;
+	//視野角
+	const float horilong = 350.0f;	//視野角判定の距離
+	const float horiAngle = 45.0f;	//視野角判定の角度
+
+	//エフェクト関連
+	const CVector3 EfeSize = { 5.0f,5.0f,5.0f };	//エフェクトの大きさ
+
+	const float DeadLength = 30.0f;	//ペンとの当たり判定距離
+
+	//体力ぅぅぅ
+	int HP = 100;				//現在の体力
+	const int MAX_HP = 100;		//最大体力
 
 };
 

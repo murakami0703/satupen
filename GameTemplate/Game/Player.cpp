@@ -74,9 +74,9 @@ void Player::Movestick()
 	moveVec.z = 0.0f;
 	moveVec += cameraForward * stick.x * 100.0f;	//‰œ•ûŒü‚Ö‚ÌˆÚ“®‘¬“x‚ğ‰ÁZB
 
-
+	//if(stick.x)
 	//d—Í
-	moveVec.y -= 2.0f;
+	//moveVec.y -= 2.0f;
 	m_position = m_charaCon.Execute(moveVec);
 	
 }

@@ -28,6 +28,41 @@ bool EnemyDog::Start()
 	);
 	return true;
 }
+void EnemyDog::DogHorizon()
+{
+	Player* player = Player::GetInstance();
+	//エネミーの前方方向を求める。
+	//前方方向は{0, 0, 1}のベクトルをm_rotationで回して求めてみる。
+	CVector3 enemyForward = { 0.0f, 0.0f, -1.0f };
+	m_rotation.Multiply(enemyForward);
+
+	//エネミーからプレイヤーに伸びるベクトルを求める。
+	CVector3 toPlayerDir = player->Getm_Position() - m_position;
+
+	//正規化を行う前に、プレイヤーまでの距離を求めておく。
+	float toPlayerLen = toPlayerDir.Length();
+	//正規化
+	toPlayerDir.Normalize();
+
+	//enemyForwardとtoPlayerDirとの内積を計算する。
+	float d = enemyForward.Dot(toPlayerDir);
+
+	//内積の結果をacos関数に渡して、enemyForwardとtoPlayerDirのなす角を求める。
+	float angle = acos(d);
+
+
+	//視野角判定
+	//fabsfは絶対値を求める関数！
+	//角度はマイナスが存在するから、絶対値にする。
+	if (fabsf(angle) < CMath::DegToRad(horiAngle) && toPlayerLen < horilong)
+	{
+		//近い！！！！！
+		m_state = EnState_attack;
+
+	}
+
+}
+
 void EnemyDog::DogIdle()
 {
 	//待機状態
@@ -39,10 +74,6 @@ void EnemyDog::DogIdle()
 	moveVec = moveVec * 0.0f;	//動きませーーん
 	if (stoptimer >= stopendtimer) {
 		m_state = EnState_walk;
-	}
-	if (diff.Length() < attackRange) {
-		//距離が近いので逃げます！
-		m_state = EnState_attack;
 	}
 }
 void EnemyDog::DogWalk()
@@ -61,10 +92,6 @@ void EnemyDog::DogWalk()
 		walkmove = { 0.0f, 0.0f,-1.0f };
 		m_rotation.Multiply(walkmove);
 		count = 0;
-	}
-	else if (diff.Length() < attackRange) {
-		//距離が近いので攻撃しま！
-		m_state = EnState_attack;
 	}
 	moveVec = walkmove * randomSpeed;
 	m_position = m_charaCon.Execute(moveVec);
@@ -120,6 +147,7 @@ void EnemyDog::DogDeath()
 
 void EnemyDog::Update()
 {
+	DogHorizon();	//視野角
 	switch (m_state)
 	{
 	case EnemyDog::EnState_idle:
@@ -141,10 +169,11 @@ void EnemyDog::Update()
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();
 		CVector3 diff = pen_position - m_position;
-		if (diff.Length() < 30.0f) {
+		if (diff.Length() < DeadLength) {
 			//撃たれた....
 			GameData* gamedata = GameData::GetInstance();
 			gamedata->DeadHkasan(1);
+			gamedata->ResultDeadkasan(GameData::DeadDog);
 			//ペンも消滅
 			pen->SetDeath();
 			m_state = EnState_death;//死にます。
