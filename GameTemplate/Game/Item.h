@@ -22,6 +22,7 @@ public:
 	}
 private:
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
+	prefab::CSoundSource* m_sound = nullptr;//アイテムを拾った音。
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity;			//回転。
 	EnState m_state = Wait;

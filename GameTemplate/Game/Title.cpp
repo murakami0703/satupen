@@ -195,14 +195,14 @@ void Title::Update()
 
 	}
 
-	if (Pad(0).IsTrigger(enButtonStart)) {
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Result>(0, "result");
 		DeleteGO(this);
 
-	}
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
+	}*/
+	if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<Game>(0, "game");
 		DeleteGO(this);
 
-	}*/
+	}
 }

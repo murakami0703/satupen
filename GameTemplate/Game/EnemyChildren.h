@@ -31,6 +31,7 @@ private:
 	void ChildrenDeath();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
+	//prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
 	CVector3 m_scale = CVector3::Zero; // スケール

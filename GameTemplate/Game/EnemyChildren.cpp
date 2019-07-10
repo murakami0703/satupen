@@ -148,6 +148,7 @@ void EnemyChildren::Update()
 			gamedata->DeadHkasan(1);
 			//ƒyƒ“‚àÁ–Å
 			pen->SetDeath();
+
 			m_state = EnState_death;//€‚É‚Ü‚·B
 		}
 		return true;

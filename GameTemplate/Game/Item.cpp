@@ -47,6 +47,10 @@ void Item::Update()
 			GameData* gamedata = GameData::GetInstance();
 			gamedata->Zandannkasan(+3);
 			DeleteGO(this);
+			m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/MZaitemu.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.3f);
 		}
 		break;
 	}

@@ -37,6 +37,7 @@ void PenGenerator::Update()
 		if (Pad(0).IsTrigger(enButtonLB1) || Pad(0).IsTrigger(enButtonRB1)) {
 			NewGO<Pen>(0, "pen");
 			gamedata->Zandannkasan(-1);
+
 		}
 	}
 	else if (Zandan <= 0) {

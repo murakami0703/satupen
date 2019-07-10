@@ -333,5 +333,8 @@
     <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
+      <Filter>Aseets\modelData\ste</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

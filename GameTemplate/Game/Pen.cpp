@@ -57,6 +57,11 @@ void Pen::Update()
 		diff = P_target - m_position;
 		diff.Normalize();
 		keisannflag = true;
+		//“Š‚°‚é‚Ì‰¹‚¾‚æ‚¨
+		m_sound = NewGO<prefab::CSoundSource>(0);
+		m_sound->Init(L"sound/MZnageru.wav");
+		m_sound->Play(false);
+		m_sound->SetVolume(0.5f);
 	}
 	//is•ûŒü‚É‰ñ“]‚µ‚Ä‚Ü‚·‚£B
 	CQuaternion qRot;
