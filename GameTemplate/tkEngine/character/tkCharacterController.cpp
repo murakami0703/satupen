@@ -176,9 +176,15 @@ namespace tkEngine {
 				SweepResultWall callback;
 				callback.me = m_rigidBody.GetBody();
 				callback.startPos = posTmp;
-				//衝突検出。
-				PhysicsWorld().ConvexSweepTest((const btConvexShape*)m_collider.GetBody(), start, end, callback);
+				CVector3 diff;
+				diff.x = start.getOrigin().getX() - end.getOrigin().getX();
+				diff.y = start.getOrigin().getY() - end.getOrigin().getY();
+				diff.z = start.getOrigin().getZ() - end.getOrigin().getZ();
 
+				if (diff.Length() > 0.1f) {
+					//衝突検出。
+					PhysicsWorld().ConvexSweepTest((const btConvexShape*)m_collider.GetBody(), start, end, callback);
+				}
 				if (callback.isHit) {
 					//当たった。
 					m_isWall=true;

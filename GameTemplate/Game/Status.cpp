@@ -32,6 +32,9 @@ Status::~Status()
 	DeleteGO(m_sprite17);
 	DeleteGO(m_sprite18);
 	//DeleteGO(m_sprite19);
+
+	DeleteGO(m_font);
+	DeleteGO(m_fontP);
 }
 bool Status::Start()
 {

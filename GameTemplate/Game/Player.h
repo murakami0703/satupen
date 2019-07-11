@@ -8,16 +8,19 @@ class Player : public IGameObject
 public:
 	Player();
 	~Player();
+	//行動状態
 	enum EnState {
-		Estate_idle,
-		Estate_move,
-		Estate_attack,
+		Estate_idle,	//待機
+		Estate_move,	//行動中
+		Estate_pre,		//予備
+		Estate_attack,		//飛ばした
 	};
 	//アニメーション
 	enum EnAnimationClip {
 		enAnimationClip_idle, //待機
-		enAnimationClip_walk,  //走り
-		enAnimationClip_attack, //攻撃
+		enAnimationClip_walk,  //歩き
+		enAnimationClip_pre,  //予備
+		enAnimationClip_attack, //飛ばした
 		enAnimationClip_Num,  //アニメーションクリップ
 	};
 
@@ -41,6 +44,10 @@ public:
 	{
 		return m_isDash;
 	}
+	bool IsSetup() const	//	構え判定
+	{
+		return m_isSet;
+	}
 
 private:
 	void Movestick();	//パッド移動
@@ -61,16 +68,18 @@ private:
 	CVector3 stick = CVector3::Zero;    //スティック
 	CCharacterController m_charaCon;    //キャラコン
 
-	CAnimationClip  m_animClips[enAnimationClip_Num];//アニメーション
+	EnState m_state = Estate_idle;							//状態
+	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 
 	//移動関連
-	const float movespeed = 30.0f;
+	const float movespeed = 30.0f;							//移動速度
 	//回転
-	bool Turnflag = false;
-	int TurnTimer = 0;
-	const float keisann = 180.0f / TurnEnd;
-	const float  TurnEnd = 60.0f;
+	bool Turnflag = false;									//180°回転フラグ
+	int TurnTimer = 0;										//回転タイマー
+	const float  TurnEnd = 60.0f;							//回転終了までの時間
 
-	bool m_isDash = false;//ダッシュ判定
+	bool m_isDash = false;									//ダッシュ判定
+	bool m_isSet = false;									//構え判定
+
 };
 

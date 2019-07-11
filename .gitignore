@@ -1,7 +1,4 @@
 .vs/
-x64/
-*.cmo
-*.dds
 *.lib
 *.obj
 *.cso
@@ -10,3 +7,4 @@ x64/
 *.tlog
 *.pdb
 *.ini
+/GameTemplate/Game/Assets/modelData/ste/sute.fbx

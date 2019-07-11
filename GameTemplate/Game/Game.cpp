@@ -25,17 +25,19 @@ Game::~Game()
 	DeleteGOs("penG");
 	DeleteGOs("level");
 	DeleteGOs("EffectManager");
+	DeleteGOs("light");
 }
 bool Game::Start()
 {
-	NewGO<GameCamera>(0, "gcamera");
 	NewGO<Player>(0, "player");
+	NewGO<GameCamera>(0, "gcamera");
 	NewGO<Scope>(0, "scope");
 	NewGO<Status>(0, "status");
 	NewGO<GameData>(0, "gamedata");
 	NewGO<PenGenerator>(0, "penG");
 	NewGO<Level>(0, "level");
 	NewGO<EffectManager>(0, "EffectManager");
+
 	//1–{–Ú
 	auto dirLig = NewGO<prefab::CDirectionLight>(0, "light");
 	dirLig->SetColor({5.0f, 5.0f, 5.0f, 1.0f});

@@ -2,7 +2,9 @@
 #include "Pen.h"
 #include "Scope.h"
 #include "Player.h"
+#include "Background.h"
 
+#include "EnemyWoman.h"
 Pen::Pen()
 {
 }
@@ -14,7 +16,9 @@ Pen::~Pen()
 }
 
 bool Pen::Start()
+
 {
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/ya.cmo");
 	//ƒvƒŒƒCƒ„[‚ÌêŠ‚É”­¶
@@ -40,6 +44,9 @@ bool Pen::Start()
 
 void Pen::Update()
 {
+	/*PhysicsWorld().ContactTest(m_ghost.GetBody(), [&](const btCollisionObject& contactCollisionObject) {
+
+	});*/
 	Timer++;
 	Player* pl = FindGO<Player>("player");
 	//”ò‚Î‚·‚æ‚¨

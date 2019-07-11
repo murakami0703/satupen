@@ -13,16 +13,35 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="EnemyWoman.cpp" />
-    <ClCompile Include="EnemyMan.cpp" />
-    <ClCompile Include="EnemyChildren.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="StoreItem.cpp" />
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EffectPlay.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="EnemyBird.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyCat.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyChildren.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyDog.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMan.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyWoman.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreItem.cpp">
+      <Filter>DestructionItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>DestructionItem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -37,16 +56,35 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Level.h" />
-    <ClInclude Include="EnemyWoman.h" />
-    <ClInclude Include="EnemyMan.h" />
-    <ClInclude Include="EnemyChildren.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="StoreItem.h" />
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EffectPlay.h" />
     <ClInclude Include="Result.h" />
+    <ClInclude Include="EnemyBird.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCat.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyChildren.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDog.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMan.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyWoman.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreItem.h">
+      <Filter>DestructionItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>DestructionItem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -75,6 +113,21 @@
     </Filter>
     <Filter Include="Aseets\modelData\ste\store_item">
       <UniqueIdentifier>{b842e904-baf7-4dc4-9f9a-c772afc2c966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\karasu">
+      <UniqueIdentifier>{8e988fb6-a337-4d8e-9d0f-51b61468cf02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\inu">
+      <UniqueIdentifier>{c31e3f94-168d-46d1-86e3-e8acd98ccb03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aseets\modelData\neko">
+      <UniqueIdentifier>{658a2120-d2f2-4012-906d-9998a6148d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{5693c66e-3c60-46e2-8ef3-12611c6caf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DestructionItem">
+      <UniqueIdentifier>{75d7179b-c35c-4871-9abc-b797afc21d9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -174,32 +227,7 @@
     <ImageContentTask Include="Assets\sprite\Titel\zange.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\sougou.png" />
-    <ImageContentTask Include="Assets\sprite\Titel\hazimeru1.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\anata.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\hikari.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\RH.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\ti2.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\Tti.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\tumido.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\zennindo.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Result\ZH.png">
+    <ImageContentTask Include="Assets\sprite\Result\sougou.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>
@@ -321,20 +349,52 @@
     <MeshContentTask Include="Assets\modelData\ste\store_item\Orangegas.FBX">
       <Filter>Aseets\modelData\ste\store_item</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
+      <Filter>Aseets\modelData\ste</Filter>
+    </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\ste\S_mado.FBX">
       <Filter>Aseets\modelData\ste</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\inu\inuu.fbx">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\karasu\karasuu.fbx">
-      <Filter>Aseets\modelData</Filter>
+      <Filter>Aseets\modelData\karasu</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\inu\inuu.fbx">
+      <Filter>Aseets\modelData\inu</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
+      <Filter>Aseets\modelData\neko</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\stege\stege1.FBX">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
       <Filter>Aseets\modelData\ste</Filter>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\Result\hikari.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\ti2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\Tti.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\tumido.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\zennindo.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\ZH.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\anata.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Result\RH.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
   </ItemGroup>
 </Project>
