@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Title.h"
 #include "Game.h"
-#include "Result.h"
 
 Title::Title()
 {
@@ -113,7 +112,7 @@ void Title::Update()
 			pos /= DropLimit; //距離÷時間で1フレームでの移動距離が求まる
 			penpos -= pos;
 		}
-		else if (Pentimer < DropLimit+RemoveLimit) {
+		else if (Pentimer < DropLimit + RemoveLimit) {
 			//戻り
 			CVector3 pos1 = PenDropPos - PenRemovePos;//初期位置と目標位置の計算
 			pos1 /= RemoveLimit; //距離÷時間で1フレームでの移動距離が求まる
@@ -151,53 +150,56 @@ void Title::Update()
 		m_state = enState_4;
 	}
 	case Title::enState_4:
-		CVector3 saturikuH = m_sprite1->GetPosition();
-			m_sprite1->SetMulColor({ 1.0,1.0f,1.0f,SP1 });
-			SP1 += 0.05f;
-			if (SP1 >= 1.0f) {
-				SP1 = 1.0f;
-			}
-	}
-	switch (m_Sart)
 	{
-	case Title::enStart_new:
-		//これが罪を重ねる。5
-		m_sprite7->SetPosition({ 100.0f,-200.0f,0.0f });
-		m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
-		m_sprite6->SetMulColor({ 0.5f,0.5f,0.5f,0.5f });
-		break;
-
-	case Title::enStart_restart:
-		//これが懺悔する。6
-		m_sprite7->SetPosition({ 100.0f,-280.0f,0.0f });
-		m_sprite5->SetMulColor({ 0.5f,0.5f,0.5f,0.5f });
-		m_sprite6->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
-		break;
-	}
-
-	if (Pad(0).IsTrigger(enButtonDown) || Pad(0).IsTrigger(enButtonUp)) {
-		if (m_Sart == enStart_new) {
-			m_Sart = enStart_restart;
-
-		}else if (m_Sart == enStart_restart) {
-			m_Sart = enStart_new;
+		CVector3 saturikuH = m_sprite1->GetPosition();
+		m_sprite1->SetMulColor({ 1.0,1.0f,1.0f,SP1 });
+		SP1 += 0.05f;
+		if (SP1 >= 1.0f) {
+			SP1 = 1.0f;
 		}
-		//選択するたびに音が鳴るようにする
-		m_sound3 = NewGO<prefab::CSoundSource>(0);
-		m_sound3->Init(L"sound/ketteion.wav");
-		m_sound3->Play(false);
-		m_sound3->SetVolume(0.5f);
+	}
+	case Title::enState_5:
+	{
+		switch (m_Sart)
+		{
+		case Title::enStart_new:
+		{
+			//これが罪を重ねる。5
+			m_sprite7->SetPosition({ 100.0f,-200.0f,0.0f });
+			m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+			m_sprite6->SetMulColor({ 0.5f,0.5f,0.5f,0.5f });
+			break;
+		}
+		case Title::enStart_restart:
+		{
+			//これが懺悔する。6
+			m_sprite7->SetPosition({ 100.0f,-280.0f,0.0f });
+			m_sprite5->SetMulColor({ 0.5f,0.5f,0.5f,0.5f });
+			m_sprite6->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });
+			break;
+		}
+		}
+		if (Pad(0).IsTrigger(enButtonDown) || Pad(0).IsTrigger(enButtonUp)) {
+			if (m_Sart == enStart_new) {
+				m_Sart = enStart_restart;
+
+			}
+			else if (m_Sart == enStart_restart) {
+				m_Sart = enStart_new;
+			}
+			//選択するたびに音が鳴るようにする
+			m_sound3 = NewGO<prefab::CSoundSource>(0);
+			m_sound3->Init(L"sound/ketteion.wav");
+			m_sound3->Play(false);
+			m_sound3->SetVolume(0.5f);
+
+		}
+		if (Pad(0).IsTrigger(enButtonStart)) {
+			NewGO<Game>(0, "game");
+			DeleteGO(this);
+
+		}
 
 	}
-
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<Result>(0, "result");
-		DeleteGO(this);
-
-	}*/
-	if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<Game>(0, "game");
-		DeleteGO(this);
-
 	}
 }

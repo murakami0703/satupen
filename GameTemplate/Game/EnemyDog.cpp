@@ -18,9 +18,9 @@ bool EnemyDog::Start()
 {
 	m_animClips[enAnimationClip_idle].Load(L"animData/Dogidel.tka"); //ë“ã@
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	m_animClips[enAnimationClip_idle].Load(L"animData/Dogwalk.tka"); //ï‡Ç´
-	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	//m_animClips[enAnimationClip_idle].Load(L"animData/Dogattack.tka"); //çUåÇ
+	m_animClips[enAnimationClip_walk].Load(L"animData/Dogwalk.tka"); //ï‡Ç´
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+	//m_animClips[enAnimationClip_attack].Load(L"animData/Dogattack.tka"); //çUåÇ
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/inu/inuu.cmo", m_animClips, enAnimationClip_Num);

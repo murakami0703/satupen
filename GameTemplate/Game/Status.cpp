@@ -2,7 +2,9 @@
 #include "Status.h"
 #include"GameData.h"
 #include"Player.h"
-
+#include "Result.h"
+#include "Game.h"
+#include "Result.h"
 
 Status::Status()
 {
@@ -23,7 +25,6 @@ Status::~Status()
 	DeleteGO(m_sprite8);
 	DeleteGO(m_sprite9);
 	DeleteGO(m_sprite10);
-	//DeleteGO(m_sprite11);
 	DeleteGO(m_sprite12);
 	DeleteGO(m_sprite13);
 	DeleteGO(m_sprite14);
@@ -31,7 +32,7 @@ Status::~Status()
 	DeleteGO(m_sprite16);
 	DeleteGO(m_sprite17);
 	DeleteGO(m_sprite18);
-	//DeleteGO(m_sprite19);
+	DeleteGO(m_sprite20);
 
 	DeleteGO(m_font);
 	DeleteGO(m_fontP);
@@ -45,16 +46,11 @@ bool Status::Start()
 	//時計スプライト
 	m_sprite1 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite1->Init(L"sprite/taim.dds", 1280.0f, 720.0f);
-
 	//時計の針
 	m_sprite20 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite20->Init(L"sprite/hari.dds", 200.0f, 200.0f);
 	m_position = { -10.0f,240.0f,0.0f };
 	m_sprite20->SetPosition(m_position);//座標を反映
-	//時計針小
-	m_sprite21 = NewGO<prefab::CSpriteRender>(0);
-	m_sprite21->Init(L"sprite/hariS.dds", 1280.0f, 720.0f);
-	m_sprite21->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB
 	//顔、ペンのBar
 	m_sprite2 = NewGO<prefab::CSpriteRender>(0);
 	m_sprite2->Init(L"sprite/wakuwaku.dds", 1280.0f, 720.0f);
@@ -94,12 +90,6 @@ bool Status::Start()
 	m_position = { 50.0f,49.0f,0.0f };//座標
 	m_sprite16->SetPosition(m_position);//座標を反映
 	m_sprite16->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB
-	//ペンのスプライト7
-	//m_sprite19 = NewGO<prefab::CSpriteRender>(0);
-	//m_sprite19->Init(L"sprite/pen7.dds", 1280.0f, 720.0f);
-	//m_position = {110.0f,49.0f,0.0f };//座標
-	//m_sprite19->SetPosition(m_position);//座標を反映
-	//m_sprite19->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB
 	//HPBarわく
 	m_sprite4 = NewGO<prefab::CSpriteRender>(3);
 	m_sprite4->Init(L"sprite/waku4.dds", 540.0f, 150.0f);
@@ -146,16 +136,11 @@ bool Status::Start()
 	m_position = { 80.0f,151.5f,0.0f };//座標
 	m_sprite10->SetPosition(m_position);
 	m_sprite10->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
-	//顔のスプライト6
-	//m_sprite11 = NewGO<prefab::CSpriteRender>(0);
-	//m_sprite11->Init(L"sprite/kao6.dds", 1280.0f, 720.0f, 0.0f);
-	//m_position = { 150.0f,151.5f,0.0f };//座標
-	//m_sprite11->SetPosition(m_position);
-	//m_sprite11->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 
 	//フォント
 	m_font = NewGO<prefab::CFontRender>(0);
 	m_fontP = NewGO<prefab::CFontRender>(0);
+
 	return true;
 
 }
@@ -189,11 +174,15 @@ void Status::Update()
 	m_sprite18->SetScale(LifeScale);
 	m_sprite18->SetMulColor(LifeColor);
 	//時計針回すやつ　時間は鬼調整で
+	rag += -0.2f * GameTime().GetFrameDeltaTime();
 	CQuaternion rot;
-	rot.SetRotation(CVector3::AxisZ, -0.05f * GameTime().GetFrameDeltaTime());
+	rot.SetRotation(CVector3::AxisZ, -0.2f * GameTime().GetFrameDeltaTime());
 	m_rotation.Multiply(rot);
 	m_sprite20->SetRotation(m_rotation);
-	float timer = gamedata->GetTimer();
+	if (CMath::DegToRad(359.0f) < -rag) {
+		NewGO<Result>(0);
+		DeleteGO(this);
+	}
 	//何人殺したかのやつ
 	wchar_t text[256];
 	int GetDH = gamedata->GetDeadH();
@@ -220,6 +209,7 @@ void Status::Update()
 
 	}
 	//顔の出すやつ
+	//5個だけテクスチャやで
 	if (gamedata->GetDeadH() >= 1) {
 		m_sprite5->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}
@@ -251,9 +241,9 @@ void Status::Update()
 		m_sprite10->SetMulColor({ 1.0f,1.0f,1.0f,0.0f });//RGB赤、緑、青
 	}
 
-	//}
 
 	//こっちペン3.12.13.14.15.16.19
+	//6個だけテクスチャやで
 	if (gamedata->GetZandan() >= 1) {
 		m_sprite3->SetMulColor({ 1.0f,1.0f,1.0f,1.0f });//RGB赤、緑、青
 	}

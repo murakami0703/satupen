@@ -239,6 +239,11 @@ void Result::Update()
 		}
 		break;
 	}
+	case Result::enStart_10:
+	{
+		//一定時間経過またはボタンを押すとゲームの選択ができる
+		//フェードイン
+	}
 
     }
 	

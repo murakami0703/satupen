@@ -16,7 +16,7 @@ bool Background::Start()
 {
 	//マップのロード
 	skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	skinModelRender->Init(L"modelData/stege/stege1.cmo");
+	skinModelRender->Init(L"modelData/ste/sute.cmo");
 	skinModelRender->SetScale(m_scale);
 	skinModelRender->SetPosition(m_position);
 	skinModelRender->SetShadowReceiverFlag(true);

@@ -43,29 +43,9 @@ public:
 	int GameData::Get_Life() {
 		return Life;
 	}
-	//現在の時間の経過を取得
-	float GameData::GetTimer() {
-		return Timer;
-	}
-	//最大のタイムを取得
-	float GameData::GetMAX_Timer() {
-		return MAX_Timer;
-	}
 	//敵を殺した数を取得
 	int GameData::GetDeadH() {
 		return DeadH;
-	}
-	//引数に設定した値を時間に加算する　負の数を設定したら減少する
-	void GameData::TimeKeika(float x) {
-		Timer += x;
-		if (Timer < 0) {
-			Timer = 0;
-		}
-
-		if (MAX_Timer < Timer) {
-			Timer = MAX_Timer;
-		}
-
 	}
 	//引数に設定した値を体力に加算する　負の数を設定したら減少する
 	void  GameData::tiryokugennsyou(int x) {
@@ -120,8 +100,6 @@ private:
 	int ATK = 100; //基本攻撃力
 	int DEF_Life = 100; //デフォルト体力
 	int Life = 100; //体力取得
-	float Timer = 0.0f;//タイマー
-	float MAX_Timer = 180.0f;//最大タイム
 	const int MAX_Zandann = 99;//最大残弾
 	const int MAX_DeadH = 999;//最大残虐数
 

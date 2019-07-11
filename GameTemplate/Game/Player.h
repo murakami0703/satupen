@@ -12,6 +12,7 @@ public:
 	enum EnState {
 		Estate_idle,	//待機
 		Estate_move,	//行動中
+		Estate_jump,	//行動中
 		Estate_pre,		//予備
 		Estate_attack,		//飛ばした
 	};
@@ -19,6 +20,7 @@ public:
 	enum EnAnimationClip {
 		enAnimationClip_idle, //待機
 		enAnimationClip_walk,  //歩き
+		enAnimationClip_jump,  //ジャンプ
 		enAnimationClip_pre,  //予備
 		enAnimationClip_attack, //飛ばした
 		enAnimationClip_Num,  //アニメーションクリップ
@@ -56,6 +58,7 @@ private:
 	void Dash();		//走るよぉおお
 	void Turn();		//180°回転
 	void Jump();		//ジャンプします
+	void yobi();		//構えるよぉ
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero;					// 座標。

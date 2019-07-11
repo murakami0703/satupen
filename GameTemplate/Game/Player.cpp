@@ -32,14 +32,14 @@ bool Player::Start()
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/playerwalk.tka"); //歩き
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	m_animClips[enAnimationClip_walk].Load(L"animData/Kamae.tka"); //予備
-	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+	m_animClips[enAnimationClip_jump].Load(L"animData/playerjump.tka"); //歩き
+	m_animClips[enAnimationClip_pre].Load(L"animData/Kamae.tka"); //予備
+
 	m_animClips[enAnimationClip_attack].Load(L"animData/Nageru.tka"); //攻撃
-	m_animClips[enAnimationClip_attack].SetLoopFlag(true);
 	//スキンモデル
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo", m_animClips, enAnimationClip_Num);
-	m_skinModelRender->PlayAnimation(0);
+	m_skinModelRender->PlayAnimation(1);
 	m_scale = { 1.0f,1.0f,1.0f };
 	m_position = { 0.0f,0.0f,0.0f };
 	m_skinModelRender->SetScale(m_scale);
@@ -74,15 +74,38 @@ void Player::Movestick()
 	moveVec.z = 0.0f;
 	moveVec += cameraForward * stick.x * 100.0f;	//奥方向への移動速度を加算。
 
-	//if(stick.x)
+	//地面上かつ予備動作していないとき
+	if (m_charaCon.IsOnGround() == true && m_isSet == false) {
+			if (fabsf(stick.x) < 0.001f && fabsf(stick.z) < 0.001f) {
+				//パッド入力がないので待機アニメショ
+				m_state = Estate_idle;
+				return;
+			}
+			else {
+				m_state = Estate_move;
+		}
+	}
 	//重力
-	//moveVec.y -= 2.0f;
+	moveVec.y -= 2.0f;
 	m_position = m_charaCon.Execute(moveVec);
 	
 }
 
 void Player::Animation()
 {
+	if (m_state == Estate_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if (m_state == Estate_move) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+	else if (m_state == Estate_jump) {
+		m_skinModelRender->PlayAnimation(2, 0.3f);
+	}
+	else if (m_state == Estate_pre) {
+		m_skinModelRender->PlayAnimation(3, 0.3f);
+
+	}
 }
 
 void Player::Rotation()
@@ -132,12 +155,24 @@ void Player::Jump()
 	//ジャンプします。
 	if (m_charaCon.IsOnGround() == true) {
 		if (Pad(0).IsTrigger(enButtonB) ) {
+			m_state = Estate_jump;
 			moveVec.y = 50.0f;
 		}
 	}
 	m_position = m_charaCon.Execute(moveVec);
 }
+void Player::yobi() {
+	if (Pad(0).IsPress(enButtonLB1)) {
+		//攻撃しようとしているぅアニメ署
+		//構えて
+		m_state = Estate_pre;
+		m_isSet = true;
+	}
+	else {
+		m_isSet = false;
+	}
 
+}
 void Player::Update()
 {
 	Movestick();	//パッド移動
@@ -146,15 +181,8 @@ void Player::Update()
 	Dash();			//走るよぉおお
 	Turn();			//180°回転
 	Jump();			//ジャンプします。
+	yobi();			//構えます
 
-	if (Pad(0).IsPress(enButtonLB1)) {
-		//攻撃しようとしているぅアニメ署
-		//構えて
-		m_isSet = true;
-	}
-	else {
-		m_isSet = false;
-	}
 	//移動と回転
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);

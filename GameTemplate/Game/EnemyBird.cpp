@@ -22,8 +22,8 @@ bool EnemyBird::Start()
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/Crowwalk.tka"); //•à‚«&“¦‚°
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	m_animClips[enAnimationClip_walk].Load(L"animData/Crowfly.tka"); //”ò‚Ñ
-	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+	m_animClips[enAnimationClip_fly].Load(L"animData/Crowfly.tka"); //”ò‚Ñ
+	m_animClips[enAnimationClip_fly].SetLoopFlag(true);
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/karasu/karasuu.cmo", m_animClips, enAnimationClip_Num);

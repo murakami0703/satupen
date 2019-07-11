@@ -10,6 +10,7 @@ public:
 		enState_2,//なかったけんとりあえず書いたやつ
 		enState_3,
 		enState_4,
+		enState_5
 	};
 	enum EnSart{
 		enStart_new,

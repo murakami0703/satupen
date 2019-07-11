@@ -19,11 +19,11 @@ bool EnemyMan::Start()
 	//ƒAƒjƒ[ƒVƒ‡ƒ“
 	m_animClips[enAnimationClip_idle].Load(L"animData/Manidel.tka"); //‘Ò‹@
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	m_animClips[enAnimationClip_idle].Load(L"animData/Manwalk.tka"); //•à‚«
-	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	//m_animClips[enAnimationClip_idle].Load(L"animData/ManAttackYobi.tka"); //—\”õ
-	//m_animClips[enAnimationClip_idle].Load(L"animData/ManDogeza.tka"); //UŒ‚
-	//m_animClips[enAnimationClip_idle].Load(L"animData/ManAttack.tka"); //“y‰ºÀ
+	m_animClips[enAnimationClip_walk].Load(L"animData/Manwalk.tka"); //•à‚«
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+	//m_animClips[enAnimationClip_yobi].Load(L"animData/ManAttackYobi.tka"); //—\”õ
+	//m_animClips[enAnimationClip_attack].Load(L"animData/ManDogeza.tka"); //UŒ‚
+	//m_animClips[enAnimationClip_prostrate].Load(L"animData/ManAttack.tka"); //“y‰ºÀ
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Man/otoko.cmo", m_animClips, enAnimationClip_Num);
