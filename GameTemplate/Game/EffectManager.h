@@ -24,7 +24,11 @@ public:
 	}
 
 private:
-
+	prefab::CSpriteRender* m_skin = nullptr;//枠
+	prefab::CSpriteRender* m_skin2 = nullptr;//白色
+	//KOTOが3Dカメラのために作ったやつ
+	CVector3 m_positioin;//これ枠
+	CVector3 m_position2;//これ白いやつ
 	//エフェクトファイル名
 	wchar_t DetaBase[10][30]{
 		{ L"" },//Nullなので何もない

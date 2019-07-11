@@ -2,6 +2,7 @@
 #include "Title.h"
 #include "Game.h"
 #include "Result.h"
+#include "Load.h"
 
 Title::Title()
 {
@@ -200,4 +201,8 @@ void Title::Update()
 		DeleteGO(this);
 
 	}
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
+		NewGO<Load>(0, "load");
+		DeleteGO(this);
+	}*/
 }

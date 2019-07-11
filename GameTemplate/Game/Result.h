@@ -61,6 +61,7 @@ private:
 	prefab::CSoundSource* m_sound3 = nullptr;//‘«‰¹
 	prefab::CSoundSource* m_sound4 = nullptr;//Œõ
 	prefab::CSoundSource* m_sound5 = nullptr;//Œõ‚Q
+	prefab::CSoundSource* m_sound6 = nullptr;//‚ ‚È‚½‚Í‚Ì‰¹Šy
 
 
 

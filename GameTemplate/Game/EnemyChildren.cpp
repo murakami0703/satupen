@@ -16,6 +16,18 @@ EnemyChildren::~EnemyChildren()
 
 bool EnemyChildren::Start()
 {
+	//敵のHPbar
+	m_skin = NewGO<prefab::CSpriteRender>(0);
+	m_skin->Init(L"sprite/AHP/Awaku.dds",100.0f, 30.0f );//500.0f, 45.0f
+	m_position2 = { 0.0f, 150.0f, 0.0f };
+	m_skin->SetPosition(m_position2);
+	//敵の白色のバー
+	m_skin2 = NewGO<prefab::CSpriteRender>(0);
+	m_skin2->Init(L"sprite/AHP/AWhp.dds", 100.0f, 30.0f);//500.0f, 80.0f
+	m_position2 = { 0.0f,150.0f,0.0f };
+	m_skin2->SetPosition(m_position2);
+	m_skin2->SetMulColor({ 0.0f,1.0f,0.0f,1.0f });
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Children/kodomo120.cmo");
 	m_skinModelRender->SetPosition(m_position);
@@ -147,6 +159,33 @@ void EnemyChildren::ChildrenDeath()
 
 void EnemyChildren::Update()
 {
+	//↓これで変更する
+	//スクリーンPos自分
+
+	//子供とカメラと距離を計算する。
+	CVector3 cameraPos = MainCamera().GetPosition();
+	CVector3 Pos = cameraPos - m_position;
+	float len = Pos.Length();
+	if (len  < 300.0f) {
+		m_skin->SetActiveFlag(true);
+		m_skin2->SetActiveFlag(true);
+		//2Dを非表示にするには、m_skin->SetActiveFlag(false);
+		//2Dを表示にするには、m_skin->SetActiveFlag(true);
+		CVector3 screenPos;
+		MainCamera().CalcScreenPositionFromWorldPosition2(screenPos, m_position);
+
+		if (screenPos.z > 0.0f) {
+			screenPos.z = 0.0f;
+			screenPos.y += 100.0f;
+			m_skin->SetPosition(screenPos);
+			m_skin2->SetPosition(screenPos);
+		}
+	}
+	else {
+		m_skin->SetActiveFlag(false);
+		m_skin2->SetActiveFlag(false);
+	}
+	
 	ChildrenHorizon();	//視野角
 
 	switch (m_state)

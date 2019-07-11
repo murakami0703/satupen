@@ -274,6 +274,10 @@ void Result::Update()
 		Ana += 0.05f;
 		if (Ana >= 1.0f) {
 			Ana = 1.0f;
+			m_sound6 = NewGO<prefab::CSoundSource>(0);
+			m_sound6->Init(L"sound/shakin1.wav");
+			m_sound6->Play(true);
+			m_sound6->SetVolume(0.5f);
 		}
 		break;
 	}

@@ -80,13 +80,24 @@ namespace tkEngine{
 	}
 	void CCamera::CalcScreenPositionFromWorldPosition(CVector2& screenPos, const CVector3& worldPos) const
 	{
-		float half_w = (float)GraphicsEngine().GetFrameBufferWidth() * 0.5f;
-		float half_h = (float)GraphicsEngine().GetFrameBufferHeight() * 0.5f;
+		float half_w = (float)GraphicsEngine().Get2DSpaceScreenWidth() * 0.5f;
+		float half_h = (float)GraphicsEngine().Get2DSpaceScreenHeight() * 0.5f;
 		CVector4 _screenPos;
 		_screenPos.Set(worldPos.x, worldPos.y, worldPos.z, 1.0f);
 		m_viewProjectionMatrix.Apply(_screenPos);
 		screenPos.x = (_screenPos.x / _screenPos.w)*half_w;
 		screenPos.y = (_screenPos.y / _screenPos.w)*half_h;
+	}
+	void CCamera::CalcScreenPositionFromWorldPosition2(CVector3& screenPos, const CVector3& worldPos) const
+	{
+		float half_w = (float)GraphicsEngine().Get2DSpaceScreenWidth() * 0.5f;
+		float half_h = (float)GraphicsEngine().Get2DSpaceScreenHeight() * 0.5f;
+		CVector4 _screenPos;
+		_screenPos.Set(worldPos.x, worldPos.y, worldPos.z, 1.0f);
+		m_viewProjectionMatrix.Apply(_screenPos);
+		screenPos.x = (_screenPos.x / _screenPos.w)*half_w;
+		screenPos.y = (_screenPos.y / _screenPos.w)*half_h;
+		screenPos.z = _screenPos.z / _screenPos.w;
 	}
 	void CCamera::CalcWorldPositionFromScrenPosition(CVector3& worldPos, const CVector2& screenPos, float z) const
 	{
