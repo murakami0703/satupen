@@ -97,7 +97,7 @@ namespace tkEngine{
 		m_viewProjectionMatrix.Apply(_screenPos);
 		screenPos.x = (_screenPos.x / _screenPos.w)*half_w;
 		screenPos.y = (_screenPos.y / _screenPos.w)*half_h;
-		screenPos.z = _screenPos.z / _screenPos.w;
+		screenPos.z = _screenPos.w;
 	}
 	void CCamera::CalcWorldPositionFromScrenPosition(CVector3& worldPos, const CVector2& screenPos, float z) const
 	{

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Load.h"
+#include"Game.h"
 
 
 Load::Load()
@@ -48,4 +49,9 @@ void Load::Update()
 		break;
 	}
 
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
+		NewGO<Game>(0, "game");
+		DeleteGO(this);
+
+	}*/
 }
