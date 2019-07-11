@@ -185,11 +185,12 @@ void EnemyChildren::Update()
 		//2Dを非表示にするには、m_skin->SetActiveFlag(false);
 		//2Dを表示にするには、m_skin->SetActiveFlag(true);
 		CVector3 screenPos;
-		MainCamera().CalcScreenPositionFromWorldPosition2(screenPos, m_position);
+		CVector3 atamaNoPos = m_position;
+		atamaNoPos.y += 30.0f;
+		MainCamera().CalcScreenPositionFromWorldPosition2(screenPos, atamaNoPos);
 
 		if (screenPos.z > 0.0f) {
 			screenPos.z = 0.0f;
-			screenPos.y += 100.0f;
 			m_skin->SetPosition(screenPos);
 			m_skin2->SetPosition(screenPos);
 		}
