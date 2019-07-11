@@ -18,16 +18,7 @@
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EffectPlay.cpp" />
     <ClCompile Include="Result.cpp" />
-    <ClCompile Include="EnemyBird.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyCat.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyChildren.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyDog.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyMan.cpp">
@@ -42,6 +33,8 @@
     <ClCompile Include="Window.cpp">
       <Filter>DestructionItem</Filter>
     </ClCompile>
+    <ClCompile Include="Load.cpp" />
+    <ClCompile Include="EnemyStatus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -61,16 +54,7 @@
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EffectPlay.h" />
     <ClInclude Include="Result.h" />
-    <ClInclude Include="EnemyBird.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyCat.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyChildren.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyDog.h">
       <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyMan.h">
@@ -85,6 +69,8 @@
     <ClInclude Include="Window.h">
       <Filter>DestructionItem</Filter>
     </ClInclude>
+    <ClInclude Include="Load.h" />
+    <ClInclude Include="EnemyStatus.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -230,6 +216,37 @@
     <ImageContentTask Include="Assets\sprite\Result\sougou.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Load\haikeii.png" />
+    <ImageContentTask Include="Assets\sprite\Load\Load.png" />
+    <ImageContentTask Include="Assets\sprite\AHP\Awaku.png" />
+    <ImageContentTask Include="Assets\sprite\AHP\AWhp.png" />
+    <ImageContentTask Include="Assets\sprite\Result\anata.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Titel\hazimeru1.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\hikari.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\Tti.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\tumido.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\zennindo.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\ZH.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\ti2.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Result\RH.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
@@ -364,34 +381,8 @@
     <MeshContentTask Include="Assets\modelData\neko\neko.fbx">
       <Filter>Aseets\modelData\neko</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\stege\stege1.FBX">
-      <Filter>Aseets\modelData</Filter>
+    <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
+      <Filter>Aseets\modelData\ste</Filter>
     </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\sprite\Result\hikari.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\ti2.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\Tti.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\tumido.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\zennindo.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\ZH.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\anata.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Result\RH.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
   </ItemGroup>
 </Project>

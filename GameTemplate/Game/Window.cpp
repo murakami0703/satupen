@@ -33,6 +33,13 @@ void Window::Update()
 		if (diff.Length() < 100.0f) {
 			//Œ‚‚½‚ê‚½....
 			//ƒyƒ“‚àÁ‚¦‚ë
+
+			//‚¤‚½‚ê‚½Žž‚Ì‰¹
+			m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/MAuke.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.5f);
+
 			pen->SetDeath();
 			DeleteGO(this);
 		}

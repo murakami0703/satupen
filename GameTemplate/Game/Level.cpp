@@ -47,11 +47,13 @@ bool Level::Start() {
 			/////////////////////////////////////////////////
 			//敵やでぇ
 			if (objData.EqualObjectName(L"kodomo120")) {
+				
 				//子供
 				EnemyChildren* Children = NewGO<EnemyChildren>(0, "children");
 				Children->SetPosition(objData.position);
 				Children->SetRotation(objData.rotation);
 				EnemyCount++;
+				
 				//フックしたのでtrueを返す。
 				return true;
 			}

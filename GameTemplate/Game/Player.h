@@ -61,12 +61,15 @@ private:
 	void yobi();		//構えるよぉ
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
-	CVector3 m_position = CVector3::Zero;					// 座標。
-	CQuaternion m_rotation = CQuaternion::Identity;			//回転。
-	CVector3 m_scale = CVector3::Zero;						// スケール
-	CVector3 moveVec = CVector3::Zero;						//移動速度
-	CVector3 stick = CVector3::Zero;						//スティック
-	CCharacterController m_charaCon;						//キャラコン
+	prefab::CSoundSource* m_sound = nullptr;//歩く音
+
+	CVector3 m_oldpos = CVector3::Zero;//最初に追った場所。
+	CVector3 m_position = CVector3::Zero;  // 座標。
+	CQuaternion m_rotation = CQuaternion::Identity;  //回転。
+	CVector3 m_scale = CVector3::Zero;  // スケール
+	CVector3 moveVec = CVector3::Zero;  //移動速度
+	CVector3 stick = CVector3::Zero;    //スティック
+	CCharacterController m_charaCon;    //キャラコン
 
 	EnState m_state = Estate_idle;							//状態
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション

@@ -24,6 +24,7 @@ EffectManager::~EffectManager()
 
 //エフェクト再生くん
 void EffectManager::EffectPlayer(Effect EF, CVector3 position, CVector3 scale) {
+
 	//作成
 	EffectPlay* p = NewGO<EffectPlay>(0);
 	//名前を引っ張ってくる

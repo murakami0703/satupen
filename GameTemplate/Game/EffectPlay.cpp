@@ -11,7 +11,7 @@ EffectPlay::~EffectPlay()
 }
 
 bool EffectPlay::Start()
-{
+{ 
 	//エフェクトのインスタンスの作成。
 	prefab::CEffect* effect = NewGO<prefab::CEffect>(0);
 	effect->Play(animation.c_str());	//再生

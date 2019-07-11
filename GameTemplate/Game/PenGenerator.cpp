@@ -42,6 +42,7 @@ void PenGenerator::Update()
 			//”­ŽË
 			NewGO<Pen>(0, "pen");
 			gamedata->Zandannkasan(-1);
+
 		}
 	}
 	else if (Zandan <= 0) {

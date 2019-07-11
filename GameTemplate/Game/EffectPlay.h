@@ -18,6 +18,7 @@ public:
 	}
 
 private:
+	
 	std::wstring animation;
 	CVector3 scale;
 	CVector3 position;

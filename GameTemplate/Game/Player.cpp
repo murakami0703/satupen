@@ -62,6 +62,7 @@ void Player::Movestick()
 	stick.y = 0.0f;
 	stick.z = Pad(0).GetLStickXF();
 
+
 	//カメラの前方方向と右方向を取得。
 	CVector3 cameraForward = MainCamera().GetForward();
 	//CVector3 cameraRight = MainCamera().GetRight();
@@ -121,6 +122,14 @@ void Player::Dash() {
 	if (Pad(0).IsPress(enButtonA)) {
 		m_isDash = true;
 		moveVec *= 2.0f;
+		CVector3 old = m_position - m_oldpos;
+		old.Normalize();
+		if (old.x>0.03f||old.z>0.03f) {
+			m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/Mwalk.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.5f);
+		}
 	}
 	else {
 		m_isDash = false;
