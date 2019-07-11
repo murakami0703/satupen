@@ -16,8 +16,15 @@ EnemyWoman::~EnemyWoman()
 
 bool EnemyWoman::Start()
 {
+	//アニメーション
+	m_animClips[enAnimationClip_idle].Load(L"animData/Womanidel.tka"); //待機
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	m_animClips[enAnimationClip_walk].Load(L"animData/Womanwalk.tka"); //歩き&逃げ
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/Woman/onna.cmo");
+	m_skinModelRender->Init(L"modelData/Woman/onna.cmo",m_animClips, enAnimationClip_Num);
+	m_skinModelRender->PlayAnimation(0);
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);
 
@@ -149,10 +156,18 @@ void EnemyWoman::WomanDeath()
 	DeleteGO(this);
 }
 
-
+void EnemyWoman::Animation() {
+	if (m_state == EnState_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if (m_state == EnState_runaway || m_state == EnState_walk) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+}
 void EnemyWoman::Update()
 {
 	WomanHorizon();	//視野角
+	Animation();
 	switch (m_state)
 	{
 	case EnState_idle:	//待機状態

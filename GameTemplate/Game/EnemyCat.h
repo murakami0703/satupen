@@ -12,6 +12,12 @@ public:
 		EnState_runaway,//逃げる
 		EnState_death,	//殺された
 	};
+	//アニメーション
+	enum  EnAnimationClip {
+		enAnimationClip_idle, //待機
+		enAnimationClip_walk,  //歩き
+		enAnimationClip_Num,  //アニメーションクリップ
+	};
 
 	bool Start();
 	void Update();
@@ -44,6 +50,7 @@ private:
 	void CatRunaway();
 	void CatDeath();
 	void CatHorizon();
+	void Animation();
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
@@ -53,6 +60,7 @@ private:
 	CVector3 moveVec = CVector3::Zero; // 座標。
 
 	CCharacterController m_charaCon; //キャラコン
+	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 
 	//待機関連
 	int stoptimer = 0;					//停止用タイマー

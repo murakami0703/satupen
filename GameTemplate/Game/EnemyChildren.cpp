@@ -16,8 +16,14 @@ EnemyChildren::~EnemyChildren()
 
 bool EnemyChildren::Start()
 {
+	//アニメーション
+	m_animClips[enAnimationClip_idle].Load(L"animData/Childrenidle.tka"); //待機
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	m_animClips[enAnimationClip_walk].Load(L"animData/Childrenwalk.tka"); //歩き&逃げ
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/Children/kodomo120.cmo");
+	m_skinModelRender->Init(L"modelData/Children/kodomo120.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
 
 	//キャラコン
@@ -144,11 +150,19 @@ void EnemyChildren::ChildrenDeath()
 	DeleteGO(this);
 }
 
+void EnemyChildren::Animation() {
+	if (m_state == EnState_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if (m_state == EnState_runaway || m_state == EnState_walk) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+}
 
 void EnemyChildren::Update()
 {
 	ChildrenHorizon();	//視野角
-
+	Animation();
 	switch (m_state)
 	{
 	case EnState_idle:	//待機状態

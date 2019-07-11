@@ -28,18 +28,18 @@ Player::~Player()
 bool Player::Start()
 {
 	//アニメーション
-	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka"); //待機
+	m_animClips[enAnimationClip_idle].Load(L"animData/playeridel.tka"); //待機
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
-	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka"); //歩き
+	m_animClips[enAnimationClip_walk].Load(L"animData/playerwalk.tka"); //歩き
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	m_animClips[enAnimationClip_walk].Load(L"animData/plrun.tka"); //予備
+	m_animClips[enAnimationClip_walk].Load(L"animData/Kamae.tka"); //予備
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	m_animClips[enAnimationClip_attack].Load(L"animData/plkougeki.tka"); //攻撃
-	m_animClips[enAnimationClip_attack].SetLoopFlag(true);*/
+	m_animClips[enAnimationClip_attack].Load(L"animData/Nageru.tka"); //攻撃
+	m_animClips[enAnimationClip_attack].SetLoopFlag(true);
 	//スキンモデル
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo");
-	//m_skinModelRender->PlayAnimation(0);
+	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo", m_animClips, enAnimationClip_Num);
+	m_skinModelRender->PlayAnimation(0);
 	m_scale = { 1.0f,1.0f,1.0f };
 	m_position = { 0.0f,0.0f,0.0f };
 	m_skinModelRender->SetScale(m_scale);
@@ -83,7 +83,6 @@ void Player::Movestick()
 
 void Player::Animation()
 {
-		//stateで管理
 }
 
 void Player::Rotation()

@@ -17,8 +17,16 @@ EnemyBird::~EnemyBird()
 
 bool EnemyBird::Start()
 {
+	//アニメーション
+	m_animClips[enAnimationClip_idle].Load(L"animData/Crowidle.tka"); //待機
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	m_animClips[enAnimationClip_walk].Load(L"animData/Crowwalk.tka"); //歩き&逃げ
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+	m_animClips[enAnimationClip_walk].Load(L"animData/Crowfly.tka"); //飛び
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/karasu/karasuu.cmo");
+	m_skinModelRender->Init(L"modelData/karasu/karasuu.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
 
 	//キャラコン
@@ -102,7 +110,21 @@ void EnemyBird::BirdWalk()
 void EnemyBird::BirdFly()
 {
 	//飛び
+	//上に逃げるよ
 }
+void EnemyBird::Animation() {
+	if (m_state == EnState_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if (m_state == EnState_walk) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+	else if (m_state == EnState_fly) {
+		m_skinModelRender->PlayAnimation(2);
+	}
+
+}
+
 void EnemyBird::BirdDeath()
 {
 	//死
@@ -115,6 +137,7 @@ void EnemyBird::BirdDeath()
 void EnemyBird::Update()
 {
 	BirdHorizon();	//視野角
+	Animation();
 	switch (m_state)
 	{
 	case EnemyBird::EnState_idle:

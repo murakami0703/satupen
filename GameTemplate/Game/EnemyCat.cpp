@@ -17,8 +17,15 @@ EnemyCat::~EnemyCat()
 
 bool EnemyCat::Start()
 {
+	//アニメーション
+	m_animClips[enAnimationClip_idle].Load(L"animData/Catidel.tka"); //待機
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	m_animClips[enAnimationClip_walk].Load(L"animData/Catwalk.tka"); //歩き&逃げ
+	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
+
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/neko/neko.cmo");
+	m_skinModelRender->Init(L"modelData/neko/neko.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
 
 	//キャラコン
@@ -145,11 +152,19 @@ void EnemyCat::CatDeath()
 	DeleteGO(this);
 
 }
+void EnemyCat::Animation() {
+	if (m_state == EnState_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if (m_state == EnState_runaway || m_state == EnState_walk) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+}
 
 void EnemyCat::Update()
 {
 	CatHorizon();	//視野角
-
+	Animation();
 	switch (m_state)
 	{
 	case EnemyCat::EnState_idle:

@@ -7,14 +7,17 @@ public:
 	enum EnState {
 		EnState_idle,	//待機
 		EnState_walk,	//歩き
+		EnState_yobi,	//予備動作
 		EnState_attack,	//攻撃
 		EnState_death,	//殺された
 	};
-
+	//アニメーション
 	enum  EnAnimationClip {
 		enAnimationClip_idle, //待機
 		enAnimationClip_walk,  //歩き
+		enAnimationClip_yobi,  //予備
 		enAnimationClip_attack, //攻撃
+		enAnimationClip_prostrate, //土下座
 		enAnimationClip_Num,  //アニメーションクリップ
 	};
 	bool Start();
@@ -47,14 +50,14 @@ private:
 	void ManAttack();
 	void ManDeath();
 	void ManHorizon();
-
+	void Animation();
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
 	CVector3 m_scale = CVector3::One; // スケール
 	CVector3 moveVec = CVector3::Zero; // 座標。
 	EnState m_state = EnState_walk;//状態
-	EnAnimationClip m_animClips[enAnimationClip_Num]; //アニメ
+	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 	CCharacterController m_charaCon; //キャラコン
 
 	//待機関連

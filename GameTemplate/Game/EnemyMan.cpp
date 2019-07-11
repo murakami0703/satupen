@@ -16,10 +16,17 @@ EnemyMan::~EnemyMan()
 
 bool EnemyMan::Start()
 {
-	/*m_animClips[enAnimationClip_idle].Load(L"animData/pltaiki.tka"); //待機
-	m_animClips[enAnimationClip_idle].SetLoopFlag(true);*/
+	//アニメーション
+	m_animClips[enAnimationClip_idle].Load(L"animData/Manidel.tka"); //待機
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	m_animClips[enAnimationClip_idle].Load(L"animData/Manwalk.tka"); //歩き
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	//m_animClips[enAnimationClip_idle].Load(L"animData/ManAttackYobi.tka"); //予備
+	//m_animClips[enAnimationClip_idle].Load(L"animData/ManDogeza.tka"); //攻撃
+	//m_animClips[enAnimationClip_idle].Load(L"animData/ManAttack.tka"); //土下座
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/Man/otoko.cmo");
+	m_skinModelRender->Init(L"modelData/Man/otoko.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
 
 	//キャラコン
@@ -149,10 +156,31 @@ void EnemyMan::ManDeath()
 {
 	DeleteGO(this);
 }
+void EnemyMan::Animation() {
+	if (m_state == EnState_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if ( m_state == EnState_walk) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+	/*else if (m_state == EnState_yobi) {
+		m_skinModelRender->PlayAnimation(2);
+	}
+	else if (m_state == EnState_attack) {
+		m_skinModelRender->PlayAnimation(3);
+
+	}
+	else if (m_state == enAnimationClip_prostrate) {
+		m_skinModelRender->PlayAnimation(4);
+
+	}*/
+
+}
 
 void EnemyMan::Update()
 {
 	ManHorizon();
+	Animation();
 	switch (m_state)
 	{
 	case EnemyMan::EnState_idle:

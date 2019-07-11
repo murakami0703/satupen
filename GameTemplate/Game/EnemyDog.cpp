@@ -16,8 +16,14 @@ EnemyDog::~EnemyDog()
 
 bool EnemyDog::Start()
 {
+	m_animClips[enAnimationClip_idle].Load(L"animData/Dogidel.tka"); //ë“ã@
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	m_animClips[enAnimationClip_idle].Load(L"animData/Dogwalk.tka"); //ï‡Ç´
+	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
+	//m_animClips[enAnimationClip_idle].Load(L"animData/Dogattack.tka"); //çUåÇ
+
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
-	m_skinModelRender->Init(L"modelData/inu/inuu.cmo");
+	m_skinModelRender->Init(L"modelData/inu/inuu.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
 
 	//ÉLÉÉÉâÉRÉì
@@ -144,7 +150,25 @@ void EnemyDog::DogDeath()
 	//éÄ
 	DeleteGO(this);
 }
+void EnemyDog::Animation() {
+	if (m_state == EnState_idle) {
+		m_skinModelRender->PlayAnimation(0);
+	}
+	else if (m_state == EnState_walk) {
+		m_skinModelRender->PlayAnimation(1);
+	}
+	/*else if (m_state == EnState_yobi) {
+	m_skinModelRender->PlayAnimation(2);
+	}
+	else if (m_state == EnState_attack) {
+	m_skinModelRender->PlayAnimation(3);
 
+	}
+	else if (m_state == enAnimationClip_prostrate) {
+	m_skinModelRender->PlayAnimation(4);
+
+	}*/
+}
 void EnemyDog::Update()
 {
 	DogHorizon();	//éãñÏäp
