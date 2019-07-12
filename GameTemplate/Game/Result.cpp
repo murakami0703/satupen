@@ -260,7 +260,7 @@ void Result::Update()
 		m_sound5 = NewGO<prefab::CSoundSource>(0);
 		m_sound5->Init(L"sound/button81.wav");
 		m_sound5->Play(false);
-		m_sound5->SetVolume(0.8f);
+		m_sound5->SetVolume(0.5f);
 
 		Hi2flag = true;
 		m_start = enStart_9;
@@ -274,11 +274,11 @@ void Result::Update()
 		Ana += 0.05f;
 		if (Ana >= 1.0f) {
 			Ana = 1.0f;
-			m_sound6 = NewGO<prefab::CSoundSource>(0);
-			m_sound6->Init(L"sound/shakin1.wav");
-			m_sound6->Play(true);
-			m_sound6->SetVolume(0.5f);
 		}
+		m_sound6 = NewGO<prefab::CSoundSource>(0);
+		m_sound6->Init(L"sound/shakin1.wav");
+		m_sound6->Play(false);
+		m_sound6->SetVolume(0.5f);
 		break;
 	}
 	case Result::enStart_10:

@@ -10,6 +10,7 @@ Background::Background()
 Background::~Background()
 {
 	DeleteGO(skinModelRender);
+	DeleteGO(m_sound);
 }
 
 bool Background::Start()

@@ -11,7 +11,8 @@ EnemyMan::EnemyMan()
 EnemyMan::~EnemyMan()
 {
 	DeleteGO(m_skinModelRender);
-
+	DeleteGO(m_skin);
+	DeleteGO(m_skin2);
 }
 
 bool EnemyMan::Start()
@@ -24,6 +25,18 @@ bool EnemyMan::Start()
 	//m_animClips[enAnimationClip_yobi].Load(L"animData/ManAttackYobi.tka"); //予備
 	//m_animClips[enAnimationClip_attack].Load(L"animData/ManDogeza.tka"); //攻撃
 	//m_animClips[enAnimationClip_prostrate].Load(L"animData/ManAttack.tka"); //土下座
+
+	//敵のHPbar
+	m_skin = NewGO<prefab::CSpriteRender>(0);
+	m_skin->Init(L"sprite/AHP/Awaku.dds", 100.0f, 30.0f);//500.0f, 45.0f
+	m_position2 = { 0.0f, 150.0f, 0.0f };
+	m_skin->SetPosition(m_position2);
+	//敵の白色のバー
+	m_skin2 = NewGO<prefab::CSpriteRender>(0);
+	m_skin2->Init(L"sprite/AHP/AWhp.dds", 100.0f, 30.0f);//500.0f, 80.0f
+	m_position2 = { 0.0f,150.0f,0.0f };
+	m_skin2->SetPosition(m_position2);
+	m_skin2->SetMulColor({ 0.0f,1.0f,0.0f,1.0f });
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Man/otoko.cmo", m_animClips, enAnimationClip_Num);
@@ -179,6 +192,34 @@ void EnemyMan::Animation() {
 
 void EnemyMan::Update()
 {
+	//↓これで変更する
+	//スクリーンPos自分
+
+	//子供とカメラと距離を計算する。
+	CVector3 cameraPos = MainCamera().GetPosition();
+	CVector3 Pos = cameraPos - m_position;
+	float len = Pos.Length();
+	if (len < 300.0f) {
+		m_skin->SetActiveFlag(true);
+		m_skin2->SetActiveFlag(true);
+		//2Dを非表示にするには、m_skin->SetActiveFlag(false);
+		//2Dを表示にするには、m_skin->SetActiveFlag(true);
+		CVector3 screenPos;
+		CVector3 atamaNoPos = m_position;
+		atamaNoPos.y += 40.0f;
+		MainCamera().CalcScreenPositionFromWorldPosition2(screenPos, atamaNoPos);
+
+		if (screenPos.z > 0.0f) {
+			screenPos.z = 0.0f;
+			m_skin->SetPosition(screenPos);
+			m_skin2->SetPosition(screenPos);
+		}
+	}
+	else {
+		m_skin->SetActiveFlag(false);
+		m_skin2->SetActiveFlag(false);
+	}
+
 	ManHorizon();
 	Animation();
 	switch (m_state)
@@ -208,6 +249,10 @@ void EnemyMan::Update()
 			gamedata->ResultDeadkasan(GameData::DeadMan);
 			//ペンも消滅
 			pen->SetDeath();
+			m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/MAuke.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.5f);
 			m_state = EnState_death;//死にます。
 		}
 		return true;

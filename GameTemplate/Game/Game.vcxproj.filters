@@ -216,10 +216,6 @@
     <ImageContentTask Include="Assets\sprite\Result\sougou.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Load\haikeii.png" />
-    <ImageContentTask Include="Assets\sprite\Load\Load.png" />
-    <ImageContentTask Include="Assets\sprite\AHP\Awaku.png" />
-    <ImageContentTask Include="Assets\sprite\AHP\AWhp.png" />
     <ImageContentTask Include="Assets\sprite\Result\anata.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
@@ -245,6 +241,18 @@
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
     <ImageContentTask Include="Assets\sprite\Result\RH.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Load\Load.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Load\haikeii.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\AHP\Awaku.png">
+      <Filter>Aseets\sprite</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\AHP\AWhp.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
   </ItemGroup>

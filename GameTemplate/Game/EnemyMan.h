@@ -60,6 +60,15 @@ private:
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 	CCharacterController m_charaCon; //キャラコン
 
+	//スキン
+	prefab::CSpriteRender* m_skin = nullptr;//枠
+	prefab::CSpriteRender* m_skin2 = nullptr;//白色
+	//KOTOが3Dカメラのために作ったやつ
+	CVector3 m_position2;//これ枠
+	//CVector3 m_position2;//これ白いやつ
+
+	prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
+
 	//待機関連
 	int stoptimer = 0;//停止用タイマー
 	const float stopendtimer = 60.0f; //停止を辞めますぅ

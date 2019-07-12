@@ -12,7 +12,8 @@ EnemyBird::EnemyBird()
 EnemyBird::~EnemyBird()
 {
 	DeleteGO(m_skinModelRender);
-
+	DeleteGO(m_skin);
+	DeleteGO(m_skin2);
 }
 
 bool EnemyBird::Start()
@@ -24,6 +25,19 @@ bool EnemyBird::Start()
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
 	m_animClips[enAnimationClip_fly].Load(L"animData/Crowfly.tka"); //飛び
 	m_animClips[enAnimationClip_fly].SetLoopFlag(true);
+
+
+	////敵のHPbar
+	//m_skin = NewGO<prefab::CSpriteRender>(0);
+	//m_skin->Init(L"sprite/AHP/Awaku.dds", 100.0f, 30.0f);//500.0f, 45.0f
+	//m_position2 = { 0.0f, 150.0f, 0.0f };
+	//m_skin->SetPosition(m_position2);
+	////敵の白色のバー
+	//m_skin2 = NewGO<prefab::CSpriteRender>(0);
+	//m_skin2->Init(L"sprite/AHP/AWhp.dds", 100.0f, 30.0f);//500.0f, 80.0f
+	//m_position2 = { 0.0f,150.0f,0.0f };
+	//m_skin2->SetPosition(m_position2);
+	//m_skin2->SetMulColor({ 0.0f,1.0f,0.0f,1.0f });
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/karasu/karasuu.cmo", m_animClips, enAnimationClip_Num);
@@ -109,8 +123,17 @@ void EnemyBird::BirdWalk()
 }
 void EnemyBird::BirdFly()
 {
-	//飛び
+	//飛ぶとき
+	/*m_sound2 = NewGO<prefab::CSoundSource>(0);
+	m_sound2->Init(L"sound/crow2.wav");
+	m_sound2->Play(false);
+	m_sound2->SetVolume(0.5f);*/
+	
 	//上に逃げるよ
+	/*m_sound3 = NewGO<prefab::CSoundSource>(0);
+	m_sound3->Init(L"sound/pigeon-take-off1.wav");
+	m_sound3->Play(false);
+	m_sound3->SetVolume(0.5f);*/
 }
 void EnemyBird::Animation() {
 	if (m_state == EnState_idle) {
@@ -166,6 +189,10 @@ void EnemyBird::Update()
 			gamedata->ResultDeadkasan(GameData::DeadBird);
 			//ペンも消滅
 			pen->SetDeath();
+			/*m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/MAuke.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.5f);*/
 			m_state = EnState_death;//死にます。
 		}
 		return true;

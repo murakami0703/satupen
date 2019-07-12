@@ -229,7 +229,10 @@ void EnemyChildren::Update()
 			gamedata->ResultDeadkasan(GameData::DeadChildren);
 			//ƒyƒ“‚àÁ–Å
 			pen->SetDeath();
-
+			m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/MAuke.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.5f);
 			m_state = EnState_death;//€‚É‚Ü‚·B
 		}
 		return true;
