@@ -11,9 +11,11 @@ EnemyBird::EnemyBird()
 }
 EnemyBird::~EnemyBird()
 {
+
 	DeleteGO(m_skinModelRender);
-	DeleteGO(m_skin);
-	DeleteGO(m_skin2);
+	/*DeleteGO(m_skin);
+	DeleteGO(m_skin2);*/
+
 }
 
 bool EnemyBird::Start()
@@ -159,6 +161,34 @@ void EnemyBird::BirdDeath()
 
 void EnemyBird::Update()
 {
+	//↓これで変更する
+	//スクリーンPos自分
+
+	//鳥とカメラと距離を計算する。
+	//CVector3 cameraPos = MainCamera().GetPosition();
+	//CVector3 Pos = cameraPos - m_position;
+	//float len = Pos.Length();
+	//if (len < 300.0f) {
+	//	m_skin->SetActiveFlag(true);
+	//	m_skin2->SetActiveFlag(true);
+	//	//2Dを非表示にするには、m_skin->SetActiveFlag(false);
+	//	//2Dを表示にするには、m_skin->SetActiveFlag(true);
+	//	CVector3 screenPos;
+	//	CVector3 atamaNoPos = m_position;
+	//	atamaNoPos.y += 40.0f;
+	//	MainCamera().CalcScreenPositionFromWorldPosition2(screenPos, atamaNoPos);
+
+	//	if (screenPos.z > 0.0f) {
+	//		screenPos.z = 0.0f;
+	//		m_skin->SetPosition(screenPos);
+	//		m_skin2->SetPosition(screenPos);
+	//	}
+	//}
+	//else {
+	//	m_skin->SetActiveFlag(false);
+	//	m_skin2->SetActiveFlag(false);
+	//}
+
 	BirdHorizon();	//視野角
 	Animation();
 	switch (m_state)

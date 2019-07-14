@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "Result.h"
 #include "Load.h"
+#include"OP.h"
 
 Title::Title()
 {
@@ -19,6 +20,7 @@ Title::~Title()
 	DeleteGO(m_sprite5);
 	DeleteGO(m_sprite6);
 	DeleteGO(m_sprite7);
+	DeleteGO(m_sprite8);
 
 	//音楽消去
 	DeleteGO(m_sound);//バックサウンド
@@ -73,6 +75,11 @@ bool Title::Start()
 	m_position = { 100.0f,-200.0f,0.0f };
 	m_sprite7->SetPosition(m_position);
 	
+	//スプライト　傷翠
+	m_sprite8 = NewGO<prefab::CSpriteRender>(9);
+	m_sprite8->Init(L"sprite/Titel/kidu.dds", 200.0f, 300.0f);
+	m_position = { 500.0f,0.0f,0.0f };
+	m_sprite8->SetPosition(m_position);
 
 	//音楽設定
 	m_sound = NewGO<prefab::CSoundSource>(0);
@@ -196,11 +203,11 @@ void Title::Update()
 			m_sound3->SetVolume(1.0f);
 
 		}
-		if (Pad(0).IsTrigger(enButtonStart)) {
+	/*	if (Pad(0).IsTrigger(enButtonStart)) {
 			NewGO<Game>(0, "game");
 			DeleteGO(this);
 
-		}
+		}*/
 
 	}
 	}
@@ -208,4 +215,8 @@ void Title::Update()
 		NewGO<Load>(0, "load");
 		DeleteGO(this);
 	}*/
+	if (Pad(0).IsTrigger(enButtonStart)) {
+		NewGO<OP>(0, "op");
+		DeleteGO(this);
+	}
 }

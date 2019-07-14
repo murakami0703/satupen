@@ -1764,7 +1764,10 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EffectPlay.cpp" />
+    <ClCompile Include="EnemyBird.cpp" />
+    <ClCompile Include="EnemyCat.cpp" />
     <ClCompile Include="EnemyChildren.cpp" />
+    <ClCompile Include="EnemyDog.cpp" />
     <ClCompile Include="EnemyMan.cpp" />
     <ClCompile Include="EnemyStatus.cpp" />
     <ClCompile Include="EnemyWoman.cpp" />
@@ -1775,6 +1778,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OP.cpp" />
     <ClCompile Include="Pen.cpp" />
     <ClCompile Include="PenGenerator.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -1809,7 +1813,10 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EffectPlay.h" />
+    <ClInclude Include="EnemyBird.h" />
+    <ClInclude Include="EnemyCat.h" />
     <ClInclude Include="EnemyChildren.h" />
+    <ClInclude Include="EnemyDog.h" />
     <ClInclude Include="EnemyMan.h" />
     <ClInclude Include="EnemyStatus.h" />
     <ClInclude Include="EnemyWoman.h" />
@@ -1819,6 +1826,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Load.h" />
+    <ClInclude Include="OP.h" />
     <ClInclude Include="Pen.h" />
     <ClInclude Include="PenGenerator.h" />
     <ClInclude Include="Player.h" />
@@ -3560,6 +3568,15 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\AHP\Awaku.png" />
     <ImageContentTask Include="Assets\sprite\AHP\AWhp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\OP\aa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Titel\kidu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\OP\27916828.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

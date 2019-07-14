@@ -23,6 +23,18 @@ bool EnemyCat::Start()
 	m_animClips[enAnimationClip_walk].Load(L"animData/Catwalk.tka"); //歩き&逃げ
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
 
+	////敵のHPbar
+	//m_skin = NewGO<prefab::CSpriteRender>(0);
+	//m_skin->Init(L"sprite/AHP/Awaku.dds", 100.0f, 30.0f);//500.0f, 45.0f
+	//m_position2 = { 0.0f, 150.0f, 0.0f };
+	//m_skin->SetPosition(m_position2);
+	////敵の白色のバー
+	//m_skin2 = NewGO<prefab::CSpriteRender>(0);
+	//m_skin2->Init(L"sprite/AHP/AWhp.dds", 100.0f, 30.0f);//500.0f, 80.0f
+	//m_position2 = { 0.0f,150.0f,0.0f };
+	//m_skin2->SetPosition(m_position2);
+	//m_skin2->SetMulColor({ 0.0f,1.0f,0.0f,1.0f });
+
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/neko/neko.cmo", m_animClips, enAnimationClip_Num);
@@ -117,6 +129,10 @@ void EnemyCat::CatRunaway()
 		diff.y = 0.0f;
 		diff.Normalize();
 		moveVec = diff * followSpeed * -1.0f;
+		/*m_sound2 = NewGO<prefab::CSoundSource>(0);
+		m_sound2->Init(L"sound/cat-threat1.wav");
+		m_sound2->Play(false);*/
+		//m_sound2->SetVolume(0.5f);
 	}
 	else {
 		//その場で移動
@@ -163,6 +179,33 @@ void EnemyCat::Animation() {
 
 void EnemyCat::Update()
 {
+	////↓これで変更する
+	////スクリーンPos自分
+	////猫とカメラと距離を計算する。
+	//CVector3 cameraPos = MainCamera().GetPosition();
+	//CVector3 Pos = cameraPos - m_position;
+	//float len = Pos.Length();
+	//if (len < 300.0f) {
+	//	m_skin->SetActiveFlag(true);
+	//	m_skin2->SetActiveFlag(true);
+	//	//2Dを非表示にするには、m_skin->SetActiveFlag(false);
+	//	//2Dを表示にするには、m_skin->SetActiveFlag(true);
+	//	CVector3 screenPos;
+	//	CVector3 atamaNoPos = m_position;
+	//	atamaNoPos.y += 40.0f;
+	//	MainCamera().CalcScreenPositionFromWorldPosition2(screenPos, atamaNoPos);
+
+	//	if (screenPos.z > 0.0f) {
+	//		screenPos.z = 0.0f;
+	//		m_skin->SetPosition(screenPos);
+	//		m_skin2->SetPosition(screenPos);
+	//	}
+	//}
+	//else {
+	//	m_skin->SetActiveFlag(false);
+	//	m_skin2->SetActiveFlag(false);
+	//}
+
 	CatHorizon();	//視野角
 	Animation();
 	switch (m_state)
@@ -192,6 +235,10 @@ void EnemyCat::Update()
 			gamedata->DeadHkasan(1);
 			gamedata->ResultDeadkasan(GameData::DeadCat);
 			//ペンも消滅
+			/*m_sound = NewGO<prefab::CSoundSource>(0);
+			m_sound->Init(L"sound/MAuke.wav");
+			m_sound->Play(false);
+			m_sound->SetVolume(0.5f);*/
 			pen->SetDeath();
 			m_state = EnState_death;//死にます。
 		}

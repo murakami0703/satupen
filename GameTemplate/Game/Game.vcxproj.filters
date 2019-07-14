@@ -35,6 +35,16 @@
     </ClCompile>
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="EnemyStatus.cpp" />
+    <ClCompile Include="EnemyCat.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBird.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyDog.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="OP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -71,6 +81,16 @@
     </ClInclude>
     <ClInclude Include="Load.h" />
     <ClInclude Include="EnemyStatus.h" />
+    <ClInclude Include="EnemyBird.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCat.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDog.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="OP.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -392,5 +412,16 @@
     <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
       <Filter>Aseets\modelData\ste</Filter>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\OP\aa.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Titel\kidu.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\27916828.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
   </ItemGroup>
 </Project>

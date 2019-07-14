@@ -39,7 +39,8 @@ private:
 	prefab::CSpriteRender* m_sprite4; //選択
 	prefab::CSpriteRender* m_sprite5; //はじめる。
 	prefab::CSpriteRender* m_sprite6; //おわる。
-	prefab::CSpriteRender* m_sprite7;//➡
+	prefab::CSpriteRender* m_sprite7; //➡
+	prefab::CSpriteRender* m_sprite8; //傷翠
 	std::vector<prefab::CSpriteRender*> m_spriteRender;
 	prefab::CSpriteRender* sp;
 	//音楽
