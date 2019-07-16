@@ -45,6 +45,9 @@
       <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="OP.cpp" />
+    <ClCompile Include="OP2.cpp" />
+    <ClCompile Include="OP3.cpp" />
+    <ClCompile Include="OPsound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -91,6 +94,9 @@
       <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="OP.h" />
+    <ClInclude Include="OP2.h" />
+    <ClInclude Include="OP3.h" />
+    <ClInclude Include="OPsound.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -275,6 +281,9 @@
     <ImageContentTask Include="Assets\sprite\AHP\AWhp.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\OP\aa.png" />
+    <ImageContentTask Include="Assets\sprite\Titel\kidu.png" />
+    <ImageContentTask Include="Assets\sprite\OP\27916828.png" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
@@ -414,13 +423,37 @@
     </MeshContentTask>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\sprite\OP\aa.png">
+    <Image Include="Assets\sprite\OP\op2.png">
       <Filter>Aseets\sprite</Filter>
     </Image>
-    <Image Include="Assets\sprite\Titel\kidu.png">
+    <Image Include="Assets\sprite\OP\op2pen.png">
       <Filter>Aseets\sprite</Filter>
     </Image>
-    <Image Include="Assets\sprite\OP\27916828.png">
+    <Image Include="Assets\sprite\OP\op2sore.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\bikkuri.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\penOP2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3hito.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3pen.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3kousite1.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3kousite2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3ti.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3haikei.png">
       <Filter>Aseets\sprite</Filter>
     </Image>
   </ItemGroup>

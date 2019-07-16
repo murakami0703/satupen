@@ -7,8 +7,6 @@ public:
 
 	enum EnStar {
 		en_Start,
-		/*en_Start2,
-		en_Start3,*/
 	};
 	bool Start();
 	void Update();
