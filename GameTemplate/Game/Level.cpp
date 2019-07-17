@@ -68,7 +68,7 @@ bool Level::Start() {
 			}
 			if (objData.EqualObjectName(L"onna")) {
 				//èó
-				EnemyWoman* Woman = NewGO<EnemyWoman>(0, "");
+				EnemyWoman* Woman = NewGO<EnemyWoman>(0, "woman");
 				Woman->SetPosition(objData.position);
 				Woman->SetRotation(objData.rotation);
 				EnemyCount++;

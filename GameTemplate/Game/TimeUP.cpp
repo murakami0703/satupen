@@ -10,17 +10,18 @@ TimeUP::TimeUP()
 
 TimeUP::~TimeUP()
 {
-	//DeleteGO(m_sprite);
+	DeleteGO(m_sprite);
 	DeleteGO(m_sprite2);
 
 	DeleteGO(m_sound);
 }
 bool TimeUP::Start()
 {
-
+	DeleteGO("game");
 	//Ç©ÇŒÅ[
 	m_sprite = NewGO<prefab::CSpriteRender>(0);
 	m_sprite->Init(L"sprite/Time UP/Time UP2.dds", 1280.0f, 720.0f);
+	//m_sprite->SetMulColor({ 1.0f,1.0f,1.0f,0.5f });
 
 	//É^ÉCÉÄÇ†Ç¡Ç’
 	m_sprite2 = NewGO<prefab::CSpriteRender>(0);
@@ -47,9 +48,10 @@ void TimeUP::Update()
 		}
 		break;
 	}
+
 	}
 	if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<Result>(0, "titel");
+		NewGO<Result>(0, "result");
 		DeleteGO(this);
 	}
 }

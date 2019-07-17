@@ -2,6 +2,7 @@
 #include "OP3.h"
 #include"Game.h"
 #include"OPsound.h"
+#include"GamePad.h"
 
 
 OP3::OP3()
@@ -113,7 +114,7 @@ void OP3::Update()
 	}
 
 		if (Pad(0).IsTrigger(enButtonStart)) {
-			NewGO<Game>(0, "game");
+			NewGO<GamePad>(0, "gamepad");
 			DeleteGO(this);
 
 		}

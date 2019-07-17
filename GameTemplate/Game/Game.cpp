@@ -9,6 +9,7 @@
 #include "Level.h"
 #include "EffectManager.h"
 #include "tkEngine/light/tkDirectionLight.h"
+#include "Background.h"
 
 Game::Game()
 {
@@ -17,6 +18,7 @@ Game::Game()
 
 Game::~Game()
 {
+	TK_LOG("~Game()");
 	DeleteGOs("gcamera");
 	DeleteGOs("player");
 	DeleteGOs("gamedata");
@@ -26,6 +28,14 @@ Game::~Game()
 	DeleteGOs("level");
 	DeleteGOs("EffectManager");
 	DeleteGOs("light");
+	DeleteGOs("background");
+	DeleteGOs("children");
+	DeleteGOs("it");
+	DeleteGOs("woman");
+	DeleteGOs("man");
+	DeleteGOs("result");
+	
+
 }
 bool Game::Start()
 {

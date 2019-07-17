@@ -6,6 +6,7 @@
 #include"OP.h"
 #include"GameOver.h"
 #include"TimeUP.h"
+#include"GamePad.h"
 
 Title::Title()
 {
@@ -217,17 +218,21 @@ void Title::Update()
 		NewGO<Load>(0, "load");
 		DeleteGO(this);
 	}*/
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
+	if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<OP>(0, "op");
 		DeleteGO(this);
-	}*/
+	}
 	/*if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<GameOver>(0, "gameover");
 		DeleteGO(this);
 	}*/
-	if (Pad(0).IsTrigger(enButtonStart)) {
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
 		NewGO<TimeUP>(0, "timeup");
 		DeleteGO(this);
-	}
+	}*/
+	/*if (Pad(0).IsTrigger(enButtonStart)) {
+		NewGO<GamePad>(0, "gamepad");
+		DeleteGO(this);
+	}*/
 
 }
