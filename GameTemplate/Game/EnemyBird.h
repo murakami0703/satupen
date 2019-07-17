@@ -13,7 +13,6 @@ public:
 	};
 	//アニメーション
 	enum  EnAnimationClip {
-		enAnimationClip_idle, //待機
 		enAnimationClip_walk,  //歩き
 		enAnimationClip_fly,  //歩き
 		enAnimationClip_Num,  //アニメーションクリップ
@@ -40,6 +39,11 @@ public:
 	void SetRotation(CQuaternion rot)
 	{
 		m_rotation = rot;
+	}
+	//大きさを設定。
+	void SetScale(CVector3 sca)
+	{
+		m_scale = sca;
 	}
 
 private:
@@ -81,12 +85,13 @@ private:
 	int count = 0;							//移動用カウント
 	int wrandom = 0;						//移動の方向乱数
 	const int randomCount = 300;			//ランダムで移動方向切り替えタイマー
-	const float randomSpeed = 1.0f;			//移動速度
+	const float randomSpeed = 40.0f;			//移動速度
 	//飛び関連
 	const float flyRange = 300.0f;		//逃げる距離（プレイヤーから離れる距離）
+	const float fleeSpeed = 70.0f;		//逃げる速度
 
 	//視野角
-	const float horilong = 350.0f;	//視野角判定の距離
+	const float horilong = 200.0f;	//視野角判定の距離
 	const float horiAngle = 45.0f;	//視野角判定の角度
 
 	//エフェクト関連

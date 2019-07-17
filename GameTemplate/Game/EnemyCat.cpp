@@ -39,6 +39,8 @@ bool EnemyCat::Start()
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/neko/neko.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
+	m_skinModelRender->SetScale(m_scale);
+	m_skinModelRender->SetRotation(m_rotation);
 
 	//キャラコン
 	m_charaCon.Init(
@@ -53,7 +55,7 @@ void EnemyCat::CatHorizon()
 	Player* player = Player::GetInstance();
 	//エネミーの前方方向を求める。
 	//前方方向は{0, 0, 1}のベクトルをm_rotationで回して求めてみる。
-	CVector3 enemyForward = { 0.0f, 0.0f, -1.0f };
+	CVector3 enemyForward = { 1.0f, 0.0f, 0.0f };
 	m_rotation.Multiply(enemyForward);
 
 	//エネミーからプレイヤーに伸びるベクトルを求める。
@@ -110,7 +112,7 @@ void EnemyCat::CatWalk()
 		//ランダムで方向を決定して動きます
 		wrandom = rand() % 360;
 		m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
-		walkmove = { 0.0f, 0.0f,-1.0f };
+		walkmove = { 1.0f, 0.0f,0.0f };
 		m_rotation.Multiply(walkmove);
 		count = 0;
 	}
@@ -147,7 +149,7 @@ void EnemyCat::CatRunaway()
 	}
 
 
-	CVector3 enemyForward = { 0.0f, 0.0f, 1.0f };
+	CVector3 enemyForward = { -1.0f, 0.0f, 0.0f };
 
 	//　向かせたい方向のベクトルを計算する。
 	CVector3 targetVector = P_Position - m_position;
@@ -162,7 +164,6 @@ void EnemyCat::CatRunaway()
 void EnemyCat::CatDeath()
 {
 	//死
-	DeleteGO(this);
 	EffectManager* effect = EffectManager::GetInstance();
 	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, EfeSize);
 	DeleteGO(this);
@@ -224,6 +225,8 @@ void EnemyCat::Update()
 		break;
 
 	}
+	CatHorizon();	//視野角
+	Animation();
 
 	//ペンとの衝突判定
 	QueryGOs<Pen>("pen", [&](Pen* pen) {

@@ -205,29 +205,13 @@ void Title::Update()
 			m_sound3->SetVolume(1.0f);
 
 		}
-	/*	if (Pad(0).IsTrigger(enButtonStart)) {
+		if (Pad(0).IsTrigger(enButtonStart)) {
 			NewGO<Game>(0, "game");
 			DeleteGO(this);
 
-		}*/
+		}
 
 	}
-	}
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<Load>(0, "load");
-		DeleteGO(this);
-	}*/
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<OP>(0, "op");
-		DeleteGO(this);
-	}*/
-	/*if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<GameOver>(0, "gameover");
-		DeleteGO(this);
-	}*/
-	if (Pad(0).IsTrigger(enButtonStart)) {
-		NewGO<TimeUP>(0, "timeup");
-		DeleteGO(this);
 	}
 
 }

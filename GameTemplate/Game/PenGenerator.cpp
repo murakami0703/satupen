@@ -40,14 +40,18 @@ void PenGenerator::Update()
 			//構えてる。
 		if (Pad(0).IsTrigger(enButtonRB1)) {
 			//発射
+			m_isFire = true;
 			NewGO<Pen>(0, "pen");
 			gamedata->Zandannkasan(-1);
+		}
+		else {
+			m_isFire = false;
 
 		}
 	}
 	else if (Zandan <= 0) {
 		//撃てません！！！！！集めて！！！！テキスト表示
 	}
-
+	
 }
 

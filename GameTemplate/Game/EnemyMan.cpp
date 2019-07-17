@@ -22,9 +22,10 @@ bool EnemyMan::Start()
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/Manwalk.tka"); //•à‚«
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	//m_animClips[enAnimationClip_yobi].Load(L"animData/ManAttackYobi.tka"); //—\”õ
-	//m_animClips[enAnimationClip_attack].Load(L"animData/ManDogeza.tka"); //UŒ‚
-	//m_animClips[enAnimationClip_prostrate].Load(L"animData/ManAttack.tka"); //“y‰ºÀ
+	m_animClips[enAnimationClip_yobi].Load(L"animData/ManAttackYobi.tka"); //—\”õ
+	m_animClips[enAnimationClip_attack].Load(L"animData/ManAttack.tka"); //UŒ‚
+	m_animClips[enAnimationClip_attack].SetLoopFlag(true);
+	m_animClips[enAnimationClip_prostrate].Load(L"animData/ManDogeza.tka"); //“y‰ºÀ
 
 	//“G‚ÌHPbar
 	m_skin = NewGO<prefab::CSpriteRender>(0);
@@ -44,10 +45,12 @@ bool EnemyMan::Start()
 
 	//ƒLƒƒƒ‰ƒRƒ“
 	m_charaCon.Init(
-		15.0f,  //”¼ŒaB
-		25.0f,  //‚‚³B
+		20.0f,  //”¼ŒaB
+		35.0f,  //‚‚³B
 		m_position //‰ŠúÀ•WB
 	);
+	m_skinModelRender->SetShadowCasterFlag(true);
+
 	return true;
 }
 void EnemyMan::ManHorizon()
@@ -79,12 +82,11 @@ void EnemyMan::ManHorizon()
 	if (fabsf(angle) < CMath::DegToRad(horiAngle) && toPlayerLen < horilong)
 	{
 		//‹ß‚¢IIIII
-		m_state = EnState_attack;
+		m_state = EnState_yobi;
 
 	}
 
 }
-
 void EnemyMan::ManIdle()
 {
 	//‘Ò‹@ó‘Ô
@@ -118,29 +120,27 @@ void EnemyMan::ManWalk()
 	moveVec = walkmove * randomSpeed;
 	m_position = m_charaCon.Execute(moveVec);
 }
-void EnemyMan::ManAttack()
+void EnemyMan::ManYobi()
 {
 	//UŒ‚ó‘Ô
 	GameData* gamedata = GameData::GetInstance();
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
-
+	move = diff;
 	if (diff.Length() < 600.0f) {
 		//‹ß‚Ã‚«‚Ü‚·
-		diff.y = 0.0f;
-		diff.Normalize();
-		moveVec = diff * attackSpeed;
-	}
-	else if (diff.Length() < 20.0f) {
-		//ƒAƒjƒ[ƒVƒ‡ƒ“—¬‚µ‚ÄUŒ‚‚µ‚â
-		/*if () {
-			gamedata->tiryokugennsyou(-7);
-		}*/
+		move.y = 0.0f;
+		move.Normalize();
+		moveVec = move * attackSpeed;
 	}
 	else {
 		//—£‚ê‚½‚Ì‚Å‚»‚Ìê‚ÅˆÚ“®‚µ‚Ü
 		m_state = EnState_walk;
+	}
+	//UŒ‚
+	if (diff.Length() < 40.0f) {
+		gamedata->tiryokugennsyou(-10);
 	}
 
 	//‰ñ“]‚Ìˆ—
@@ -163,6 +163,10 @@ void EnemyMan::ManAttack()
 	m_rotation = qRot;
 	m_position = m_charaCon.Execute(moveVec);
 
+
+}
+void EnemyMan::ManAttack()
+{
 }
 
 void EnemyMan::ManDeath()
@@ -176,18 +180,13 @@ void EnemyMan::Animation() {
 	else if ( m_state == EnState_walk) {
 		m_skinModelRender->PlayAnimation(1);
 	}
-	/*else if (m_state == EnState_yobi) {
-		m_skinModelRender->PlayAnimation(2);
-	}
 	else if (m_state == EnState_attack) {
 		m_skinModelRender->PlayAnimation(3);
-
 	}
 	else if (m_state == enAnimationClip_prostrate) {
 		m_skinModelRender->PlayAnimation(4);
 
-	}*/
-
+	}
 }
 
 void EnemyMan::Update()
@@ -238,6 +237,8 @@ void EnemyMan::Update()
 		break;
 
 	}
+	ManHorizon();
+	Animation();
 	//ƒyƒ“‚Æ‚ÌÕ“Ë”»’è
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();

@@ -33,6 +33,7 @@ bool Pen::Start()
 	m_skinModelRender->SetRotation(m_rotation);
 	m_skinModelRender->SetScale(m_scale);
 
+	m_skinModelRender->SetShadowCasterFlag(true);
 	m_charaCon.Init(
 		0.0f,  //”¼ŒaB
 		0.0f,  //‚‚³B

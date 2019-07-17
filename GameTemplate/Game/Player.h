@@ -75,7 +75,7 @@ private:
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 
 	//移動関連
-	const float movespeed = 30.0f;							//移動速度
+	const float movespeed = 35.0f;							//移動速度
 	//回転
 	bool Turnflag = false;									//180°回転フラグ
 	int TurnTimer = 0;										//回転タイマー

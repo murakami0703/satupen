@@ -207,7 +207,7 @@ namespace tkEngine{
 			);
 			m_LVPMatrix[i] = mLightView * proj;
 			m_shadowCbEntity.mLVP[i] = m_LVPMatrix[i];
-			m_shadowCbEntity.shadowAreaDepthInViewSpace[i] = farPlaneZ * 0.8f;	//キワキワだと変な境界が発生していたので、ちょっとエリアを狭める。
+			m_shadowCbEntity.shadowAreaDepthInViewSpace[i] = farPlaneZ ;	//キワキワだと変な境界が発生していたので、ちょっとエリアを狭める。
 			nearPlaneZ = farPlaneZ;
 		}
 	}

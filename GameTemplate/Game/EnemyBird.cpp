@@ -21,8 +21,6 @@ EnemyBird::~EnemyBird()
 bool EnemyBird::Start()
 {
 	//アニメーション
-	m_animClips[enAnimationClip_idle].Load(L"animData/Crowidle.tka"); //待機
-	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/Crowwalk.tka"); //歩き&逃げ
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
 	m_animClips[enAnimationClip_fly].Load(L"animData/Crowfly.tka"); //飛び
@@ -44,11 +42,13 @@ bool EnemyBird::Start()
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/karasu/karasuu.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
+	m_skinModelRender->SetScale(m_scale);
+	m_skinModelRender->SetRotation(m_rotation);
 
 	//キャラコン
 	m_charaCon.Init(
-		15.0f,  //半径。
-		25.0f,  //高さ。
+		10.0f,  //半径。
+		20.0f,  //高さ。
 		m_position //初期座標。
 	);
 	return true;
@@ -59,7 +59,7 @@ void EnemyBird::BirdHorizon()
 	Player* player = Player::GetInstance();
 	//エネミーの前方方向を求める。
 	//前方方向は{0, 0, 1}のベクトルをm_rotationで回して求めてみる。
-	CVector3 enemyForward = { 0.0f, 0.0f, -1.0f };
+	CVector3 enemyForward = { -1.0f, 0.0f, 0.0f };
 	m_rotation.Multiply(enemyForward);
 
 	//エネミーからプレイヤーに伸びるベクトルを求める。
@@ -116,7 +116,7 @@ void EnemyBird::BirdWalk()
 		//ランダムで方向を決定して動きます
 		wrandom = rand() % 360;
 		m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
-		walkmove = { 0.0f, 0.0f,-1.0f };
+		walkmove = { -1.0f, 0.0f,0.0f };
 		m_rotation.Multiply(walkmove);
 		count = 0;
 	}
@@ -132,20 +132,47 @@ void EnemyBird::BirdFly()
 	m_sound2->SetVolume(0.5f);*/
 	
 	//上に逃げるよ
+	Player* player = Player::GetInstance();
+	CVector3 P_Position = player->Getm_Position();
+	CVector3 diff = P_Position - m_position;
+
+	//離れまーーーーース
+	diff.Normalize();
+	moveVec = diff * fleeSpeed * -1.0f;
+	moveVec.y += 20.0f;
+
+	CVector3 enemyForward = { 1.0f, 0.0f, 0.0f };
+
+	//回転の処理
+	if (fabsf(m_position.x) < 0.001f
+		&& fabsf(m_position.z) < 0.001f) {
+		//わからん
+		return;
+	}
+	//　向かせたい方向のベクトルを計算する。
+	CVector3 targetVector = P_Position - m_position;
+	//　Y成分は除去して正規化する。Y成分を入れると空を向いたりするよ。
+	targetVector.y = 0.0f;
+	targetVector.Normalize();
+	CQuaternion qRot;
+	qRot.SetRotation(enemyForward, targetVector);
+	m_rotation = qRot;
+	m_position = m_charaCon.Execute(moveVec);
+
+	if (m_position.y > 600.0f) {
+		DeleteGO(this);
+	}
 	/*m_sound3 = NewGO<prefab::CSoundSource>(0);
 	m_sound3->Init(L"sound/pigeon-take-off1.wav");
 	m_sound3->Play(false);
 	m_sound3->SetVolume(0.5f);*/
 }
 void EnemyBird::Animation() {
-	if (m_state == EnState_idle) {
+	if (m_state == EnState_walk) {
 		m_skinModelRender->PlayAnimation(0);
 	}
-	else if (m_state == EnState_walk) {
-		m_skinModelRender->PlayAnimation(1);
-	}
 	else if (m_state == EnState_fly) {
-		m_skinModelRender->PlayAnimation(2);
+		m_skinModelRender->PlayAnimation(1);
 	}
 
 }
@@ -153,7 +180,6 @@ void EnemyBird::Animation() {
 void EnemyBird::BirdDeath()
 {
 	//死
-	DeleteGO(this);
 	EffectManager* effect = EffectManager::GetInstance();
 	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, EfeSize);
 	DeleteGO(this);
@@ -207,6 +233,8 @@ void EnemyBird::Update()
 		break;
 
 	}
+	BirdHorizon();	//視野角
+	Animation();
 
 	//ペンとの衝突判定
 	QueryGOs<Pen>("pen", [&](Pen* pen) {

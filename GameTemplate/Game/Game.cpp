@@ -26,6 +26,7 @@ Game::~Game()
 	DeleteGOs("level");
 	DeleteGOs("EffectManager");
 	DeleteGOs("light");
+	DeleteGO("ãÛ");
 }
 bool Game::Start()
 {
@@ -58,9 +59,22 @@ bool Game::Start()
 	dir.Normalize();
 	dirLig->SetDirection(dir);
 
+	//ãÛ
+	auto sky = NewGO<prefab::CSky>(0, "ãÛ");
+	sky->SetScale({ 8000.0f, 8000.0f, 8000.0f });
+	CVector3 lightDir = { -1.0f, -1.0f, 1.0f };
+	lightDir.Normalize();
+	GraphicsEngine().GetDirectionShadowMap().SetLightDirection(lightDir);
 	return true;
 }
 
 void Game::Update()
-{
+{	
+	GameData* game = GameData::GetInstance();
+	float plHp = game->Get_Life();
+	//Ç∞ÇﬁÉIÅ[Éo
+	if (plHp <= 0) {
+		DeleteGO(this);
+	}
+
 }

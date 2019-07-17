@@ -38,18 +38,19 @@
     <ClCompile Include="EnemyCat.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyBird.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyDog.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyBird.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultDiagnostic.cpp" />
     <ClCompile Include="OP.cpp" />
     <ClCompile Include="OP2.cpp" />
     <ClCompile Include="OP3.cpp" />
     <ClCompile Include="OPsound.cpp" />
-    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="TimeUP.cpp" />
+    <ClCompile Include="GameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -95,11 +96,12 @@
     <ClInclude Include="EnemyDog.h">
       <Filter>Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="ResultDiagnostic.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="OP.h" />
     <ClInclude Include="OP2.h" />
     <ClInclude Include="OP3.h" />
     <ClInclude Include="OPsound.h" />
-    <ClInclude Include="GameOver.h" />
     <ClInclude Include="TimeUP.h" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +248,10 @@
     <ImageContentTask Include="Assets\sprite\Result\sougou.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Load\haikeii.png" />
+    <ImageContentTask Include="Assets\sprite\Load\Load.png" />
+    <ImageContentTask Include="Assets\sprite\AHP\Awaku.png" />
+    <ImageContentTask Include="Assets\sprite\AHP\AWhp.png" />
     <ImageContentTask Include="Assets\sprite\Result\anata.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
@@ -273,32 +279,6 @@
     <ImageContentTask Include="Assets\sprite\Result\RH.png">
       <Filter>Aseets\sprite</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Load\Load.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\Load\haikeii.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\AHP\Awaku.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\AHP\AWhp.png">
-      <Filter>Aseets\sprite</Filter>
-    </ImageContentTask>
-    <ImageContentTask Include="Assets\sprite\OP\aa.png" />
-    <ImageContentTask Include="Assets\sprite\Titel\kidu.png" />
-    <ImageContentTask Include="Assets\sprite\OP\27916828.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op2.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op2pen.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op2sore.png" />
-    <ImageContentTask Include="Assets\sprite\OP\bikkuri.png" />
-    <ImageContentTask Include="Assets\sprite\OP\penOP2.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op3hito.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op3ti.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op3kousite2.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op3kousite1.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op3pen.png" />
-    <ImageContentTask Include="Assets\sprite\OP\op3haikei.png" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\Children\kodomo120.fbx">
@@ -314,9 +294,6 @@
       <Filter>Aseets\modelData\Woman</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\ya.FBX">
-      <Filter>Aseets\modelData</Filter>
-    </MeshContentTask>
-    <MeshContentTask Include="Assets\modelData\seteez\ste.FBX">
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\Item.FBX">
@@ -436,19 +413,41 @@
     <MeshContentTask Include="Assets\modelData\ste\sute.fbx">
       <Filter>Aseets\modelData\ste</Filter>
     </MeshContentTask>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\sprite\GameOver\GameOver2.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\GameOver\GameOver.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Time UP\Time UP.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
-    <Image Include="Assets\sprite\Time UP\Time UP2.png">
-      <Filter>Aseets\sprite</Filter>
-    </Image>
+    <MeshContentTask Include="Assets\modelData\stage01.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Building.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\floor.FBX">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Garden.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Housing1.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Housing2.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Parks.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\road.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\school.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\stores.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\traffic lights.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\Trail.fbx">
+      <Filter>Aseets\modelData</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

@@ -48,6 +48,7 @@ private:
 	void ManIdle();
 	void ManWalk();
 	void ManAttack();
+	void ManYobi();
 	void ManDeath();
 	void ManHorizon();
 	void Animation();
@@ -59,6 +60,7 @@ private:
 	EnState m_state = EnState_walk;//状態
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 	CCharacterController m_charaCon; //キャラコン
+	CVector3 move;
 
 	//スキン
 	prefab::CSpriteRender* m_skin = nullptr;//枠
@@ -77,9 +79,9 @@ private:
 	int count = 0; //移動用カウント
 	int wrandom = 0; //移動の方向乱数
 	const int randomCount = 300; //ランダムで移動方向切り替えタイマー
-	const float randomSpeed = 8.0f; //移動速度
+	const float randomSpeed = 30.0f; //移動速度
 	//攻撃関連
-	const float attackSpeed = 40.0f; //逃げる速度
+	const float attackSpeed = 40.0f; //追いかける速度
 
 	//視野角
 	const float horilong = 350.0f;	//視野角判定の距離

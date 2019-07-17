@@ -18,8 +18,10 @@ public:
 	{
 		m_scale = sca;
 	}
-	void Background::GetGhost() {
-		
+
+	CPhysicsGhostObject& GetGhostObject()
+	{
+		return m_ghost;
 	}
 private:
 	prefab::CSkinModelRender* skinModelRender = nullptr; //スキンモデルレンダー

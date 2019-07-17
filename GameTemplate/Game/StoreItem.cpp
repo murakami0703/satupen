@@ -121,6 +121,7 @@ bool StoreItem::Start()
 
 	// CPhysicsStaticObject‚Ì‰Šú‰»
 	m_physicsStaticObject.CreateMesh(m_position, CQuaternion::Identity, m_scale, m_skinModelRender);
+	m_skinModelRender->SetShadowCasterFlag(true);
 
 	return true;
 }

@@ -10,3 +10,5 @@ x64/
 *.tlog
 *.pdb
 *.ini
+/GameTemplate/Game/Assets/modelData/stage01.fbx
+/GameTemplate/Game/Assets/modelData/Garden.fbx

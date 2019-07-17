@@ -22,6 +22,12 @@ bool EnemyDog::Start()
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
 	//m_animClips[enAnimationClip_attack].Load(L"animData/Dogattack.tka"); //攻撃
 
+	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
+	m_skinModelRender->Init(L"modelData/inu/inuu.cmo", m_animClips, enAnimationClip_Num);
+	m_skinModelRender->SetScale(m_scale);
+	m_skinModelRender->SetRotation(m_rotation);
+
+	m_skinModelRender->SetPosition(m_position);
 	////敵のHPbar
 	//m_skin = NewGO<prefab::CSpriteRender>(0);
 	//m_skin->Init(L"sprite/AHP/Awaku.dds", 100.0f, 30.0f);//500.0f, 45.0f
@@ -51,7 +57,7 @@ void EnemyDog::DogHorizon()
 	Player* player = Player::GetInstance();
 	//エネミーの前方方向を求める。
 	//前方方向は{0, 0, 1}のベクトルをm_rotationで回して求めてみる。
-	CVector3 enemyForward = { 0.0f, 0.0f, -1.0f };
+	CVector3 enemyForward = { 1.0f, 0.0f, 0.0f };
 	m_rotation.Multiply(enemyForward);
 
 	//エネミーからプレイヤーに伸びるベクトルを求める。
@@ -107,7 +113,7 @@ void EnemyDog::DogWalk()
 		//ランダムで方向を決定して動きます
 		wrandom = rand() % 360;
 		m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
-		walkmove = { 0.0f, 0.0f,-1.0f };
+		walkmove = { 1.0f, 0.0f,0.0f };
 		m_rotation.Multiply(walkmove);
 		count = 0;
 	}
@@ -147,7 +153,7 @@ void EnemyDog::DogAttack()
 	}
 
 
-	CVector3 enemyForward = { 0.0f, 0.0f, 1.0f };
+	CVector3 enemyForward = { 1.0f, 0.0f, 0.0f };
 
 	//　向かせたい方向のベクトルを計算する。
 	CVector3 targetVector = P_Position - m_position;
@@ -231,7 +237,8 @@ void EnemyDog::Update()
 		break;
 
 	}
-
+	DogHorizon();	//視野角
+	Animation();
 	//ペンとの衝突判定
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();

@@ -174,7 +174,7 @@ void Status::Update()
 	m_sprite18->SetScale(LifeScale);
 	m_sprite18->SetMulColor(LifeColor);
 	//Œvj‰ñ‚·‚â‚Â@ŠÔ‚Í‹S’²®‚Å
-	rag += -0.2f * GameTime().GetFrameDeltaTime();
+	//rag += -0.2f * GameTime().GetFrameDeltaTime();
 	CQuaternion rot;
 	rot.SetRotation(CVector3::AxisZ, -0.2f * GameTime().GetFrameDeltaTime());
 	m_rotation.Multiply(rot);
