@@ -1774,6 +1774,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameData.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Load.cpp" />
@@ -1809,6 +1810,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview_Low|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="StoreItem.cpp" />
+    <ClCompile Include="TimeUP.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -1826,6 +1828,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Load.h" />
@@ -1842,6 +1845,7 @@
     <ClInclude Include="Status.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StoreItem.h" />
+    <ClInclude Include="TimeUP.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Window.h" />
     <ResourceCompile Include="Game.rc" />
@@ -3777,6 +3781,18 @@
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\OP\op3haikei.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\GameOver\GameOver2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\GameOver\GameOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Time UP\Time UP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Time UP\Time UP2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
