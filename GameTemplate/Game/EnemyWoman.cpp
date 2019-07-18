@@ -231,11 +231,11 @@ void EnemyWoman::Update()
 			m_skin2->SetPosition(hoge);
 			m_skin3->SetPosition(screenPos);
 		}
-		else {
-			m_skin->SetActiveFlag(false);
-			m_skin2->SetActiveFlag(false);
-			m_skin3->SetActiveFlag(false);
-		}
+		
+	}else {
+		m_skin->SetActiveFlag(false);
+		m_skin2->SetActiveFlag(false);
+		m_skin3->SetActiveFlag(false);
 	}
 	WomanHorizon();	//Ž‹–ìŠp
 	Animation();

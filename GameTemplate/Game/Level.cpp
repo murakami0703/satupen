@@ -59,9 +59,9 @@ bool Level::Start() {
 			}
 			if (objData.EqualObjectName(L"otoko")) {
 				//男
-				EnemyMan* Man = NewGO<EnemyMan>(0, "man");
+				/*EnemyMan* Man = NewGO<EnemyMan>(0, "man");
 				Man->SetPosition(objData.position);
-				Man->SetRotation(objData.rotation);
+				Man->SetRotation(objData.rotation);*/
 				EnemyCount++;
 				//フックしたwomanのでtrueを返す。
 				return true;
@@ -77,10 +77,10 @@ bool Level::Start() {
 			}
 			if (objData.EqualObjectName(L"inuu")) {
 				//犬
-				EnemyDog* Dog = NewGO<EnemyDog>(0, "dog");
+				/*EnemyDog* Dog = NewGO<EnemyDog>(0, "dog");
 				Dog->SetPosition(objData.position);
 				Dog->SetRotation(objData.rotation);
-				Dog->SetScale(objData.scale);
+				Dog->SetScale(objData.scale);*/
 
 				EnemyCount++;
 				//フックしたのでtrueを返す。

@@ -12,6 +12,8 @@ EnemyChildren::EnemyChildren()
 }
 EnemyChildren::~EnemyChildren()
 {
+	DeleteGO(m_skin);
+	DeleteGO(m_skin2);
 	DeleteGO(m_skinModelRender);
 }
 
