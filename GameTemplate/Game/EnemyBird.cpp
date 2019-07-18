@@ -45,6 +45,11 @@ bool EnemyBird::Start()
 	m_skinModelRender->SetScale(m_scale);
 	m_skinModelRender->SetRotation(m_rotation);
 
+	wrandom = rand() % 360;
+	m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
+	walkmove = { 1.0f, 0.0f,0.0f };
+	m_rotation.Multiply(walkmove);
+
 	//キャラコン
 	m_charaCon.Init(
 		10.0f,  //半径。
@@ -109,6 +114,9 @@ void EnemyBird::BirdWalk()
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
+	if (count > randomCount) {
+		count = 0;
+	}
 
 	count++;
 
@@ -126,10 +134,13 @@ void EnemyBird::BirdWalk()
 void EnemyBird::BirdFly()
 {
 	//飛ぶとき
-	/*m_sound2 = NewGO<prefab::CSoundSource>(0);
-	m_sound2->Init(L"sound/crow2.wav");
-	m_sound2->Play(false);
-	m_sound2->SetVolume(0.5f);*/
+	if (flyflag == false) {
+		m_sound2 = NewGO<prefab::CSoundSource>(0);
+		m_sound2->Init(L"sound/crow2.wav");
+		m_sound2->Play(false);
+		m_sound2->SetVolume(0.5f);
+		flyflag = true;
+	}
 	
 	//上に逃げるよ
 	Player* player = Player::GetInstance();
@@ -162,10 +173,10 @@ void EnemyBird::BirdFly()
 	if (m_position.y > 600.0f) {
 		DeleteGO(this);
 	}
-	/*m_sound3 = NewGO<prefab::CSoundSource>(0);
+	m_sound3 = NewGO<prefab::CSoundSource>(0);
 	m_sound3->Init(L"sound/pigeon-take-off1.wav");
 	m_sound3->Play(false);
-	m_sound3->SetVolume(0.5f);*/
+	m_sound3->SetVolume(0.2f);
 }
 void EnemyBird::Animation() {
 	if (m_state == EnState_walk) {
@@ -180,8 +191,6 @@ void EnemyBird::Animation() {
 void EnemyBird::BirdDeath()
 {
 	//死
-	EffectManager* effect = EffectManager::GetInstance();
-	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, EfeSize);
 	DeleteGO(this);
 }
 
@@ -247,10 +256,13 @@ void EnemyBird::Update()
 			gamedata->ResultDeadkasan(GameData::DeadBird);
 			//ペンも消滅
 			pen->SetDeath();
-			/*m_sound = NewGO<prefab::CSoundSource>(0);
+			EffectManager* effect = EffectManager::GetInstance();
+			effect->EffectPlayer(EffectManager::BloodZonbi, m_position, { 20.0f,20.0f,20.0f });
+			//音
+			m_sound = NewGO<prefab::CSoundSource>(0);
 			m_sound->Init(L"sound/MAuke.wav");
 			m_sound->Play(false);
-			m_sound->SetVolume(0.5f);*/
+			m_sound->SetVolume(0.5f);
 			m_state = EnState_death;//死にます。
 		}
 		return true;

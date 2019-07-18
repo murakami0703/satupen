@@ -8,6 +8,8 @@ public:
 	enum Effect {
 		Null,
 		Bakuhatu, //どかーん
+		Blood, //血ドバー
+		BloodZonbi, //ゾンビの血ドバー
 	};
 
 	EffectManager();
@@ -33,6 +35,9 @@ private:
 	wchar_t DetaBase[10][30]{
 		{ L"" },//Nullなので何もない
 		{ L"effect/bakuha.efk" },
+		{ L"effect/Blood.efk" },
+		{ L"effect/BloodZonbi.efk" },
+		
 	};
 
 	CVector3 m_scale = CVector3::One;

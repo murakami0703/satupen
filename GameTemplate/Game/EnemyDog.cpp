@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Pen.h"
 #include "GameData.h"
+#include "EffectManager.h"
 
 
 EnemyDog::EnemyDog()
@@ -22,7 +23,7 @@ bool EnemyDog::Start()
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/Dogwalk.tka"); //歩き
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	//m_animClips[enAnimationClip_attack].Load(L"animData/Dogattack.tka"); //攻撃
+	m_animClips[enAnimationClip_attack].Load(L"animData/Dogattack.tka"); //攻撃
 
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/inu/inuu.cmo", m_animClips, enAnimationClip_Num);
@@ -45,6 +46,12 @@ bool EnemyDog::Start()
 	//m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	//m_skinModelRender->Init(L"modelData/inu/inuu.cmo", m_animClips, enAnimationClip_Num);
 	//m_skinModelRender->SetPosition(m_position);
+
+	wrandom = rand() % 360;
+	m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
+	walkmove = { 1.0f, 0.0f,0.0f };
+	m_rotation.Multiply(walkmove);
+
 
 	//キャラコン
 	m_charaCon.Init(
@@ -80,10 +87,13 @@ void EnemyDog::DogHorizon()
 	//視野角判定
 	//fabsfは絶対値を求める関数！
 	//角度はマイナスが存在するから、絶対値にする。
-	if (fabsf(angle) < CMath::DegToRad(horiAngle) && toPlayerLen < horilong)
-	{
-		//近い！！！！！
-		m_state = EnState_attack;
+	if (attackflag == false) {
+		if (fabsf(angle) < CMath::DegToRad(horiAngle) && toPlayerLen < horilong)
+		{
+			//近い！！！！！
+			m_state = EnState_attack;
+
+		}
 
 	}
 
@@ -98,9 +108,6 @@ void EnemyDog::DogIdle()
 
 	stoptimer++;
 	moveVec = moveVec * 0.0f;	//動きませーーん
-	if (stoptimer >= stopendtimer) {
-		m_state = EnState_walk;
-	}
 }
 void EnemyDog::DogWalk()
 {
@@ -108,7 +115,9 @@ void EnemyDog::DogWalk()
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
-
+	if (count > randomCount) {
+		count = 0;
+	}
 	count++;
 
 	if (count == randomCount) {
@@ -118,6 +127,8 @@ void EnemyDog::DogWalk()
 		walkmove = { 1.0f, 0.0f,0.0f };
 		m_rotation.Multiply(walkmove);
 		count = 0;
+		attackflag = false;
+		soundflag = false;
 	}
 	moveVec = walkmove * randomSpeed;
 	m_position = m_charaCon.Execute(moveVec);
@@ -125,24 +136,37 @@ void EnemyDog::DogWalk()
 void EnemyDog::DogAttack()
 {
 	//攻撃状態
+	GameData* gamedata = GameData::GetInstance();
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
-
-	if (diff.Length() < 600.0f) {
-		//近づきます
-		diff.y = 0.0f;
-		diff.Normalize();
-		/*m_sound2 = NewGO<prefab::CSoundSource>(0);
+	move = diff;
+	if (soundflag == false) {
+		//音
+		m_sound2 = NewGO<prefab::CSoundSource>(0);
 		m_sound2->Init(L"sound/dog1.wav");
 		m_sound2->Play(false);
-		m_sound2->SetVolume(0.5f);*/
-		moveVec = diff * attackSpeed;
+		m_sound2->SetVolume(0.8f);
+		soundflag = true;
 	}
-	else if (diff.Length() < 20.0f) {
-		//アニメーション流して攻撃しや
+	if (diff.Length() < 600.0f && diff.Length() > 80.0f) {
+		//近づきます
+		move.y = 0.0f;
+		move.Normalize();
+		moveVec = move * attackSpeed;
+		m_skinModelRender->PlayAnimation(1);
 	}
-	else {
+	else if (diff.Length() < 80.0f && attackflag == false) {
+		m_skinModelRender->PlayAnimation(3);
+		gamedata->tiryokugennsyou(-10);
+		effpos = P_Position;
+		effpos.y += 20.0f;
+		EffectManager* effect = EffectManager::GetInstance();
+		effect->EffectPlayer(EffectManager::Blood, effpos, { 30.0f,30.0f,30.0f });
+
+		attackflag = true;
+	}
+	else if (attackflag == true) {
 		//離れたのでその場で移動しま
 		m_state = EnState_walk;
 	}
@@ -181,18 +205,8 @@ void EnemyDog::Animation() {
 	else if (m_state == EnState_walk) {
 		m_skinModelRender->PlayAnimation(1);
 	}
-	/*else if (m_state == EnState_yobi) {
-	m_skinModelRender->PlayAnimation(2);
-	}
-	else if (m_state == EnState_attack) {
-	m_skinModelRender->PlayAnimation(3);
 
 	}
-	else if (m_state == enAnimationClip_prostrate) {
-	m_skinModelRender->PlayAnimation(4);
-
-	}*/
-}
 void EnemyDog::Update()
 {
 	////↓これで変更する
@@ -252,10 +266,14 @@ void EnemyDog::Update()
 			gamedata->ResultDeadkasan(GameData::DeadDog);
 			//ペンも消滅
 			pen->SetDeath();
-			/*m_sound = NewGO<prefab::CSoundSource>(0);
+			//えふぇ
+			EffectManager* effect = EffectManager::GetInstance();
+			effect->EffectPlayer(EffectManager::BloodZonbi, m_position, { 20.0f,20.0f,20.0f });
+			//音
+			m_sound = NewGO<prefab::CSoundSource>(0);
 			m_sound->Init(L"sound/MAuke.wav");
 			m_sound->Play(false);
-			m_sound->SetVolume(0.5f);*/
+			m_sound->SetVolume(0.5f);
 			m_state = EnState_death;//死にます。
 		}
 		return true;

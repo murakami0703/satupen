@@ -40,6 +40,11 @@ bool EnemyChildren::Start()
 	m_skinModelRender->Init(L"modelData/Children/kodomo120.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->SetPosition(m_position);
 
+	wrandom = rand() % 360;
+	m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
+	walkmove = { 1.0f, 0.0f,0.0f };
+	m_rotation.Multiply(walkmove);
+
 	//キャラコン
 	m_charaCon.Init(
 		15.0f,  //半径。
@@ -105,6 +110,9 @@ void EnemyChildren::ChildrenWalk()
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
+	if (count > randomCount) {
+		count = 0;
+	}
 
 	count++;
 
@@ -159,8 +167,6 @@ void EnemyChildren::ChildrenRunaway()
 }
 void EnemyChildren::ChildrenDeath()
 {
-	EffectManager* effect = EffectManager::GetInstance();
-	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, EfeSize);
 	DeleteGO(this);
 }
 
@@ -234,6 +240,9 @@ void EnemyChildren::Update()
 			gamedata->ResultDeadkasan(GameData::DeadChildren);
 			//ペンも消滅
 			pen->SetDeath();
+			EffectManager* effect = EffectManager::GetInstance();
+			effect->EffectPlayer(EffectManager::BloodZonbi, m_position, { 20.0f,20.0f,20.0f });
+			//音
 			m_sound = NewGO<prefab::CSoundSource>(0);
 			m_sound->Init(L"sound/MAuke.wav");
 			m_sound->Play(false);

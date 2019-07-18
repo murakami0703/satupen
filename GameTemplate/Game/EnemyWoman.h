@@ -49,13 +49,14 @@ private:
 	void WomanDeath();
 	void WomanHorizon();
 	void Animation();	//アニメーション
-
+	void WomanHP();
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
 	CVector3 m_scale = CVector3::Zero; // スケール
 	EnState m_state = EnState_walk;//状態
 	CVector3 moveVec = CVector3::Zero; // 座標。
+	CVector3 LifeScale = CVector3::Zero;
 
 	CCharacterController m_charaCon; //キャラコン
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
@@ -63,11 +64,14 @@ private:
 	//スキン
 	prefab::CSpriteRender* m_skin = nullptr;//枠
 	prefab::CSpriteRender* m_skin2 = nullptr;//白色
+	prefab::CSpriteRender* m_skin3 = nullptr;//barの後ろの色
+
 	//KOTOが3Dカメラのために作ったやつ
 	CVector3 m_position2;//これ枠
 	//CVector3 m_position2;//これ白いやつ
 
 	prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
+	prefab::CSoundSource* m_sound2 = nullptr; //音敵に当たった時になる音
 
 
 	//停止状態関連
@@ -96,5 +100,6 @@ private:
 	//体力ぅぅぅ
 	int HP = 100;				//現在の体力
 	const int MAX_HP = 100;		//最大体力};
+	float LifeY = 0.0f;
 
 };

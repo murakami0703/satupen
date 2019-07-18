@@ -42,6 +42,11 @@ bool EnemyCat::Start()
 	m_skinModelRender->SetScale(m_scale);
 	m_skinModelRender->SetRotation(m_rotation);
 
+	wrandom = rand() % 360;
+	m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
+	walkmove = { 1.0f, 0.0f,0.0f };
+	m_rotation.Multiply(walkmove);
+
 	//キャラコン
 	m_charaCon.Init(
 		15.0f,  //半径。
@@ -105,6 +110,9 @@ void EnemyCat::CatWalk()
 	Player* player = Player::GetInstance();
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
+	if (count > randomCount) {
+		count = 0;
+	}
 
 	count++;
 
@@ -164,8 +172,6 @@ void EnemyCat::CatRunaway()
 void EnemyCat::CatDeath()
 {
 	//死
-	EffectManager* effect = EffectManager::GetInstance();
-	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, EfeSize);
 	DeleteGO(this);
 
 }
@@ -238,11 +244,15 @@ void EnemyCat::Update()
 			gamedata->DeadHkasan(1);
 			gamedata->ResultDeadkasan(GameData::DeadCat);
 			//ペンも消滅
-			/*m_sound = NewGO<prefab::CSoundSource>(0);
+			pen->SetDeath();
+
+			EffectManager* effect = EffectManager::GetInstance();
+			effect->EffectPlayer(EffectManager::BloodZonbi, m_position, { 20.0f,20.0f,20.0f });
+			//音
+			m_sound = NewGO<prefab::CSoundSource>(0);
 			m_sound->Init(L"sound/MAuke.wav");
 			m_sound->Play(false);
-			m_sound->SetVolume(0.5f);*/
-			pen->SetDeath();
+			m_sound->SetVolume(0.5f);
 			m_state = EnState_death;//死にます。
 		}
 		return true;

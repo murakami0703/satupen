@@ -48,10 +48,10 @@ private:
 	void ManIdle();
 	void ManWalk();
 	void ManAttack();
-	void ManYobi();
 	void ManDeath();
 	void ManHorizon();
 	void Animation();
+	void ManHP();
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
 	CVector3 m_position = CVector3::Zero; // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity; //回転。
@@ -61,15 +61,21 @@ private:
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
 	CCharacterController m_charaCon; //キャラコン
 	CVector3 move;
+	CVector3 LifeScale = CVector3::Zero;
 
 	//スキン
 	prefab::CSpriteRender* m_skin = nullptr;//枠
 	prefab::CSpriteRender* m_skin2 = nullptr;//白色
+	prefab::CSpriteRender* m_skin3 = nullptr;//barの後ろの色
+
 	//KOTOが3Dカメラのために作ったやつ
 	CVector3 m_position2;//これ枠
 	//CVector3 m_position2;//これ白いやつ
 
 	prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
+	prefab::CSoundSource* m_sound2 = nullptr; //音敵に当たった時になる音
+
+	const CVector2 LifePivot = { 0.0f,0.1f };//HPの基本
 
 	//待機関連
 	int stoptimer = 0;//停止用タイマー
@@ -78,11 +84,11 @@ private:
 	CVector3 walkmove = CVector3::Zero; // 座標。
 	int count = 0; //移動用カウント
 	int wrandom = 0; //移動の方向乱数
-	const int randomCount = 300; //ランダムで移動方向切り替えタイマー
+	const int randomCount = 120; //ランダムで移動方向切り替えタイマー
 	const float randomSpeed = 30.0f; //移動速度
-	//攻撃関連
+	bool attackflag = false;
+									 //攻撃関連
 	const float attackSpeed = 40.0f; //追いかける速度
-
 	//視野角
 	const float horilong = 350.0f;	//視野角判定の距離
 	const float horiAngle = 45.0f;	//視野角判定の角度
@@ -95,5 +101,6 @@ private:
 	//体力ぅぅぅ
 	int HP = 100;				//現在の体力
 	const int MAX_HP = 100;		//最大体力
+	float LifeY = 0.0f;
 };
 

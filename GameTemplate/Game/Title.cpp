@@ -207,8 +207,13 @@ void Title::Update()
 
 		}
 		if (Pad(0).IsTrigger(enButtonStart)) {
+			m_sound5 = NewGO<prefab::CSoundSource>(0);
+			m_sound5->Init(L"sound/title_startbuttun.wav");
+			m_sound5->Play(false);
+			m_sound5->SetVolume(1.0f);
 			NewGO<OP>(0, "op");
 			DeleteGO(this);
+
 		}
 
 

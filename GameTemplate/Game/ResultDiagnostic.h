@@ -37,7 +37,9 @@ private:
 	///////////////////////////////
 	float ZaininP = 0.0f;//罪人度の値
 	float ZenninP = 0.0f;//善人度の値
-
+	//////////////////////////////
+	float Getlife = 0.0f;
+	float Maxlife = 0.0f;
 };
 const int Diagnostic = 1; //項目数
 
