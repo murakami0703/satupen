@@ -462,5 +462,8 @@
     <Image Include="Assets\sprite\OP\op3pen.png" />
     <Image Include="Assets\sprite\OP\op3ti.png" />
     <Image Include="Assets\sprite\OP\penOP2.png" />
+    <Image Include="Assets\sprite\Time UP\Time UP2.png" />
+    <Image Include="Assets\sprite\Time UP\Time UP.png" />
+    <Image Include="Assets\sprite\プラス.png" />
   </ItemGroup>
 </Project>

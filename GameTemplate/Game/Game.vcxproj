@@ -3597,6 +3597,11 @@
     <ImageContentTask Include="Assets\sprite\OP\op3ti.png" />
     <ImageContentTask Include="Assets\sprite\OP\penOP2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\Time UP\Time UP.png" />
+    <Image Include="Assets\sprite\Time UP\Time UP2.png" />
+    <Image Include="Assets\sprite\プラス.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />

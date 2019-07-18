@@ -4709,11 +4709,11 @@ Objects:  {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\GC1837\Desktop\UnityModel\BigTrash\bigtrash_bin_texture.png"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\UnityModel\BigTrash\bigtrash_bin_texture.png"
+			P: "RelPath", "KString", "XRefUrl", "", "bigtrash_bin_texture.png"
 		}
 		UseMipMap: 0
 		Filename: "C:\Users\GC1837\Desktop\UnityModel\BigTrash\bigtrash_bin_texture.png"
-		RelativeFilename: "..\..\..\..\..\UnityModel\BigTrash\bigtrash_bin_texture.png"
+		RelativeFilename: "bigtrash_bin_texture.png"
 	}
 	Texture: 2180517391904, "Texture::マップ #1119", "" {
 		Type: "TextureVideoClip"
@@ -4837,7 +4837,7 @@ Objects:  {
 		}
 		Media: "Video::マップ #8"
 		FileName: "C:\Users\GC1837\Desktop\UnityModel\BigTrash\bigtrash_bin_texture.png"
-		RelativeFilename: "..\..\..\..\..\UnityModel\BigTrash\bigtrash_bin_texture.png"
+		RelativeFilename: "bigtrash_bin_texture.png"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "Alpha_Black"
