@@ -91,6 +91,7 @@ private:
 	const float fleeSpeed = 70.0f;		//“¦‚°‚é‘¬“x
 
 	bool flyflag = false;
+	bool haneflag = false;
 	//Ž‹–ìŠp
 	const float horilong = 200.0f;	//Ž‹–ìŠp”»’è‚Ì‹——£
 	const float horiAngle = 45.0f;	//Ž‹–ìŠp”»’è‚ÌŠp“x

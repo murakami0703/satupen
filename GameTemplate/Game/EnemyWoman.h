@@ -66,6 +66,8 @@ private:
 	prefab::CSpriteRender* m_skin2 = nullptr;//白色
 	prefab::CSpriteRender* m_skin3 = nullptr;//barの後ろの色
 
+	const CVector2 LifePivot = { 0.0f,0.1f };//HPの基本
+
 	//KOTOが3Dカメラのために作ったやつ
 	CVector3 m_position2;//これ枠
 	//CVector3 m_position2;//これ白いやつ

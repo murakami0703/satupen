@@ -47,7 +47,7 @@ bool EnemyBird::Start()
 
 	wrandom = rand() % 360;
 	m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
-	walkmove = { 1.0f, 0.0f,0.0f };
+	walkmove = { -1.0f, 0.0f,0.0f };
 	m_rotation.Multiply(walkmove);
 
 	//ƒLƒƒƒ‰ƒRƒ“
@@ -134,13 +134,6 @@ void EnemyBird::BirdWalk()
 void EnemyBird::BirdFly()
 {
 	//”ò‚Ô‚Æ‚«
-	if (flyflag == false) {
-		m_sound2 = NewGO<prefab::CSoundSource>(0);
-		m_sound2->Init(L"sound/crow2.wav");
-		m_sound2->Play(false);
-		m_sound2->SetVolume(0.5f);
-		flyflag = true;
-	}
 	
 	//ã‚É“¦‚°‚é‚æ
 	Player* player = Player::GetInstance();
@@ -173,10 +166,21 @@ void EnemyBird::BirdFly()
 	if (m_position.y > 600.0f) {
 		DeleteGO(this);
 	}
-	m_sound3 = NewGO<prefab::CSoundSource>(0);
-	m_sound3->Init(L"sound/pigeon-take-off1.wav");
-	m_sound3->Play(false);
-	m_sound3->SetVolume(0.2f);
+	if (haneflag == false) {
+		m_sound3 = NewGO<prefab::CSoundSource>(0);
+		m_sound3->Init(L"sound/pigeon-take-off1.wav");
+		m_sound3->Play(false);
+		m_sound3->SetVolume(0.2f);
+		haneflag = true;
+		if (haneflag == true && flyflag == false) {
+			m_sound2 = NewGO<prefab::CSoundSource>(0);
+			m_sound2->Init(L"sound/crow2.wav");
+			m_sound2->Play(false);
+			m_sound2->SetVolume(0.5f);
+			flyflag = true;
+		}
+
+	}
 }
 void EnemyBird::Animation() {
 	if (m_state == EnState_walk) {

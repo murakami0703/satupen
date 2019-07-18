@@ -14,6 +14,7 @@ EnemyWoman::~EnemyWoman()
 	DeleteGO(m_skinModelRender);
 	DeleteGO(m_skin);
 	DeleteGO(m_skin2);
+	DeleteGO(m_skin3);
 }
 
 bool EnemyWoman::Start()
@@ -31,16 +32,17 @@ bool EnemyWoman::Start()
 	m_skinModelRender->SetRotation(m_rotation);
 
 	//“G‚ÌHPbar
-	m_skin = NewGO<prefab::CSpriteRender>(0);
+	m_skin = NewGO<prefab::CSpriteRender>(2);
 	m_skin->Init(L"sprite/AHP/Awaku.dds", 100.0f, 30.0f);//500.0f, 45.0f
 	m_position2 = { 0.0f, 150.0f, 0.0f };
 	m_skin->SetPosition(m_position2);
 	//“G‚Ì”’F‚Ìƒo[
-	m_skin2 = NewGO<prefab::CSpriteRender>(0);
+	m_skin2 = NewGO<prefab::CSpriteRender>(1);
 	m_skin2->Init(L"sprite/AHP/AWhp.dds", 100.0f, 30.0f);//500.0f, 80.0f
-	m_position2 = { 0.0f,150.0f,0.0f };
+	m_position2 = { -50.0f,135.0f,0.0f };
 	m_skin2->SetPosition(m_position2);
 	m_skin2->SetMulColor({ 0.0f,1.0f,0.0f,1.0f });
+	m_skin2->SetPivot(LifePivot);
 	//HPBbar‰
 	m_skin3 = NewGO<prefab::CSpriteRender>(0);
 	m_skin3->Init(L"sprite/HPBbar.dds", 110.0f, 30.0f);
