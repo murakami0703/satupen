@@ -465,5 +465,7 @@
     <Image Include="Assets\sprite\Time UP\Time UP2.png" />
     <Image Include="Assets\sprite\Time UP\Time UP.png" />
     <Image Include="Assets\sprite\プラス.png" />
+    <Image Include="Assets\sprite\GameOver\GameOver2.png" />
+    <Image Include="Assets\sprite\GameOver\GameOver.png" />
   </ItemGroup>
 </Project>

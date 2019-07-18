@@ -11,6 +11,8 @@ EnemyDog::EnemyDog()
 }
 EnemyDog::~EnemyDog()
 {
+	/*DeleteGO(m_skin);
+	DeleteGO(m_skin2);*/
 	DeleteGO(m_skinModelRender);
 }
 

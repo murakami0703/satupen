@@ -35,6 +35,7 @@ Game::~Game()
 	DeleteGOs("man");
 	DeleteGOs("result");
 	DeleteGO("‹ó");
+	DeleteGOs("bird");
 }
 bool Game::Start()
 {
@@ -46,6 +47,7 @@ bool Game::Start()
 	NewGO<PenGenerator>(0, "penG");
 	NewGO<Level>(0, "level");
 	NewGO<EffectManager>(0, "EffectManager");
+
 
 	//1–{–Ú
 	auto dirLig = NewGO<prefab::CDirectionLight>(0, "light");
