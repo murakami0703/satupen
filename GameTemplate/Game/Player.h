@@ -15,6 +15,7 @@ public:
 		Estate_jump,	//行動中
 		Estate_pre,		//予備
 		Estate_attack,		//飛ばした
+
 	};
 	//アニメーション
 	enum EnAnimationClip {
@@ -61,8 +62,15 @@ private:
 	void yobi();		//構えるよぉ
 
 	prefab::CSkinModelRender* m_skinModelRender = nullptr;	//スキンモデルレンダラー。
-	prefab::CSoundSource* m_sound = nullptr;//歩く音
+	prefab::CSoundSource* m_sound = nullptr;//走る音
+	prefab::CSoundSource* m_sound1 = nullptr;//歩く音
+	prefab::CSoundSource* m_sound2 = nullptr;//ジャンプする音
+	prefab::CSoundSource* m_sound3 = nullptr;//構える音
+	prefab::CSoundSource* m_sound4 = nullptr;//発射音
 
+	bool sound3flag = false;
+	bool sound4flag = false;
+	bool walkflag = false;
 	CVector3 m_oldpos = CVector3::Zero;//最初に追った場所。
 	CVector3 m_position = CVector3::Zero;  // 座標。
 	CQuaternion m_rotation = CQuaternion::Identity;  //回転。

@@ -450,4 +450,9 @@
       <Filter>Aseets\modelData</Filter>
     </MeshContentTask>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\sprite\Titel\kidu.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

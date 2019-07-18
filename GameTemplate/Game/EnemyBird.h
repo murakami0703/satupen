@@ -72,9 +72,9 @@ private:
 	//CVector3 m_position2;//これ枠
 	//CVector3 m_position2;//これ白いやつ
 	//音楽
-	//prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時に
-	//prefab::CSoundSource* m_sound2 = nullptr; //泣く音
-	//prefab::CSoundSource* m_sound3 = nullptr; //飛ぶ音
+	prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時に
+	prefab::CSoundSource* m_sound2 = nullptr; //泣く音
+	prefab::CSoundSource* m_sound3 = nullptr; //飛ぶ音
 	
 
 	//待機関連
@@ -90,6 +90,7 @@ private:
 	const float flyRange = 300.0f;		//逃げる距離（プレイヤーから離れる距離）
 	const float fleeSpeed = 70.0f;		//逃げる速度
 
+	bool flyflag = false;
 	//視野角
 	const float horilong = 200.0f;	//視野角判定の距離
 	const float horiAngle = 45.0f;	//視野角判定の角度

@@ -27,6 +27,8 @@ bool ResultDiagnostic::Start()
 	EnCount = gamedata->GetEnemycount(); //敵の数
 	ItCount = gamedata->GetItemcount(); //アイテムの数
 
+	Getlife = gamedata->Get_Life();
+	Maxlife = gamedata->GetDEF_Life();
 	return true;
 }
 
@@ -67,24 +69,82 @@ void ResultDiagnostic::Update()
 	case ResultDiagnostic::Gokei:
 	{
 		//あなたは
-		if (ZaininP > 0.5f) {
-			//罪人度が50％以上だった時
+		if (DH > 50 && Getlife >= Maxlife) {
+			//50人以上殺した＆ノーダメージ
+		}
+		else if (DH > 50 && Getlife < Maxlife) {
+			//50人以上殺した＆ノーダメージではない
+		}
+		else if (DH == 0) {
+			//誰も殺していない
+		}
+		else if (DHMan == 7 && DHWoman == 5 && DHChildren) {
+			//男性を7人、女性を5人、子供を3人殺す
+		}
+		else if (DH > 35 && DAnimals==0) {
+			//人間を35人以上殺した＆動物を殺していない
+		}
+		else if (DHMan > 40 && DHWoman == 0) {
+			//男性を40人以上殺した＆女性を殺していない
+		}
+		else if (DHWoman > 40 && DHMan == 0) {
+			//女性を40人以上殺した＆男性を殺していない
+		}
+		else if (DHChildren > 40 && DHMan == 0 && DHWoman == 0 && DAnimals == 0) {
+			//子供だけを40人殺した（大人と動物を殺さない）
+		}
+		else if (DAnimals > 30 && DH == 0) {
+			//動物だけを50匹以上殺した（人間は殺さない）
+		}
+		else if (Item > 70) {
+			//オブジェクトを70個以上破壊
+		}
+
+		else if (ZaininP > 1.0f) {
+			//罪人度が100％だった時
+
+		}
+		else if (ZaininP > 0.9f) {
+			//罪人度が90％以上だった時
+
+		}
+		else if (ZaininP > 0.8f) {
+			//罪人度が80％以上だった時
+
 		}
 		else if (ZaininP > 0.7f) {
+			//罪人度が70％以上だった時
 
 		}
-		else if (ZaininP > 0.85f) {
+		else if (ZaininP > 0.6f) {
+			//罪人度が60％以上だった時
 
 		}
-		else if (ZenninP > 0.5f) {
-			//善人度が50％以上だった時
-		}
-		else if (ZenninP > 0.7f) {
+		else if (ZaininP > 0.5f) {
+			//罪人度が50％以上だった時
 
 		}
-		else if (ZenninP > 0.85f) {
+		else if (ZaininP > 0.4f) {
+			//罪人度が40％以上だった時
 
 		}
+		else if (ZaininP > 0.3f) {
+			//罪人度が30％以上だった時
+
+		}
+		else if (ZaininP > 0.2f) {
+			//罪人度が20％以上だった時
+
+		}
+		else if (ZaininP > 0.1f) {
+			//罪人度が10％以上だった時
+
+		}
+		else {
+			//罪人度が0％だった時
+
+		}
+
 		break;
 	}
 	}

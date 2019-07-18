@@ -81,7 +81,6 @@ void Player::Movestick()
 			if (fabsf(stick.x) < 0.001f && fabsf(stick.z) < 0.001f) {
 				//パッド入力がないので待機アニメショ
 				m_state = Estate_idle;
-				return;
 			}
 			else {
 				m_state = Estate_move;
@@ -128,16 +127,15 @@ void Player::Dash() {
 		moveVec *= 2.0f;
 		CVector3 old = m_position - m_oldpos;
 		old.Normalize();
-		if (old.x>0.03f||old.z>0.03f) {
-			m_sound = NewGO<prefab::CSoundSource>(0);
-			m_sound->Init(L"sound/Mwalk.wav");
-			m_sound->Play(false);
-			m_sound->SetVolume(0.5f);
+			if (old.x > 0.03f || old.z > 0.03f) {
+				m_sound = NewGO<prefab::CSoundSource>(0);
+				m_sound->Init(L"sound/Mwalk.wav");
+				m_sound->Play(false);
+				m_sound->SetVolume(0.5f);
 		}
 	}
 	else {
 		m_isDash = false;
-
 	}
 	m_position = m_charaCon.Execute(moveVec);
 }
@@ -169,6 +167,10 @@ void Player::Jump()
 	if (m_charaCon.IsOnGround() == true) {
 		if (Pad(0).IsTrigger(enButtonB) ) {
 			m_state = Estate_jump;
+				m_sound2 = NewGO<prefab::CSoundSource>(0);
+				m_sound2->Init(L"sound/jump.wav");
+				m_sound2->Play(false);
+				m_sound2->SetVolume(0.5f);
 			moveVec.y = 30.0f;
 		}
 	}
@@ -178,14 +180,22 @@ void Player::yobi() {
 	if (Pad(0).IsPress(enButtonLB1)) {
 		//攻撃しようとしているぅアニメ署
 		//構えて
+		if (sound3flag == false) {
+			m_sound3 = NewGO<prefab::CSoundSource>(0);
+			m_sound3->Init(L"sound/kmaeru.wav");
+			m_sound3->Play(false);
+			m_sound3->SetVolume(0.5f);
+			sound3flag = true;
+		}
 		m_state = Estate_pre;
 		m_isSet = true;
 	}
 	else {
 		m_isSet = false;
+		sound3flag = false;
+
 	}
 	
-
 }
 void Player::Update()
 {
@@ -199,10 +209,21 @@ void Player::Update()
 	Jump();			//ジャンプします。
 	yobi();			//構えます
 
-	if (penge->IsFire() == true) {
+	if (penge->IsFire() == true)
+	{
+		if (sound4flag == false) {
+			m_sound4 = NewGO<prefab::CSoundSource>(0);
+			m_sound4->Init(L"sound/MZnageru.wav");
+			m_sound4->Play(false);
+			m_sound4->SetVolume(0.5f);
+			sound4flag = true;
+		}
 		m_state = Estate_attack;
 	}
+	else {
+		sound4flag = false;
 
+	}
 	//移動と回転
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);

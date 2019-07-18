@@ -74,8 +74,8 @@ private:
 	//CVector3 m_position2;//これ枠
 	////CVector3 m_position2;//これ白いやつ
 
-	//prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
-	//prefab::CSoundSource* m_sound2 = nullptr;//猫逃げる時の音
+	prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
+	prefab::CSoundSource* m_sound2 = nullptr;//猫逃げる時の音
 
 	//待機関連
 	int stoptimer = 0;					//停止用タイマー

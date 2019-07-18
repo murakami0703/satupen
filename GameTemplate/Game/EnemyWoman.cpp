@@ -41,6 +41,15 @@ bool EnemyWoman::Start()
 	m_position2 = { 0.0f,150.0f,0.0f };
 	m_skin2->SetPosition(m_position2);
 	m_skin2->SetMulColor({ 0.0f,1.0f,0.0f,1.0f });
+	//HPBbar翠
+	m_skin3 = NewGO<prefab::CSpriteRender>(0);
+	m_skin3->Init(L"sprite/HPBbar.dds", 110.0f, 30.0f);
+	m_skin3->SetPosition({ 0.0f, 150.0f, 0.0f });
+
+	wrandom = rand() % 360;
+	m_rotation.SetRotation(CVector3::AxisY, (float)wrandom);
+	walkmove = { 0.0f, 0.0f,-1.0f };
+	m_rotation.Multiply(walkmove);
 
 	//キャラコン
 	m_charaCon.Init(
@@ -110,6 +119,10 @@ void EnemyWoman::WomanWalk()
 	CVector3 P_Position = player->Getm_Position();
 	CVector3 diff = P_Position - m_position;
 
+	if (count > randomCount) {
+		count = 0;
+	}
+
 	count++;
 
 	if (count == randomCount) {
@@ -166,8 +179,6 @@ void EnemyWoman::WomanRunaway()
 }
 void EnemyWoman::WomanDeath()
 {
-	EffectManager* effect = EffectManager::GetInstance();
-	effect->EffectPlayer(EffectManager::Bakuhatu, m_position, { 5.0f,5.0f,5.0f });
 	DeleteGO(this);
 }
 
@@ -179,6 +190,15 @@ void EnemyWoman::Animation() {
 		m_skinModelRender->PlayAnimation(1);
 	}
 }
+void EnemyWoman::WomanHP() {
+	//寿命ゲージを動かす
+	//寿命のを計算
+	LifeY = (float)HP / (float)MAX_HP;
+	//???
+	LifeScale = { LifeY,1.0f,1.0f };
+	m_skin2->SetScale(LifeScale);
+}
+
 void EnemyWoman::Update()
 {
 
@@ -202,14 +222,19 @@ void EnemyWoman::Update()
 		if (screenPos.z > 0.0f) {
 			screenPos.z = 0.0f;
 			m_skin->SetPosition(screenPos);
-			m_skin2->SetPosition(screenPos);
+			CVector3 hoge = screenPos;
+			hoge.x += -50.0f;
+			hoge.y += -10.0f;
+			hoge.z += 0.0f;
+			m_skin2->SetPosition(hoge);
+			m_skin3->SetPosition(screenPos);
+		}
+		else {
+			m_skin->SetActiveFlag(false);
+			m_skin2->SetActiveFlag(false);
+			m_skin3->SetActiveFlag(false);
 		}
 	}
-	else {
-		m_skin->SetActiveFlag(false);
-		m_skin2->SetActiveFlag(false);
-	}
-
 	WomanHorizon();	//視野角
 	Animation();
 	switch (m_state)
@@ -237,16 +262,35 @@ void EnemyWoman::Update()
 		CVector3 diff = pen_position - m_position;
 		if (diff.Length() < DeadLength) {
 			//撃たれた....
-			GameData* gamedata = GameData::GetInstance();
-			gamedata->DeadHkasan(1);
-			gamedata->ResultDeadkasan(GameData::DeadWoman);
 			//ペンも消滅
+			EffectManager* effect = EffectManager::GetInstance();
+			effect->EffectPlayer(EffectManager::BloodZonbi, m_position, { 10.0f,10.0f,10.0f });
+			m_sound2 = NewGO<prefab::CSoundSource>(0);
+			m_sound2->Init(L"sound/sasu3.wav");
+			m_sound2->Play(false);
+			m_sound2->SetVolume(0.5f);
+
 			pen->SetDeath();
-			m_sound = NewGO<prefab::CSoundSource>(0);
-			m_sound->Init(L"sound/MAuke.wav");
-			m_sound->Play(false);
-			m_sound->SetVolume(0.5f);
-			m_state = EnState_death;//死にます。
+			HP -= 25;
+			WomanHP();
+			if (HP < 0) {
+				HP = 0;
+			}
+			if (HP <= 0) {
+				GameData* gamedata = GameData::GetInstance();
+				gamedata->DeadHkasan(1);
+				gamedata->ResultDeadkasan(GameData::DeadWoman);
+				//ペンも消滅
+				pen->SetDeath();
+				EffectManager* effect = EffectManager::GetInstance();
+				effect->EffectPlayer(EffectManager::BloodZonbi, m_position, { 20.0f,20.0f,20.0f });
+				//音
+				m_sound = NewGO<prefab::CSoundSource>(0);
+				m_sound->Init(L"sound/MAuke.wav");
+				m_sound->Play(false);
+				m_sound->SetVolume(0.5f);
+				m_state = EnState_death;//死にます。
+			}
 		}
 		return true;
 		});

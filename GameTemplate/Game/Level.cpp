@@ -36,7 +36,7 @@ bool Level::Start() {
 		int EnemyCount = 0;
 		int ItemCount = 0;
 		//@todo for test m_level.Init(L"level/level_02.tkl", [&](LevelObjectData& objData) {
-		m_level.Init(L"level/level_02.tkl", [&](LevelObjectData& objData) {
+		m_level.Init(L"level/level_04.tkl", [&](LevelObjectData& objData) {
 			if (objData.EqualObjectName(L"stage01")) {
 				//îwåi
 				Background* back = NewGO<Background>(0, "background");

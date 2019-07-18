@@ -64,6 +64,8 @@ private:
 	CVector3 m_scale = CVector3::Zero; // スケール
 	EnState m_state = EnState_walk;//状態
 	CVector3 moveVec = CVector3::Zero; // 座標。
+	CVector3 move;
+	CVector3 effpos = CVector3::Zero; // 座標。
 
 	CCharacterController m_charaCon; //キャラコン
 	CAnimationClip  m_animClips[enAnimationClip_Num];		//アニメーション
@@ -75,8 +77,8 @@ private:
 	//CVector3 m_position2;//これ枠
 	////CVector3 m_position2;//これ白いやつ
 
-	//prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
-	//prefab::CSoundSource* m_sound2 = nullptr;//犬が来る時の音
+	prefab::CSoundSource* m_sound = nullptr; //音敵に当たった時になる音
+	prefab::CSoundSource* m_sound2 = nullptr;//犬が来る時の音
 
 	//待機関連
 	int stoptimer = 0;					//停止用タイマー
@@ -86,11 +88,12 @@ private:
 	int count = 0;							//移動用カウント
 	int wrandom = 0;						//移動の方向乱数
 	const int randomCount = 300;			//ランダムで移動方向切り替えタイマー
-	const float randomSpeed = 3.0f;			//移動速度
+	const float randomSpeed = 20.0f;			//移動速度
 	//攻撃関連
 	const float attackRange = 300.0f;		//攻撃する距離（プレイヤーから離れる距離）
 	const float attackSpeed = 50.0f;		//攻撃速度
-
+	bool attackflag = false;
+	bool soundflag = false;
 	//視野角
 	const float horilong = 350.0f;	//視野角判定の距離
 	const float horiAngle = 45.0f;	//視野角判定の角度
