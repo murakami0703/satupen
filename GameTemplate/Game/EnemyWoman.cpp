@@ -48,6 +48,7 @@ bool EnemyWoman::Start()
 		25.0f,  //高さ。
 		m_position //初期座標。
 	);
+	m_skinModelRender->SetShadowCasterFlag(true);
 
 	return true;
 }
@@ -227,6 +228,9 @@ void EnemyWoman::Update()
 		break;
 
 	}
+	WomanHorizon();	//視野角
+	Animation();
+
 	//ペンとの衝突判定
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();

@@ -44,6 +44,11 @@ public:
 	{
 		m_rotation = rot;
 	}
+	//大きさを設定。
+	void SetScale(CVector3 sca)
+	{
+		m_scale = sca;
+	}
 
 private:
 	void DogIdle();
@@ -81,7 +86,7 @@ private:
 	int count = 0;							//移動用カウント
 	int wrandom = 0;						//移動の方向乱数
 	const int randomCount = 300;			//ランダムで移動方向切り替えタイマー
-	const float randomSpeed = 1.0f;			//移動速度
+	const float randomSpeed = 3.0f;			//移動速度
 	//攻撃関連
 	const float attackRange = 300.0f;		//攻撃する距離（プレイヤーから離れる距離）
 	const float attackSpeed = 50.0f;		//攻撃速度

@@ -7,6 +7,13 @@ public:
 	~PenGenerator();
 	bool Start();
 	void Update();
+
+	bool IsFire() const	//	”­ŽË”»’è
+	{
+		return m_isFire;
+	}
+
 private:
+	bool m_isFire = false;
 };
 

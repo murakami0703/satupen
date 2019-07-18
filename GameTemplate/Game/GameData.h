@@ -89,6 +89,15 @@ public:
 	void GameData::ItemCounterSet(int x) {
 		ItemCount = x;
 	}
+	//敵の数を取得
+	int GameData::GetEnemycount() {
+		return EnemyCount;
+	}
+	//アイテムの数を取得
+	int GameData::GetItemcount() {
+		return ItemCount;
+	}
+
 	//////////////////////////////////////
 	//リザルト用　総合計算
 

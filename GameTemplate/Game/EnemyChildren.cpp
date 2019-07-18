@@ -4,6 +4,7 @@
 #include "Pen.h"
 #include "GameData.h"
 #include "EffectManager.h"
+#include "Background.h"
 
 EnemyChildren::EnemyChildren()
 {
@@ -43,6 +44,7 @@ bool EnemyChildren::Start()
 		25.0f,  //高さ。
 		m_position//初期座標。
 	);
+	m_skinModelRender->SetShadowCasterFlag(true);
 
 	return true;
 }
@@ -113,7 +115,7 @@ void EnemyChildren::ChildrenWalk()
 		count = 0;
 	}
 	moveVec = walkmove * randomSpeed;
-	m_position += moveVec;
+	m_position = m_charaCon.Execute(moveVec);
 }
 void EnemyChildren::ChildrenRunaway()
 {
@@ -151,8 +153,7 @@ void EnemyChildren::ChildrenRunaway()
 	CQuaternion qRot;
 	qRot.SetRotation(enemyForward, targetVector);
 	m_rotation = qRot;
-	m_position += moveVec;
-
+	m_position = m_charaCon.Execute(moveVec);
 }
 void EnemyChildren::ChildrenDeath()
 {
@@ -174,7 +175,8 @@ void EnemyChildren::Update()
 {
 	//↓これで変更する
 	//スクリーンPos自分
-
+	/*Background* back = FindGO<Background>("background");
+	CPhysicsGhostObject& backghost = back->GetGhostObject();*/
 	//子供とカメラと距離を計算する。
 	CVector3 cameraPos = MainCamera().GetPosition();
 	CVector3 Pos = cameraPos - m_position;
@@ -200,8 +202,6 @@ void EnemyChildren::Update()
 		m_skin2->SetActiveFlag(false);
 	}
 	
-	ChildrenHorizon();	//視野角
-	Animation();
 	switch (m_state)
 	{
 	case EnState_idle:	//待機状態
@@ -218,6 +218,9 @@ void EnemyChildren::Update()
 		break;
 
 	}
+	ChildrenHorizon();	//視野角
+	Animation();
+
 	//ペンとの衝突判定
 	QueryGOs<Pen>("pen", [&](Pen* pen) {
 		CVector3 pen_position = pen->Getm_Position();

@@ -18,6 +18,7 @@ bool Item::Start()
 	m_skinModelRender->Init(L"modelData/Item.cmo");
 	m_skinModelRender->SetPosition(m_position);
 	m_skinModelRender->SetRotation(m_rotation);
+	m_skinModelRender->SetShadowCasterFlag(true);
 
 	return true;
 }
@@ -30,7 +31,7 @@ void Item::Update()
 	case Item::Wait: 
 	{
 		//置かれてるよぉぉ
-		if (diff.Length() < 100.0f) {
+		if (diff.Length() < itemlength) {
 			//プレイヤーがアイテム（弾）に近いですねぇ
 			m_state = Follow;
 		}
@@ -41,9 +42,9 @@ void Item::Update()
 		//プレイヤーの超至近距離に移動するよ！！
 		CVector3 move = diff;
 		move.Normalize();
-		m_position += move * 6.0f;
+		m_position += move * itemspeed;
 		//自動回収
-		if (diff.Length() < 3.0f) {
+		if (diff.Length() < itemrecovery) {
 			GameData* gamedata = GameData::GetInstance();
 			gamedata->Zandannkasan(+3);
 			DeleteGO(this);

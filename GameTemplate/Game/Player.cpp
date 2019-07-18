@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
-
+#include "PenGenerator.h"
 Player* Player::m_instance = nullptr;
 
 Player::Player()
@@ -32,16 +32,15 @@ bool Player::Start()
 	m_animClips[enAnimationClip_idle].SetLoopFlag(true);
 	m_animClips[enAnimationClip_walk].Load(L"animData/playerwalk.tka"); //歩き
 	m_animClips[enAnimationClip_walk].SetLoopFlag(true);
-	m_animClips[enAnimationClip_jump].Load(L"animData/playerjump.tka"); //歩き
+	m_animClips[enAnimationClip_jump].Load(L"animData/playerjump.tka"); //飛び
 	m_animClips[enAnimationClip_pre].Load(L"animData/Kamae.tka"); //予備
-
 	m_animClips[enAnimationClip_attack].Load(L"animData/Nageru.tka"); //攻撃
 	//スキンモデル
 	m_skinModelRender = NewGO<prefab::CSkinModelRender>(0);
 	m_skinModelRender->Init(L"modelData/Children/kodomo.cmo", m_animClips, enAnimationClip_Num);
 	m_skinModelRender->PlayAnimation(1);
 	m_scale = { 1.0f,1.0f,1.0f };
-	m_position = { 0.0f,0.0f,0.0f };
+	m_position = { 0.0f,-400.0f,0.0f };
 	m_skinModelRender->SetScale(m_scale);
 	m_skinModelRender->SetPosition(m_position);
 
@@ -51,6 +50,8 @@ bool Player::Start()
 		15.0f,  //高さ。
 		m_position //初期座標。
 	);
+	m_skinModelRender->SetShadowCasterFlag(true);
+
 	return true;
 }
 
@@ -107,6 +108,9 @@ void Player::Animation()
 		m_skinModelRender->PlayAnimation(3, 0.3f);
 
 	}
+	else if (m_state == Estate_attack) {
+		m_skinModelRender->PlayAnimation(4, 0.3f);
+	}
 }
 
 void Player::Rotation()
@@ -119,7 +123,7 @@ void Player::Rotation()
 }
 void Player::Dash() {
 	//走るよぉおお
-	if (Pad(0).IsPress(enButtonA)) {
+	if (m_charaCon.IsOnGround() == true && Pad(0).IsPress(enButtonA)) {
 		m_isDash = true;
 		moveVec *= 2.0f;
 		CVector3 old = m_position - m_oldpos;
@@ -165,7 +169,7 @@ void Player::Jump()
 	if (m_charaCon.IsOnGround() == true) {
 		if (Pad(0).IsTrigger(enButtonB) ) {
 			m_state = Estate_jump;
-			moveVec.y = 50.0f;
+			moveVec.y = 30.0f;
 		}
 	}
 	m_position = m_charaCon.Execute(moveVec);
@@ -180,10 +184,13 @@ void Player::yobi() {
 	else {
 		m_isSet = false;
 	}
+	
 
 }
 void Player::Update()
 {
+	PenGenerator* penge = FindGO<PenGenerator>("penG");
+
 	Movestick();	//パッド移動
 	Animation();	//アニメーション
 	Rotation();		//回転
@@ -191,6 +198,10 @@ void Player::Update()
 	Turn();			//180°回転
 	Jump();			//ジャンプします。
 	yobi();			//構えます
+
+	if (penge->IsFire() == true) {
+		m_state = Estate_attack;
+	}
 
 	//移動と回転
 	m_skinModelRender->SetPosition(m_position);

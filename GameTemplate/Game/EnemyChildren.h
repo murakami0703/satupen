@@ -79,12 +79,12 @@ private:
 	int count = 0; //移動用カウント
 	int wrandom = 0; //移動の方向乱数
 	const int randomCount = 300; //ランダムで移動方向切り替えタイマー
-	const float randomSpeed = 1.0f; //移動速度
+	const float randomSpeed = 10.0f; //移動速度
 
 	//逃げ関連
 	const float followRange = 300.0f; //逃げる距離（プレイヤーから離れる距離）
 	const float runaway = 1000.0f; //逃げるのをやめる距離
-	const float followSpeed = 5.0f; //逃げる速度
+	const float followSpeed = 10.0f; //逃げる速度
 	
 	//視野角
 	const float horilong = 350.0f;	//視野角判定の距離

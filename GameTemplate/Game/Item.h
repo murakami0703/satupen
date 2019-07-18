@@ -26,5 +26,9 @@ private:
 	CVector3 m_position = CVector3::Zero; // À•WB
 	CQuaternion m_rotation = CQuaternion::Identity;			//‰ñ“]B
 	EnState m_state = Wait;
-};
+
+	const float itemlength = 100.0f;
+	const float itemspeed = 8.0f;
+	const float itemrecovery = 3.0f;
+}; 
 

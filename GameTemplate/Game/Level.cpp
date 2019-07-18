@@ -35,9 +35,9 @@ bool Level::Start() {
 
 		int EnemyCount = 0;
 		int ItemCount = 0;
-		m_level.Init(L"level/level_05.tkl", [&](LevelObjectData& objData) {
-
-			if (objData.EqualObjectName(L"sute")) {
+		//@todo for test m_level.Init(L"level/level_02.tkl", [&](LevelObjectData& objData) {
+		m_level.Init(L"level/level_02.tkl", [&](LevelObjectData& objData) {
+			if (objData.EqualObjectName(L"floor")) {
 				//背景
 				Background* back = NewGO<Background>(0, "background");
 				back->SetPosition(objData.position);
@@ -75,11 +75,13 @@ bool Level::Start() {
 				//フックしたのでtrueを返す。
 				return true;
 			}
-			/*if (objData.EqualObjectName(L"inuu")) {
+			if (objData.EqualObjectName(L"inuu")) {
 				//犬
 				EnemyDog* Dog = NewGO<EnemyDog>(0, "dog");
 				Dog->SetPosition(objData.position);
 				Dog->SetRotation(objData.rotation);
+				Dog->SetScale(objData.scale);
+
 				EnemyCount++;
 				//フックしたのでtrueを返す。
 				return true;
@@ -89,6 +91,8 @@ bool Level::Start() {
 				EnemyCat* Cat = NewGO<EnemyCat>(0, "cat");
 				Cat->SetPosition(objData.position);
 				Cat->SetRotation(objData.rotation);
+				Cat->SetScale(objData.scale);
+
 				EnemyCount++;
 				//フックしたのでtrueを返す。
 				return true;
@@ -98,10 +102,12 @@ bool Level::Start() {
 				EnemyBird* Bird = NewGO<EnemyBird>(0, "bird");
 				Bird->SetPosition(objData.position);
 				Bird->SetRotation(objData.rotation);
+				Bird->SetScale(objData.scale);
+
 				EnemyCount++;
 				//フックしたのでtrueを返す。
 				return true;
-			}*/
+			}
 			/////////////////////////////////////////////////
 
 
