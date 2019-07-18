@@ -5,6 +5,7 @@
 #include "Result.h"
 #include "Game.h"
 #include "Result.h"
+#include"TimeUP.h"
 
 Status::Status()
 {
@@ -174,13 +175,13 @@ void Status::Update()
 	m_sprite18->SetScale(LifeScale);
 	m_sprite18->SetMulColor(LifeColor);
 	//Œvj‰ñ‚·‚â‚Â@ŠÔ‚Í‹S’²®‚Å
-	//rag += -0.2f * GameTime().GetFrameDeltaTime();
+	rag += -0.06f * GameTime().GetFrameDeltaTime();
 	CQuaternion rot;
-	rot.SetRotation(CVector3::AxisZ, -0.2f * GameTime().GetFrameDeltaTime());
+	rot.SetRotation(CVector3::AxisZ, -0.06f * GameTime().GetFrameDeltaTime());
 	m_rotation.Multiply(rot);
 	m_sprite20->SetRotation(m_rotation);
 	if (CMath::DegToRad(359.0f) < -rag) {
-		NewGO<Result>(0);
+		NewGO<TimeUP>(0);
 		DeleteGO(this);
 	}
 	//‰½lE‚µ‚½‚©‚Ì‚â‚Â

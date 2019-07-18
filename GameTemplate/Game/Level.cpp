@@ -36,8 +36,8 @@ bool Level::Start() {
 		int EnemyCount = 0;
 		int ItemCount = 0;
 		//@todo for test m_level.Init(L"level/level_02.tkl", [&](LevelObjectData& objData) {
-		m_level.Init(L"level/level_04.tkl", [&](LevelObjectData& objData) {
-			if (objData.EqualObjectName(L"stage01")) {
+		m_level.Init(L"level/level_02.tkl", [&](LevelObjectData& objData) {
+			if (objData.EqualObjectName(L"floor")) {
 				//îwåi
 				Background* back = NewGO<Background>(0, "background");
 				back->SetPosition(objData.position);
@@ -68,7 +68,7 @@ bool Level::Start() {
 			}
 			if (objData.EqualObjectName(L"onna")) {
 				//èó
-				EnemyWoman* Woman = NewGO<EnemyWoman>(0, "");
+				EnemyWoman* Woman = NewGO<EnemyWoman>(0, "woman");
 				Woman->SetPosition(objData.position);
 				Woman->SetRotation(objData.rotation);
 				EnemyCount++;

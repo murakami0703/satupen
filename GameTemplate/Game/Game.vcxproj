@@ -1775,6 +1775,7 @@
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GamePad.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Load.cpp" />
@@ -1830,6 +1831,7 @@
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GamePad.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Load.h" />
@@ -3593,7 +3595,24 @@
     <ImageContentTask Include="Assets\sprite\AHP\AWhp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\sprite\Titel\kidu.png" />
+    <ImageContentTask Include="Assets\sprite\OP\27916828.png" />
+    <ImageContentTask Include="Assets\sprite\OP\aa.png" />
+    <ImageContentTask Include="Assets\sprite\OP\bikkuri.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op2.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op2bikkuri.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op2pen.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op2sore.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op3haikei.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op3hito.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op3kousite1.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op3kousite2.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op3pen.png" />
+    <ImageContentTask Include="Assets\sprite\OP\op3ti.png" />
+    <ImageContentTask Include="Assets\sprite\OP\penOP2.png" />
+    <ImageContentTask Include="Assets\sprite\Titel\kidu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Titel\sousa.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

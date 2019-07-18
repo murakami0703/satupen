@@ -51,6 +51,7 @@
     <ClCompile Include="OPsound.cpp" />
     <ClCompile Include="TimeUP.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GamePad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -103,6 +104,7 @@
     <ClInclude Include="OP3.h" />
     <ClInclude Include="OPsound.h" />
     <ClInclude Include="TimeUP.h" />
+    <ClInclude Include="GamePad.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
@@ -452,6 +454,51 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Titel\kidu.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\aa.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\bikkuri.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op2bikkuri.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op2pen.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op2sore.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3haikei.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3hito.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3kousite1.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3kousite2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3pen.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\op3ti.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\penOP2.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\OP\27916828.png">
+      <Filter>Aseets\sprite</Filter>
+    </Image>
+    <Image Include="Assets\sprite\Titel\sousa.png">
       <Filter>Aseets\sprite</Filter>
     </Image>
   </ItemGroup>

@@ -4639,21 +4639,21 @@ Objects:  {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\GC1837\Desktop\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Free-Building-Texture1.jpg"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Free-Building-Texture1.jpg"
+			P: "RelPath", "KString", "XRefUrl", "", "stage\bir\Free-Building-Texture1.jpg"
 		}
 		UseMipMap: 0
 		Filename: "C:\Users\GC1837\Desktop\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Free-Building-Texture1.jpg"
-		RelativeFilename: "..\..\..\..\..\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Free-Building-Texture1.jpg"
+		RelativeFilename: "stage\bir\Free-Building-Texture1.jpg"
 	}
 	Video: 2180517388544, "Video::マップ #1118", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\GC1837\Desktop\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Green_texture.jpg"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Green_texture.jpg"
+			P: "RelPath", "KString", "XRefUrl", "", "stage\bir\Green_texture.jpg"
 		}
 		UseMipMap: 0
 		Filename: "C:\Users\GC1837\Desktop\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Green_texture.jpg"
-		RelativeFilename: "..\..\..\..\..\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Green_texture.jpg"
+		RelativeFilename: "stage\bir\Green_texture.jpg"
 	}
 	Video: 2180517378464, "Video::マップ #774", "Clip" {
 		Type: "Clip"
@@ -4709,11 +4709,11 @@ Objects:  {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\GC1837\Desktop\UnityModel\BigTrash\bigtrash_bin_texture.png"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\UnityModel\BigTrash\bigtrash_bin_texture.png"
+			P: "RelPath", "KString", "XRefUrl", "", "bigtrash_bin_texture.png"
 		}
 		UseMipMap: 0
 		Filename: "C:\Users\GC1837\Desktop\UnityModel\BigTrash\bigtrash_bin_texture.png"
-		RelativeFilename: "..\..\..\..\..\UnityModel\BigTrash\bigtrash_bin_texture.png"
+		RelativeFilename: "bigtrash_bin_texture.png"
 	}
 	Texture: 2180517391904, "Texture::マップ #1119", "" {
 		Type: "TextureVideoClip"
@@ -4725,7 +4725,7 @@ Objects:  {
 		}
 		Media: "Video::マップ #1119"
 		FileName: "C:\Users\GC1837\Desktop\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Free-Building-Texture1.jpg"
-		RelativeFilename: "..\..\..\..\..\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Free-Building-Texture1.jpg"
+		RelativeFilename: "stage\bir\Free-Building-Texture1.jpg"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "Alpha_Black"
@@ -4741,7 +4741,7 @@ Objects:  {
 		}
 		Media: "Video::マップ #1118"
 		FileName: "C:\Users\GC1837\Desktop\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Green_texture.jpg"
-		RelativeFilename: "..\..\..\..\..\sasatupen\_satupen\GameTemplate\Game\Assets\modelData\seteez\Green_texture.jpg"
+		RelativeFilename: "stage\bir\Green_texture.jpg"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "Alpha_Black"
@@ -4837,7 +4837,7 @@ Objects:  {
 		}
 		Media: "Video::マップ #8"
 		FileName: "C:\Users\GC1837\Desktop\UnityModel\BigTrash\bigtrash_bin_texture.png"
-		RelativeFilename: "..\..\..\..\..\UnityModel\BigTrash\bigtrash_bin_texture.png"
+		RelativeFilename: "bigtrash_bin_texture.png"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "Alpha_Black"

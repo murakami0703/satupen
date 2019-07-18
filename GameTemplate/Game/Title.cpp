@@ -6,6 +6,7 @@
 #include"OP.h"
 #include"GameOver.h"
 #include"TimeUP.h"
+#include"GamePad.h"
 
 Title::Title()
 {
@@ -210,12 +211,11 @@ void Title::Update()
 			m_sound5->Init(L"sound/title_startbuttun.wav");
 			m_sound5->Play(false);
 			m_sound5->SetVolume(1.0f);
-			if (m_sound5->IsPlaying() == true) {
-				NewGO<Game>(0, "game");
-				DeleteGO(this);
+			NewGO<OP>(0, "op");
+			DeleteGO(this);
 
-			}
 		}
+
 
 	}
 	}

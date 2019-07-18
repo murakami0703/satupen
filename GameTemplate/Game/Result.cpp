@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Result.h"
 #include "Game.h"
-
+#include"Title.h"
 Result::Result()
 {
 }
@@ -21,6 +21,8 @@ Result::~Result()
 
 	DeleteGO(m_font);
 	DeleteGO(m_font2);
+
+	DeleteGO(m_sound);
 
 }
 bool Result::Start()
@@ -274,20 +276,27 @@ void Result::Update()
 		Ana += 0.05f;
 		if (Ana >= 1.0f) {
 			Ana = 1.0f;
+			m_start = enStart_10;
 		}
-		m_sound6 = NewGO<prefab::CSoundSource>(0);
+		/*m_sound6 = NewGO<prefab::CSoundSource>(0);
 		m_sound6->Init(L"sound/shakin1.wav");
 		m_sound6->Play(false);
-		m_sound6->SetVolume(0.5f);
+		m_sound6->SetVolume(0.5f);*/
+
 		break;
 	}
 	case Result::enStart_10:
 	{
 		//一定時間経過またはボタンを押すとゲームの選択ができる
 		//フェードイン
+		if (Pad(0).IsTrigger(enButtonStart)) {
+			NewGO<Title>(0, "title");
+			DeleteGO(this);
+		}
 	}
 
-
+	
 	}
+	
 	
 }
